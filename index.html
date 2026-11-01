@@ -412,6 +412,118 @@ header.page p{max-width:960px}
 }
 @media (max-width:380px){.c-big{grid-template-columns:1fr}.c-fields{grid-template-columns:1fr 1fr}}
 
+/* ===== INÍCIO · BUSCA ===== */
+.hs-box{display:flex;align-items:center;gap:12px;background:var(--surface);border:1.5px solid var(--line2);padding:0 16px;height:58px;box-shadow:0 1px 0 rgba(14,27,44,.04)}
+.hs-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(180,65,14,.12)}
+.hs-box svg{width:20px;height:20px;flex:none;color:var(--muted)}
+.hs-box input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:500 16px var(--f-body);color:var(--strong)}
+.hs-box input::placeholder{color:var(--muted);font-weight:400}
+kbd{font-family:var(--f-mono);font-size:10px;border:1px solid var(--border);border-bottom-width:2px;padding:1px 6px;color:var(--muted);background:var(--bg);white-space:nowrap}
+.hs-hint{font-size:12px;color:var(--muted);margin:8px 0 26px}
+.hs-hint button{border:0;background:none;color:var(--accent2);font:inherit;cursor:pointer;padding:0 2px;text-decoration:underline dotted}
+.sr-list{background:var(--surface);border:1px solid var(--border);margin:10px 0 26px}
+.sr-head{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:8px 14px;background:var(--bg);border-bottom:1px solid var(--border)}
+.sr-item{display:grid;grid-template-columns:30px 1fr auto;gap:0 12px;align-items:center;width:100%;padding:10px 14px;border:0;border-bottom:1px solid var(--border);background:none;text-align:left;font:inherit;color:inherit;cursor:pointer}
+.sr-item:last-child{border-bottom:0}
+.sr-item:hover,.sr-item.on{background:rgba(180,65,14,.06)}
+.sr-item>svg{grid-row:span 2;width:20px;height:20px;fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sr-item b{font-size:14px;color:var(--strong);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sr-item small{grid-column:2;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sr-item i{grid-row:1/3;grid-column:3;font-style:normal;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sr-item mark{background:rgba(240,138,75,.28);color:inherit;padding:0}
+.sr-none{padding:18px 14px;color:var(--muted);font-size:13px}
+.sr-conv{display:flex;flex-wrap:wrap;gap:8px 22px;padding:12px 14px;border-bottom:1px solid var(--border);font-family:var(--f-mono);font-size:13px;color:var(--strong)}
+.sr-conv span{color:var(--muted)}
+.qa-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:30px}
+.qa{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-height:138px;padding:18px 18px 16px;border:0;background:var(--navy);color:var(--navy-text);text-align:left;font:inherit;cursor:pointer;position:relative}
+.qa:hover{background:var(--navy-2)} .qa:hover b{color:var(--accent-hi)}
+.qa svg{width:30px;height:30px;fill:none;stroke:var(--accent-hi);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin-bottom:6px}
+.qa b{font-size:17px;color:#fff;font-weight:600;line-height:1.25}
+.qa small{font-size:12px;color:var(--navy-muted);line-height:1.5}
+.qa::after{content:"→";position:absolute;right:16px;top:14px;color:var(--navy-muted);font-size:18px}
+.mc{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:end;background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent-hi);padding:16px 18px;margin-bottom:30px}
+.mc .sw{height:44px;width:44px;border:1px solid var(--border);background:var(--bg);color:var(--muted);display:grid;place-items:center;font-size:18px}
+.mc-out{grid-column:1/-1;font-family:var(--f-mono);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 22px}
+.mc-out b{color:var(--strong);font-weight:600}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:10px}
+.cat{background:var(--surface);border:1px solid var(--border);padding:14px 16px 10px}
+.cat h4{margin:0 0 6px;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cat button{display:flex;align-items:center;gap:10px;width:100%;padding:7px 0;border:0;border-top:1px dashed var(--border);background:none;font:inherit;font-size:13px;color:var(--text);text-align:left;cursor:pointer}
+.cat button:first-of-type{border-top:0}
+.cat button svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cat button:hover{color:var(--accent)} .cat button:hover svg{stroke:var(--accent)}
+.sb-search{display:flex;align-items:center;gap:10px;margin:10px 10px 2px;padding:8px 10px;border:1px solid var(--border);background:var(--bg);color:var(--muted);font:inherit;font-size:13px;cursor:pointer;white-space:nowrap;overflow:hidden}
+.sb-search svg{width:16px;height:16px;flex:none}
+.sb-search span{flex:1;text-align:left}
+.sb-search:hover{border-color:var(--accent);color:var(--text)}
+.app.collapsed .sb-search{justify-content:center;margin:10px 8px 2px;padding:8px 0}
+.app.collapsed .sb-search span,.app.collapsed .sb-search kbd{display:none}
+@media (max-width:860px){.app.collapsed .sb-search{justify-content:flex-start;margin:10px 10px 2px;padding:8px 10px}.app.collapsed .sb-search span,.app.collapsed .sb-search kbd{display:initial}}
+.top-search{margin-left:auto;width:40px;height:40px;border:1px solid var(--border);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer}
+.top-search svg{width:18px;height:18px}
+.pal{position:fixed;inset:0;z-index:100;background:rgba(14,27,44,.55);display:flex;justify-content:center;align-items:flex-start;padding:9vh 16px 16px}
+.pal-box{width:min(720px,100%);max-height:80vh;display:flex;flex-direction:column;background:var(--surface);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.pal-box .hs-box{border-width:0 0 1px;box-shadow:none}
+.pal-box .sr-list{margin:0;border:0;overflow:auto}
+.pal-foot{display:flex;gap:16px;padding:8px 14px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);flex-wrap:wrap}
+@media (max-width:600px){.pal{padding:0}.pal-box{max-height:100vh;height:100%}.qa{min-height:112px}.mc{grid-template-columns:1fr}.mc .sw{display:none}}
+/* ===== SIMBOLOGIA ===== */
+.ws-wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+.ws-draw{background:var(--bg);border:1px dashed var(--line2);color:var(--strong);padding:6px;position:sticky;top:12px}
+.ws-draw svg{display:block;width:100%;height:auto}
+.ws-ex{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:14px;font-size:12px;color:var(--muted)}
+.ws-ex>span:last-child{display:contents}
+.link-btn{border:1px solid var(--border);background:var(--bg);padding:4px 10px;font:inherit;font-size:12px;color:var(--text);cursor:pointer}
+.link-btn:hover{border-color:var(--accent);color:var(--accent)}
+.ws-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:28px}
+.ws-card{display:flex;flex-direction:column;gap:3px;background:var(--surface);border:1px solid var(--border);padding:12px 14px;text-align:left;font:inherit;color:inherit}
+button.ws-card{cursor:pointer} button.ws-card:hover{border-color:var(--accent)}
+.ws-card svg{width:100%;height:58px;color:var(--strong);margin-bottom:4px}
+.ws-card b{font-size:13px;color:var(--strong)}
+.ws-card small{font-family:var(--f-mono);font-size:10px;color:var(--muted);letter-spacing:.04em}
+.ws-card span{font-size:12px;color:var(--muted);line-height:1.5}
+@media (max-width:980px){.ws-wrap{grid-template-columns:1fr}.ws-draw{position:static;order:-1}}
+/* ===== PLÁSTICOS · NORMAS ===== */
+.pl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:30px}
+.pl-card{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--accent2);padding:14px 16px}
+.pl-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pl-h b{font-size:15px;color:var(--strong)} .pl-h span{font-family:var(--f-mono);font-size:11px;color:var(--accent2)}
+.pl-card>small{display:block;font-size:12px;color:var(--muted);margin:2px 0 10px}
+.pl-card dl{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0 0 10px;font-size:12px}
+.pl-card dt{color:var(--muted)} .pl-card dd{margin:0;font-family:var(--f-mono);color:var(--strong);text-align:right}
+.pl-card p{margin:6px 0 0;font-size:12px;line-height:1.5}
+.pl-warn{color:var(--muted);border-left:2px solid var(--accent-hi);padding-left:8px}
+.nm-list{display:grid;gap:8px;margin-bottom:24px}
+.nm-item{display:grid;grid-template-columns:170px 1fr auto;gap:6px 16px;align-items:start;background:var(--surface);border:1px solid var(--border);padding:12px 16px}
+.nm-c{font-family:var(--f-mono);font-weight:600;font-size:13px;color:var(--accent)}
+.nm-item b{color:var(--strong);font-size:13px;margin-right:8px}
+.nm-item p{margin:3px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
+@media (max-width:700px){.nm-item{grid-template-columns:1fr}.nm-item .link-btn{justify-self:start}}
+.gd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-bottom:30px}
+.gd-c{background:var(--surface);border:1px solid var(--border);padding:12px 14px;display:grid;grid-template-columns:44px 1fr;gap:2px 12px;text-align:left;font:inherit;color:inherit;cursor:pointer;align-items:start}
+.gd-c:hover{border-color:var(--accent)} .gd-c[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.gd-sym{grid-row:span 3;width:44px;height:44px;border:1.5px solid var(--strong);display:grid;place-items:center;color:var(--strong)}
+.gd-sym svg,.gd-ico{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.gd-ico{width:18px;height:18px;vertical-align:-4px}
+.gd-c b{font-size:14px;color:var(--strong)}
+.gd-c small{font-size:11px;color:var(--muted);line-height:1.5}
+.gd-tag{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.gd-tag.g-forma{color:var(--accent2)} .gd-tag.g-orient{color:var(--accent3)} .gd-tag.g-loc{color:var(--accent)} .gd-tag.g-bat{color:var(--accent4)}
+.fcf-box{background:var(--surface);border:1px solid var(--border);padding:18px 20px;margin-bottom:30px}
+.fcf-in{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.fcf-mods{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:16px;font-size:12px;color:var(--muted)}
+.fcf-mods label{display:flex;align-items:center;gap:5px;cursor:pointer}
+.fcf-draw{overflow-x:auto;padding:6px 0 10px;color:var(--strong)}
+.fcf-draw svg{display:block}
+.fcf-txt{font-size:13px;line-height:1.65;color:var(--text);margin:6px 0 0}
+.fcf-txt li{margin-bottom:4px}
+.fcf-warn{color:var(--red);font-size:12px;margin:8px 0 0}
+.cl{display:inline-grid;place-items:center;width:1.45em;height:1.45em;border:1.3px solid currentColor;border-radius:50%;font-family:var(--f-mono);font-size:.78em;font-weight:600;line-height:1;vertical-align:.05em}
+.ref-t td{vertical-align:top;line-height:1.5}
+.ref-t td:first-child{font-family:var(--f-mono);white-space:nowrap;font-weight:600;color:var(--strong)}
+.ref-t .bx{border:1.3px solid currentColor;padding:0 4px}
+.ref-t th{white-space:normal}
+@media(max-width:600px){.ref-t th,.ref-t td{padding:8px 7px}.ref-t td:first-child{white-space:normal;min-width:44px}}
 /* ===== SIDEBAR AJUSTÁVEL ===== */
 .sb-resize{position:absolute;top:0;right:0;width:7px;height:100%;cursor:col-resize;z-index:40;touch-action:none}
 .sb-resize::after{content:'';position:absolute;top:0;bottom:0;right:0;width:2px;background:transparent;transition:background .15s}
@@ -493,8 +605,9 @@ header.page p{max-width:960px}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
     </div>
+    <button class="sb-search" id="sbSearch" title="Pesquisar (Ctrl+K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><span>Pesquisar</span><kbd>Ctrl K</kbd></button>
     <nav class="sb-nav" id="nav"></nav>
-    <div class="sb-foot">v4 · <span>cotas em mm · peso em kg</span><br>por Guilherme S. Braz · <a href="https://www.linkedin.com/in/guilherme-santos-66b8162a0" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="sb-foot">v5 · <span>cotas em mm · peso em kg</span><br>por Guilherme S. Braz · <a href="https://www.linkedin.com/in/guilherme-santos-66b8162a0" target="_blank" rel="noopener">LinkedIn</a></div>
     <div class="sb-resize" id="sbResize" role="separator" aria-orientation="vertical" aria-label="Ajustar largura do menu" tabindex="0" title="Arraste para ajustar a largura · duplo clique volta ao padrão"></div>
   </aside>
   <div class="scrim" id="scrim"></div>
@@ -505,6 +618,7 @@ header.page p{max-width:960px}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
       <b id="topTitle">Guia Técnico</b>
+      <button class="top-search" id="topSearch" aria-label="Pesquisar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg></button>
     </div>
 
     <header class="page">
@@ -939,6 +1053,15 @@ header.page p{max-width:960px}
   <div class="table-wrap"><table class="tol-t" id="tT2"></table></div>
   <div class="section-title">Tabela 3 — retitude, planeza e paralelismo (mm)</div>
   <div class="table-wrap"><table class="tol-t" id="tT3"></table></div>
+  <div class="two-col">
+    <div class="info-box blue"><h4>Como medir — ISO 13920, seção 6</h4><ul>
+      <li><strong>Instrumentos:</strong> régua graduada, trena, régua de fio, esquadro, paquímetro e relógio comparador. Outros, só por acordo.</li>
+      <li><strong>Retitude e planeza:</strong> alinhe a régua (ou o plano de medição) para que a maior folga seja a menor possível. O resultado é h<sub>máx</sub> − h<sub>mín</sub> ≤ t.</li>
+      <li><strong>Paralelismo:</strong> alinhe a face de referência a um plano de referência e meça as distâncias a um plano paralelo a ele.</li>
+      <li><strong>Ângulos:</strong> encoste o instrumento tangente à peça, longe da zona afetada pela solda. O desvio pode ser medido em graus ou em mm.</li>
+      <li><strong>Temperatura:</strong> peça grande no sol forte dá leitura errada. Meça com a peça em temperatura uniforme.</li></ul></div>
+    <div class="info-box green"><h4>ISO 13920:2023 × 1996</h4><p>A edição de 2023 é uma revisão menor: só atualizou referências e formatação. <strong>Os valores das três tabelas são os mesmos da edição de 1996</strong>, então desenho antigo com "ISO 13920-BF" continua valendo igual. As tolerâncias seguem o princípio da independência da ISO 8015: medida e forma são verificadas separadamente. Coaxialidade e simetria não têm tolerância geral; se forem importantes, precisam vir no desenho pela ISO 1101.</p></div>
+  </div>
   <p class="src">Fonte: ISO 13920:2023 (tabelas 1 a 3). A tolerância vale para a faixa em que a medida cai; o limite superior da faixa está incluído (ex.: 120 mm usa a faixa 30–120).</p>
 </section>
 
@@ -1118,6 +1241,13 @@ header.page p{max-width:960px}
     </div>
     <div class="answer" id="lvAns" style="margin:14px 0 0"></div>
   </div>
+
+  <div class="section-title">Mancais e rolamentos com bucha</div>
+  <div class="sub-tabs" id="mcTabs" role="group" aria-label="Tipo de mancal"></div>
+  <div class="info-box" id="mcInfo"><h4></h4><p></p></div>
+  <div class="search-bar"><input type="text" id="mcSearch" placeholder="Pesquisar designação ou Ø do eixo (ex.: UK 208, 40, 1 1/2&quot;)"></div>
+  <div class="scroll-table"><table class="pick"><thead id="mcHead"></thead><tbody id="mcBody" class="mono"></tbody></table></div>
+  <p class="src" id="mcSrc"></p>
 </section>
 
 <!-- ============================================================ POLIAS -->
@@ -1311,6 +1441,270 @@ header.page p{max-width:960px}
   <p class="src">CE IIW (ISO/TR 15608 e AWS D1.1 Anexo B), Pcm de Ito-Bessyo (AWS D1.1 Anexo H), CET e pré-aquecimento pelo método B da EN 1011-2 (válido para CET 0,20–0,50, espessura 10–90 mm, HD 1–20, aporte 0,5–4 kJ/mm). Temperaturas críticas por Andrews (1965), dureza máxima por Just, temperabilidade por Grossmann (fatores multiplicativos, grão ASTM 7). São estimativas: o pré-aquecimento final é o da EPS qualificada e do código de projeto.</p>
 </section>
 
+<!-- ============================================================ INÍCIO -->
+<section class="view" id="v-inicio" hidden>
+  <div class="hs-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><input id="hsQ" type="search" autocomplete="off" placeholder="Pesquisar: W 310, EPS 004, M16, 4140, 6205, 2 1/2&quot;, ISO 13920…" aria-label="Pesquisar no guia"><kbd>Ctrl K</kbd></div>
+  <div id="hsRes"></div>
+  <p class="hs-hint" id="hsHint">Exemplos: <button>W 250</button> <button>tubo 4"</button> <button>M20</button> <button>A36</button> <button>6206</button> <button>nylon</button> <button>filete</button> <button>3/8"</button> <button>13920</button></p>
+  <div id="hsHome">
+    <div class="section-title">Acesso rápido</div>
+    <div class="qa-grid" id="qaGrid"></div>
+    <div class="section-title">Conversor rápido mm ↔ polegada</div>
+    <div class="mc">
+      <label class="c-f">Milímetros<div class="c-inp"><input id="mcMm" type="text" inputmode="decimal" value="25,4"><span>mm</span></div></label>
+      <div class="sw" aria-hidden="true">⇄</div>
+      <label class="c-f">Polegadas<div class="c-inp"><input id="mcIn" type="text" inputmode="decimal" value="1"><span>pol</span></div></label>
+      <div class="mc-out" id="mcOut"></div>
+    </div>
+    <div class="section-title">Todas as consultas</div>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================ GD&T -->
+<section class="view" id="v-gdt" hidden>
+  <div class="c-shapes" id="tolTabs" role="group" aria-label="Assunto"></div>
+  <!-- GD&T · ISO 1101 -->
+  <div class="tolp" id="tp-gdt" hidden>
+    <div class="info-box"><h4>Quadro de tolerância geométrica</h4><p>Monte o quadro como ele aparece no desenho e veja o que ele exige da peça. Clique em uma característica na lista abaixo para trocá-la. Na leitura: <strong>símbolo → valor da zona → modificadores → referências</strong> (primária, secundária e terciária, nessa ordem).</p></div>
+    <div class="fcf-box">
+      <div class="fcf-in">
+        <label class="c-f">Característica<select class="c-sel" id="gdK"></select></label>
+        <label class="c-f">Tolerância t<div class="c-inp"><input id="gdT" type="text" inputmode="decimal" value="0,2"><span>mm</span></div></label>
+        <label class="c-f">Nº de elementos<div class="c-inp"><input id="gdN" type="text" inputmode="numeric" value="4"><span>×</span></div></label>
+        <label class="c-f">Referência 1ª<div class="c-inp"><input id="gdR1" type="text" maxlength="4" value="A"></div></label>
+        <label class="c-f">Referência 2ª<div class="c-inp"><input id="gdR2" type="text" maxlength="4" value="B"></div></label>
+        <label class="c-f">Referência 3ª<div class="c-inp"><input id="gdR3" type="text" maxlength="4" value="C"></div></label>
+      </div>
+      <div class="fcf-mods" id="gdMods"></div>
+      <div class="fcf-draw" id="gdDraw"></div>
+      <ul class="fcf-txt" id="gdTxt"></ul>
+    </div>
+    <div class="section-title">As 14 características — ISO 1101:2017, Tabela 2</div>
+    <div class="gd-grid" id="gdGrid"></div>
+    <div class="two-col">
+      <div class="info-box purple"><h4>Quem controla o quê (ISO 1101, 4.8)</h4><ul>
+        <li><strong>Posição</strong> controla localização, orientação e forma.</li>
+        <li><strong>Orientação</strong> (paralelismo, perpendicularidade, inclinação) controla orientação e forma, mas não a localização.</li>
+        <li><strong>Forma</strong> controla só a forma.</li>
+        <li>Por isso a tolerância de forma deve ser menor que a de orientação, e esta menor que a de posição. Ao contrário, não faz sentido.</li>
+        <li>A tolerância aplicada a um elemento não limita a forma da própria referência (4.7).</li></ul></div>
+      <div class="info-box blue"><h4>Regras básicas</h4><ul>
+        <li>A tolerância deve sair da <strong>função</strong> da peça, não do processo de fabricação.</li>
+        <li>Com <strong>Ø</strong> antes do valor, a zona é um cilindro (eixos e furos). Sem Ø, são dois planos ou duas retas paralelas.</li>
+        <li>Cotas em caixa (<span class="bx mono" style="border:1.3px solid currentColor;padding:0 4px">50</span>) são <strong>teoricamente exatas (TED)</strong>: não têm tolerância própria e definem onde fica a zona.</li>
+        <li>Seta na linha de cota = vale para o eixo ou plano médio. Seta na superfície, fora da cota = vale para a superfície.</li>
+        <li>A especificação vale para o elemento inteiro, salvo indicação (ex.: <span class="mono">0,1/100</span> = em qualquer trecho de 100 mm).</li></ul></div>
+    </div>
+    <p class="src">Fonte: ISO 1101:2017 — Tabela 2 (símbolos), 4.4 a 4.8 (zonas e conceitos). Os símbolos de perfil se chamavam "perfil de qualquer linha / superfície" nas edições anteriores.</p>
+  </div>
+
+  <!-- MODIFICADORES -->
+  <div class="tolp" id="tp-mod" hidden>
+    <div class="info-box"><h4>Modificadores do quadro de tolerância</h4><p>São as letras e símbolos que vêm junto do valor da tolerância. Mudam o tipo de zona, o elemento que está sendo controlado ou a relação entre vários elementos. Desenhos feitos antes de 2017 podem usar a prática antiga; veja a nota no fim.</p></div>
+    <div class="section-title">Zona de tolerância e conjunto de elementos — ISO 1101 · ISO 5458</div>
+    <div class="table-wrap"><table class="ref-t"><thead><tr><th>Símbolo</th><th>Nome</th><th>O que significa</th></tr></thead><tbody>
+      <tr><td>CZ</td><td>Zona combinada</td><td>Os elementos indicados ficam numa zona única, com posição e orientação travadas entre si pelas cotas teóricas. Antes chamava "zona comum". Ex.: 4 furos de flange que precisam casar com o flange par.</td></tr>
+      <tr><td>CZR</td><td>Zona combinada só de rotação</td><td>As zonas ficam travadas entre si só em orientação; a distância entre elas fica livre. (ISO 5458)</td></tr>
+      <tr><td>SZ</td><td>Zonas separadas</td><td>Cada elemento tem sua própria zona, independente. É o padrão para todas as características, menos posição.</td></tr>
+      <tr><td>SIM<i>n</i></td><td>Requisito simultâneo</td><td>Junta quadros diferentes (ex.: dois grupos de furos) num mesmo padrão. SIM1, SIM2… identificam cada grupo. (ISO 5458)</td></tr>
+      <tr><td>UF</td><td>Elemento unido</td><td>Trata vários elementos como se fossem um só (ex.: faces interrompidas por rasgos tratadas como um plano).</td></tr>
+      <tr><td>UZ+0,1</td><td>Zona deslocada especificada</td><td>A zona não é simétrica ao perfil teórico: o centro dela é deslocado pelo valor indicado (+ para fora do material, − para dentro).</td></tr>
+      <tr><td>OZ</td><td>Deslocamento livre (linear)</td><td>A zona tem a forma certa, mas pode se deslocar livremente para dentro ou para fora. Controla a forma do perfil, não o tamanho.</td></tr>
+      <tr><td>VA</td><td>Ângulo variável</td><td>A zona pode girar livremente; o ângulo teórico não é exigido.</td></tr>
+    </tbody></table></div>
+    <div class="section-title">Elemento tolerado e requisitos de material</div>
+    <div class="table-wrap"><table class="ref-t"><thead><tr><th>Símbolo</th><th>Nome</th><th>O que significa</th></tr></thead><tbody>
+      <tr><td><span class="cl">M</span></td><td>Máximo material (ISO 2692)</td><td>A tolerância vale com o furo no menor diâmetro ou o eixo no maior. Quanto mais a peça se afasta disso, mais tolerância extra ela ganha (bônus). Permite inspeção com calibrador funcional (pinos fixos).</td></tr>
+      <tr><td><span class="cl">L</span></td><td>Mínimo material (ISO 2692)</td><td>O inverso do <span class="cl">M</span>. Usado para garantir espessura mínima de parede ou sobremetal.</td></tr>
+      <tr><td><span class="cl">R</span></td><td>Reciprocidade (ISO 2692)</td><td>Junto com <span class="cl">M</span> ou <span class="cl">L</span>: se a tolerância geométrica sobra, pode ser usada na cota de tamanho.</td></tr>
+      <tr><td><span class="cl">P</span></td><td>Zona projetada</td><td>A zona sai para fora da peça, na altura indicada (ex.: <span class="cl">P</span> 25). Usada em furos roscados e prisioneiros: controla onde o parafuso vai ficar, não só o furo.</td></tr>
+      <tr><td><span class="cl">F</span></td><td>Estado livre</td><td>Vale com a peça solta, sem fixação. Para peças flexíveis (chapa fina, anel), que deformam ao serem presas.</td></tr>
+      <tr><td><span class="cl">A</span></td><td>Elemento derivado</td><td>A tolerância vale para o eixo ou plano médio, não para a superfície.</td></tr>
+      <tr><td><span class="cl">C</span> <span class="cl">G</span> <span class="cl">N</span> <span class="cl">T</span> <span class="cl">X</span></td><td>Elemento associado</td><td>Diz qual reta, plano ou cilindro ideal é ajustado à superfície medida antes de avaliar: C = minimax (Chebyshev), G = mínimos quadrados (Gauss), N = mínimo circunscrito, T = tangente, X = máximo inscrito. Importa na medição por tridimensional.</td></tr>
+      <tr><td>LE</td><td>Elemento de linha</td><td>Vale linha a linha, em cada seção, e não para a superfície inteira.</td></tr>
+      <tr><td>ACS</td><td>Qualquer seção transversal</td><td>Vale em cada seção, isoladamente.</td></tr>
+      <tr><td>T · P · V · Q</td><td>Parâmetro avaliado</td><td>Em vez de zona: T = amplitude total, P = altura do pico, V = profundidade do vale, Q = desvio-padrão dos desvios.</td></tr>
+    </tbody></table></div>
+    <div class="section-title">Indicações no desenho</div>
+    <div class="table-wrap"><table class="ref-t"><thead><tr><th>Indicação</th><th>Nome</th><th>O que significa</th></tr></thead><tbody>
+      <tr><td><span class="bx">50</span></td><td>Cota teórica exata (TED)</td><td>Cota em caixa, sem tolerância própria. Define a forma ou a posição teórica da zona.</td></tr>
+      <tr><td>○ na quina da seta</td><td>Todo o contorno</td><td>Vale para todas as faces do perfil mostrado na vista. Precisa vir com UF, CZ ou SZ (ISO 1660), a não ser que as referências travem tudo.</td></tr>
+      <tr><td>◎ na quina da seta</td><td>Toda a superfície</td><td>Vale para todas as superfícies da peça. Mesma regra: junto com UF, CZ ou SZ.</td></tr>
+      <tr><td>J ↔ K</td><td>Entre</td><td>Vale só no trecho entre os pontos J e K.</td></tr>
+      <tr><td>2×</td><td>Quantidade</td><td>O quadro vale para 2 (ou n) elementos iguais.</td></tr>
+      <tr><td>0,1/100</td><td>Trecho restrito</td><td>0,1 mm em qualquer trecho de 100 mm, além do valor no total, se houver.</td></tr>
+    </tbody></table></div>
+    <div class="two-col">
+      <div class="info-box purple"><h4>Perfil de linha e superfície — ISO 1660:2017</h4><ul>
+        <li>A forma teórica (TEF) tem que estar definida por <strong>cotas em caixa</strong>, tabela de pontos com a regra de interpolação, fórmula ou modelo CAD.</li>
+        <li>Por padrão a zona é <strong>simétrica</strong> ao perfil teórico: t = 0,4 vira ±0,2. Para deslocar, use UZ.</li>
+        <li><strong>Sem referência</strong>, o perfil controla só a forma. <strong>Com referência</strong>, controla também orientação e posição.</li>
+        <li>Pode substituir retitude e planeza, desde que o desenho deixe claro que o elemento é reto ou plano.</li>
+        <li>"Todo o contorno" e "toda a superfície" devem vir com UF, CZ ou SZ, porque a forma antiga era ambígua.</li></ul></div>
+      <div class="info-box"><h4>Padrões de furos — ISO 5458:2018</h4><ul>
+        <li><strong>Regra A:</strong> posição aplicada a vários elementos com algum grau de liberdade livre <strong>deve</strong> trazer SZ, CZ ou CZR.</li>
+        <li>Posição com SZ e sem referência não tem sentido; a norma considera inválido.</li>
+        <li>Nas outras características, várias zonas são <strong>independentes</strong> por padrão (SZ implícito).</li>
+        <li>CZ trava as zonas entre si pelas cotas em caixa. Se todas as referências travam os 6 graus de liberdade, CZ e SZ dão o mesmo resultado.</li>
+        <li><strong>Desenho antigo (ISO 5458:1998):</strong> o padrão de furos já era implícito, sem CZ. Hoje o mesmo quadro precisa do CZ para ter o mesmo sentido. Confirme com o projeto antes de inspecionar.</li></ul></div>
+    </div>
+    <p class="src">Fontes: ISO 1101:2017 (Tabela 3, Cl. 8), ISO 1660:2017 (Tabela 4, 5.1–5.2), ISO 5458:2018 (Tabela 1, 5.1–5.3), ISO 2692 (requisitos de material).</p>
+  </div>
+
+  <!-- TAMANHO · ISO 14405-1 -->
+  <div class="tolp" id="tp-tam" hidden>
+    <div class="info-box"><h4>O que é "o tamanho" de uma peça — ISO 14405-1:2016</h4><p>Um mesmo diâmetro pode ser medido de vários jeitos, e cada um dá um número diferente quando a peça está ovalizada ou torta. A ISO 14405-1 define o padrão e as letras que trocam o método. <strong>Sem modificador, vale o tamanho em dois pontos (LP)</strong>: toda medida local, feita com paquímetro ou micrômetro, tem que ficar dentro dos limites. O tamanho não controla a forma (princípio da independência, ISO 8015), a não ser com <span class="cl">E</span>.</p></div>
+    <div class="section-title">Diâmetro pela circunferência (CC) — fita perimétrica</div>
+    <div class="tol-in">
+      <label class="c-f">Perímetro medido<div class="c-inp"><input id="ccP" type="text" inputmode="decimal" value="7540"><span>mm</span></div></label>
+      <label class="c-f">Espessura da chapa<div class="c-inp"><input id="ccE" type="text" inputmode="decimal" value="12,5"><span>mm</span></div></label>
+      <label class="c-f">Ø externo nominal<div class="c-inp"><input id="ccN" type="text" inputmode="decimal" value="2400"><span>mm</span></div></label>
+    </div>
+    <div class="tol-res" id="ccRes"></div>
+    <div class="section-title">Modificadores de tamanho</div>
+    <div class="table-wrap"><table class="ref-t"><thead><tr><th>Símbolo</th><th>Tamanho</th><th>Como se mede na prática</th></tr></thead><tbody>
+      <tr><td>LP</td><td>Dois pontos <em>(padrão)</em></td><td>Paquímetro ou micrômetro, em qualquer ponto. Todas as leituras dentro do limite.</td></tr>
+      <tr><td>LS</td><td>Esférico</td><td>Diâmetro da maior esfera que cabe no local.</td></tr>
+      <tr><td>GG</td><td>Mínimos quadrados</td><td>Cilindro ou plano médio ajustado à superfície, como faz a tridimensional.</td></tr>
+      <tr><td>GX</td><td>Máximo inscrito</td><td>Maior pino ideal que entra no furo. É o "tamanho de montagem" do furo (passa-não-passa com pino longo).</td></tr>
+      <tr><td>GN</td><td>Mínimo circunscrito</td><td>Menor anel ideal que passa pelo eixo. É o "tamanho de montagem" do eixo.</td></tr>
+      <tr><td>GC</td><td>Minimax (Chebyshev)</td><td>Cilindro ideal que minimiza o maior desvio.</td></tr>
+      <tr><td>CC</td><td>Pela circunferência</td><td>d = perímetro ÷ π. É a <strong>fita perimétrica</strong> em casco, tubo e virola. Não enxerga ovalização.</td></tr>
+      <tr><td>CA</td><td>Pela área</td><td>d = √(4 × área ÷ π) da seção.</td></tr>
+      <tr><td>CV</td><td>Pelo volume</td><td>d = √(4 × volume ÷ (π × comprimento)).</td></tr>
+    </tbody></table></div>
+    <div class="table-wrap"><table class="ref-t"><thead><tr><th>Símbolo</th><th>Estatística</th><th>Sobre o conjunto de medidas locais</th></tr></thead><tbody>
+      <tr><td>SX</td><td>Máximo</td><td>A maior leitura deve estar dentro do limite.</td></tr>
+      <tr><td>SN</td><td>Mínimo</td><td>A menor leitura deve estar dentro do limite.</td></tr>
+      <tr><td>SA</td><td>Média</td><td>A média das leituras. Ex.: <span class="mono">Ø2400 ±3 SA</span> = média dos diâmetros.</td></tr>
+      <tr><td>SM</td><td>Mediana</td><td>O valor do meio.</td></tr>
+      <tr><td>SD</td><td>Meio da faixa</td><td>(máx + mín) ÷ 2.</td></tr>
+      <tr><td>SR</td><td>Amplitude</td><td>máx − mín. Serve para limitar a <strong>ovalização</strong> (Ø máx − Ø mín).</td></tr>
+      <tr><td>SQ</td><td>Desvio-padrão</td><td>Dispersão das leituras.</td></tr>
+    </tbody></table></div>
+    <div class="table-wrap"><table class="ref-t"><thead><tr><th>Indicação</th><th>Nome</th><th>O que significa</th></tr></thead><tbody>
+      <tr><td><span class="cl">E</span></td><td>Envoltória</td><td>A peça inteira tem que caber na forma perfeita no máximo material (eixo dentro de um anel ideal no Ø máx). O tamanho passa a limitar a forma. Ex.: <span class="mono">Ø50 h7 <span class="cl">E</span></span>.</td></tr>
+      <tr><td>ACS</td><td>Qualquer seção transversal</td><td>A estatística (ex.: SA) é calculada em cada seção, separadamente.</td></tr>
+      <tr><td>SCS</td><td>Seção específica</td><td>Só na seção indicada no desenho.</td></tr>
+      <tr><td>ALS</td><td>Qualquer seção longitudinal</td><td>Em cada seção ao longo do eixo.</td></tr>
+      <tr><td>CT</td><td>Elemento comum</td><td>Vários elementos tratados como um só tamanho (ex.: dois mancais alinhados).</td></tr>
+      <tr><td>/30</td><td>Trecho restrito</td><td>O tamanho vale em qualquer trecho de 30 mm.</td></tr>
+    </tbody></table></div>
+    <div class="info-box green"><h4>Exemplos de leitura</h4><ul>
+      <li><span class="mono">Ø80 ±0,1</span> — toda medida em dois pontos entre 79,9 e 80,1. A forma é livre (ISO 8015).</li>
+      <li><span class="mono">Ø80 ±0,1 <span class="cl">E</span></span> — além disso, a peça inteira tem que passar num anel perfeito de Ø80,1.</li>
+      <li><span class="mono">Ø2400 ±3 CC</span> — casco medido com fita perimétrica: perímetro entre 7530,4 e 7549,2 mm.</li>
+      <li><span class="mono">Ø2400 ±3 LP SR 6</span> — dois pontos com limite e, além disso, ovalização (máx − mín) de até 6 mm.</li>
+      <li><span class="mono">Ø30 +0,1 GX / 0 LP</span> — limites diferentes: o superior pelo máximo inscrito, o inferior em dois pontos.</li></ul></div>
+    <p class="src">Fonte: ISO 14405-1:2016 (escopo, 3.1–3.7). Siglas conforme a Tabela 1 da norma. Os exemplos com SA/SR em caldeiraria são ilustrativos; o critério vem do projeto ou do código (ASME VIII, por exemplo, tem regra própria de ovalização).</p>
+  </div>
+</section>
+
+<!-- ============================================================ CHAPAS EXPANDIDAS E GRADES -->
+<section class="view" id="v-expandido" hidden>
+  <div class="c-shapes sub-tabs" id="exTabs" role="group" aria-label="Tipo"></div>
+  <div class="info-box" id="exInfo"><h4></h4><p></p></div>
+  <div id="exMalha">
+    <div class="tol-in">
+      <label class="c-f">Largura<div class="c-inp"><input id="exL" type="text" inputmode="decimal" value="1000"><span>mm</span></div></label>
+      <label class="c-f">Comprimento<div class="c-inp"><input id="exC" type="text" inputmode="decimal" value="2000"><span>mm</span></div></label>
+      <label class="c-f">Quantidade<div class="c-inp"><input id="exQ" type="text" inputmode="numeric" value="1"><span>pç</span></div></label>
+    </div>
+    <div class="search-bar"><input type="text" id="exSearch" placeholder="Filtrar por código, malha (ex.: 12x25) ou espessura (ex.: 2)"></div>
+    <div class="answer" id="exAns"></div>
+    <div class="scroll-table"><table class="pick"><thead><tr><th>Código</th><th class="n">Malha A×B</th><th class="n">E</th><th class="n">A1 × B1</th><th class="n">Cordão C</th><th class="n">Área aberta</th><th class="n">kg/m²</th><th class="n">kg/peça</th></tr></thead><tbody id="exBody" class="mono"></tbody></table></div>
+    <p class="src">Fonte: catálogo Permetal — metais expandidos. A × B = malha (diagonal menor × maior), E = espessura, C = cordão. Peso ≈ 2 × C ÷ A × E × densidade. Confira sempre o peso/m² no recebimento: a mesma "chapa expandida 1/4" pode variar mais de 100% de peso entre modelos.</p>
+  </div>
+  <div id="exGrade" hidden>
+    <div class="tol-in">
+      <label class="c-f">Vão entre apoios<select class="c-sel" id="grVao"></select></label>
+      <label class="c-f">Carga necessária<div class="c-inp"><input id="grCarga" type="text" inputmode="decimal" value="500"><span>kgf/m²</span></div></label>
+      <label class="c-f">Área da plataforma<div class="c-inp"><input id="grArea" type="text" inputmode="decimal" value="10"><span>m²</span></div></label>
+    </div>
+    <div class="answer" id="grAns"></div>
+    <div class="scroll-table"><table class="pick"><thead><tr><th>Tipo</th><th class="n">Malha</th><th class="n">kg/m²</th><th class="n" id="grCol">Carga no vão</th><th class="n">Peso da área</th><th>Atende?</th></tr></thead><tbody id="grBody" class="mono"></tbody></table></div>
+    <p class="src">Fonte: catálogo Selmec — grades soldadas, carga uniformemente distribuída admissível (kgf/m²) por vão. O número do tipo indica a barra portante (ex.: GS-B4-304). Para carga móvel (empilhadeira, veículo) consulte o fabricante com o peso por roda.</p>
+  </div>
+</section>
+
+<!-- ============================================================ PLÁSTICOS TÉCNICOS -->
+<section class="view" id="v-plast" hidden>
+  <div class="info-box"><h4>Escolha rápida</h4><p><strong>Desgaste e deslizamento</strong> (guia de corrente, raspador, chute): UHMW. <strong>Bucha, engrenagem, rolete</strong>: nylon (PA6, PA6 fundido, com MoS₂ para menos atrito). <strong>Peça precisa e estável</strong> (sem inchar com umidade): POM (poliacetal). <strong>Impacto e amortecimento, roda, batente</strong>: poliuretano. <strong>Química e temperatura alta</strong>: PTFE. Valores típicos de referência — confirme com o fornecedor.</p></div>
+  <div class="search-bar"><input type="text" id="plSearch" placeholder="Pesquisar material, nome comercial ou aplicação (ex.: nylon, tecnil, bucha, roda)"></div>
+  <div class="pl-grid" id="plGrid"></div>
+  <div class="section-title">Peso de tarugo, placa ou bucha</div>
+  <div class="tol-in">
+    <label class="c-f">Material<select class="c-sel" id="plMat"></select></label>
+    <label class="c-f">Forma<select class="c-sel" id="plForma"><option value="tarugo">Tarugo (redondo)</option><option value="placa">Placa</option><option value="bucha">Bucha (tubo)</option></select></label>
+    <label class="c-f" id="plAL"><span id="plAT">Diâmetro</span><div class="c-inp"><input id="plA" type="text" inputmode="decimal" value="100"><span>mm</span></div></label>
+    <label class="c-f" id="plBL"><span id="plBT">Ø interno</span><div class="c-inp"><input id="plB" type="text" inputmode="decimal" value="50"><span>mm</span></div></label>
+    <label class="c-f">Comprimento<div class="c-inp"><input id="plC" type="text" inputmode="decimal" value="1000"><span>mm</span></div></label>
+  </div>
+  <div class="tol-res" id="plRes"></div>
+  <div class="section-title">Dureza do poliuretano — qual usar</div>
+  <div class="table-wrap"><table class="ref-t"><thead><tr><th>Dureza</th><th>Sensação</th><th>Uso típico</th></tr></thead><tbody id="puBody"></tbody></table></div>
+  <p class="src">Valores típicos de catálogos de semiacabados (faixa comum de mercado), em temperatura ambiente. Nylon absorve umidade: as medidas e a resistência mudam; deixe folga em buchas (≈ 0,3 a 0,5% do Ø). Plásticos dilatam ~10× mais que o aço.</p>
+</section>
+
+<!-- ============================================================ ÍNDICE DE NORMAS -->
+<section class="view" id="v-normas" hidden>
+  <div class="search-bar"><input type="text" id="nmSearch" placeholder="Pesquisar norma ou assunto (ex.: 2768, solda, rosca, flange)"><select id="nmCat" aria-label="Área"></select></div>
+  <div class="result-count" id="nmCount"></div>
+  <div class="nm-list" id="nmList"></div>
+  <p class="src">Lista das normas usadas no guia, com um resumo do que cada uma cobre. O botão leva à página do guia onde ela é aplicada. Sempre confirme a edição exigida pelo contrato ou desenho.</p>
+</section>
+
+<!-- ============================================================ CONE -->
+<section class="view" id="v-cone" hidden>
+  <div class="c-bench">
+    <div class="c-panel">
+      <h3>Tronco de cone</h3>
+      <div class="c-profile">
+        <div class="c-drawing" id="cnDraw" aria-hidden="true"></div>
+        <div>
+          <div class="c-fields">
+            <label class="c-f"><span><span class="c-k">D</span>Ø maior</span><div class="c-inp"><input id="cnD" type="text" inputmode="decimal" value="2520"><span>mm</span></div></label>
+            <label class="c-f"><span><span class="c-k">d</span>Ø menor</span><div class="c-inp"><input id="cnd" type="text" inputmode="decimal" value="2181"><span>mm</span></div></label>
+            <label class="c-f"><span><span class="c-k">h</span>Altura</span><div class="c-inp"><input id="cnH" type="text" inputmode="decimal" value="1002"><span>mm</span></div></label>
+            <label class="c-f"><span><span class="c-k">e</span>Espessura</span><div class="c-inp"><input id="cnE" type="text" inputmode="decimal" value="19"><span>mm</span></div></label>
+          </div>
+          <p class="c-msg" id="cnMsg" hidden></p>
+        </div>
+      </div>
+      <div class="c-row2">
+        <label class="c-f c-mat">Os diâmetros são<select class="c-sel" id="cnRef"><option value="m">Médios (linha neutra)</option><option value="e">Externos</option><option value="i">Internos</option></select></label>
+        <label class="c-f">Dividir em<div class="c-inp"><input id="cnN" type="number" min="1" max="12" step="1" value="1"><span>partes</span></div></label>
+        <label class="c-f">Densidade<div class="c-inp"><input id="cnRho" type="text" inputmode="decimal" value="7,85"><span>g/cm³</span></div></label>
+      </div>
+    </div>
+    <div class="c-panel c-result">
+      <h3>Planificação <span id="cnPartLbl"></span></h3>
+      <div class="c-big"><div><small>Raio maior RM</small><b id="cnRM">–</b><i>mm</i></div><div><small>Raio menor Rm</small><b id="cnRm">–</b><i>mm</i></div></div>
+      <div class="c-sub" id="cnSub"></div>
+      <div class="c-formula" id="cnFx"></div>
+    </div>
+  </div>
+  <div class="section-title" style="margin-top:28px">Desenho da planificação (uma parte)</div>
+  <div class="c-panel" style="padding:12px"><div id="cnSvg"></div></div>
+  <p class="note" style="margin-top:14px">Baseado na planilha "Tronco de cone" (Fabiano, 02/09/04). Para traçar: risque o arco RM e o arco Rm com o mesmo centro, marque a corda maior e ligue as pontas ao centro. Se o ângulo passar de 180° ou o blank não couber na chapa, divida em partes. Para chapas grossas use os diâmetros médios. Se você tem as medidas externas ou internas, o guia converte.</p>
+</section>
+
+<!-- ============================================================ FURAÇÃO -->
+<section class="view" id="v-furo" hidden>
+  <div class="tol-in" style="max-width:900px">
+    <label class="c-f" style="grid-column:span 2">Material<select class="c-sel" id="fuMat"></select></label>
+    <label class="c-f">Ø da broca<div class="c-inp"><input id="fuD" type="text" inputmode="decimal" value="10"><span>mm</span></div></label>
+    <label class="c-f">Profundidade<div class="c-inp"><input id="fuL" type="text" inputmode="decimal" value="25"><span>mm</span></div></label>
+  </div>
+  <div class="tol-res" id="fuRes"></div>
+  <div class="section-title">Rotação e avanço por diâmetro — <span id="fuMatLbl"></span></div>
+  <div class="scroll-table" id="fuWrap" style="max-height:480px"><table>
+    <thead><tr><th class="n">Ø broca (mm)</th><th class="n">Rotação mín.</th><th class="n">Rotação máx.</th><th class="n bl">Avanço (mm/rot)</th><th class="n">Avanço (mm/min)</th></tr></thead>
+    <tbody id="fuBody" class="mono"></tbody></table></div>
+  <p class="src">Rotação n = Vc × 1000 / (π × D). Avanços por diâmetro conforme tabela Lenox-Twill (brocas HSS, 1/16" a 1/2"), interpolados entre os diâmetros e extrapolados acima de 12,7 mm. Furo com mais de 4×D: reduza 10% em Vc e no avanço e alivie o cavaco. Com mais de 8×D: reduza 20% e use pica-pau. São valores de partida; ajuste pelo som, pelo cavaco e pela máquina.</p>
+</section>
+
 <!-- ============================================================ CONVERSÃO -->
 <section class="view" id="v-conv" hidden>
   <div class="c-shapes" id="cvCats" role="group" aria-label="Grandeza"></div>
@@ -1328,6 +1722,14 @@ header.page p{max-width:960px}
 
     </div>
     <footer class="credits">Desenvolvido por Guilherme dos Santos Braz — Técnico de processos e estudante de engenharia mecânica · <a href="https://www.linkedin.com/in/guilherme-santos-66b8162a0" target="_blank" rel="noopener">LinkedIn</a></footer>
+  </div>
+</div>
+
+<div class="pal" id="pal" hidden role="dialog" aria-modal="true" aria-label="Pesquisar">
+  <div class="pal-box">
+    <div class="hs-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg><input id="palQ" type="search" autocomplete="off" placeholder="Pesquisar no guia…" aria-label="Pesquisar no guia"><kbd>Esc</kbd></div>
+    <div class="sr-list" id="palRes"></div>
+    <div class="pal-foot"><span><kbd>↑</kbd> <kbd>↓</kbd> navegar</span><span><kbd>Enter</kbd> abrir</span><span><kbd>Esc</kbd> fechar</span></div>
   </div>
 </div>
 
@@ -1419,12 +1821,23 @@ const ICON={
   "mat-equiv":'<path d="M4 7h16M4 12h16M4 17h16"/><path d="M8 4v16"/>',
   "mat-acos":'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>',
   "mat-dureza":'<path d="M12 3l6 7-6 11-6-11z"/><path d="M6 10h12"/>',
-  "mat-sobremetal":'<circle cx="12" cy="12" r="9" stroke-dasharray="3 2.5"/><circle cx="12" cy="12" r="5.5"/>'
+  "mat-sobremetal":'<circle cx="12" cy="12" r="9" stroke-dasharray="3 2.5"/><circle cx="12" cy="12" r="5.5"/>',
+  inicio:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  cone:'<path d="M7 4h10l4 16H3L7 4z"/><path d="M5 12h14"/>',
+  furo:'<path d="M12 2v11"/><path d="M9 5l3 2 3-2M9 9l3 2 3-2"/><path d="M8 13h8l-4 5-4-5z"/><path d="M4 21h16"/>',
+  gdt:'<path d="M3 6h18v12H3z"/><path d="M9 6v12M15 6v12"/><circle cx="6" cy="12" r="1.8"/><path d="M11 12h2"/>',
+  expandido:'<path d="M2 8l4-4 4 4-4 4zM10 8l4-4 4 4-4 4zM6 16l4-4 4 4-4 4zM14 16l4-4 4 4-4 4z"/>',
+  plast:'<path d="M12 3c4 5 6 8 6 11a6 6 0 01-12 0c0-3 2-6 6-11z"/>',
+  normas:'<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 12h7M9 16h7"/>'
 };
 const VIEWS=[
+  {g:"Início"},
+    {id:"inicio",label:"Início",run:()=>home(),h:{l:"Guia Técnico • Caldeiraria e Solda",t:"Guia <span>Técnico</span>",d:"Pesquise qualquer coisa — bitola, EPS, norma, aço, rosca, rolamento — ou use os atalhos para as consultas do dia a dia."}},
   {g:"Cálculo"},
-    {id:"calc",label:"Calculadora de Peso",h:{l:"Cálculo • Matéria-prima",t:"Calculadora de <span>Peso</span>",d:"Peso e área de pintura de chapas, barras, tubos e sextavados. Cotas em mm, densidade em g/cm³."}},
+    {id:"calc",label:"Calculadora de Peso",h:{l:"Cálculo • Matéria-prima",t:"Calculadora de <span>Peso</span>",d:"Peso e área de pintura de chapas, barras, tubos, sextavados, cantoneiras, vigas soldadas, perfis U dobrados e perfis de catálogo. Cotas em mm, densidade em g/cm³."}},
     {id:"tinta",label:"Consumo de Tinta",run:()=>tinta(),h:{l:"Cálculo • Pintura",t:"Consumo de <span>Tinta</span>",d:"Litros e embalagens por esquema de pintura, a partir da área, dos sólidos por volume, da espessura seca e do método de aplicação."}},
+    {id:"cone",label:"Tronco de Cone",run:()=>cone(),h:{l:"Cálculo • Caldeiraria",t:"Planificação de <span>Tronco de Cone</span>",d:"Raios, ângulo, cordas e blank de chapa para traçar um tronco de cone (redução concêntrica), inteiro ou dividido em partes."}},
+    {id:"furo",label:"Furação",run:()=>furacao(),h:{l:"Cálculo • Usinagem",t:"Parâmetros de <span>Furação</span>",d:"Rotação, avanço e tempo de furação com broca HSS por material e diâmetro."}},
     {id:"conv",label:"Conversão de Unidades",h:{l:"Cálculo • Unidades",t:"Conversão de <span>Unidades</span>",d:"Força, pressão, torque, comprimento, massa, temperatura e mais. Digite um valor e veja em todas as unidades da grandeza."}},
   {g:"Tabelas de MP"},
     {id:"mp-chapas",tb:"chapas",label:"Chapas",h:{l:"Tabelas de MP • Chapas",t:"Tabela de <span>Chapas</span>",d:"Espessuras comerciais em mm, polegada e bitola, com peso por m² e por chapa no formato escolhido."}},
@@ -1433,6 +1846,7 @@ const VIEWS=[
     {id:"mp-barras",tb:"barras",label:"Barras",h:{l:"Tabelas de MP • Barras",t:"Tabela de <span>Barras</span>",d:"Peso por metro de barras redondas, quadradas, sextavadas e chatas, em polegada e milímetro."}},
     {id:"mp-flanges",tb:"flanges",label:"Flanges",h:{l:"Tabelas de MP • Flanges",t:"Flanges <span>ASME B16.5</span>",d:"Tipos de flange, dimensões, furação e peso aproximado do flange cego nas classes 150# e 300#."}},
     {id:"conex",label:"Conexões Soldáveis",run:()=>conexoes(),h:{l:"Tabelas de MP • Itens hidráulicos",t:"Conexões <span>Soldáveis</span>",d:"Curvas 45°, 90° e 180°, tês, reduções e caps de topo para solda conforme ASME B16.9. Dimensões em mm."}},
+    {id:"expandido",label:"Expandidas e Grades",run:()=>expandido(),h:{l:"Tabelas de MP • Pisos",t:"Chapas Expandidas <span>e Grades</span>",d:"Malhas de metal expandido com peso por m² e grades de piso por carga e vão, com o peso da área."}},
   {g:"Solda"},
     {id:"processos",label:"Processos de Solda",h:{l:"Solda • Processos",t:"Processos de <span>Solda</span>",d:"O que é cada processo, tipos de transferência metálica e polaridade. Para quem está aprendendo e para quem usa no dia a dia."}},
     {id:"grupos",label:"Grupos de Materiais",h:{l:"Solda • Materiais",t:"Grupos de <span>Materiais</span>",d:"P-Numbers do ASME IX, grupos da AWS D1.1 e da ISO 15608, com as EPS que cobrem cada grupo."}},
@@ -1448,18 +1862,23 @@ const VIEWS=[
     {id:"iso286",label:"Tolerâncias e Ajustes",run:()=>iso286(),h:{l:"Usinagem • ISO 286",t:"Tolerâncias e <span>Ajustes</span>",d:"Afastamentos de furos e eixos por classe (H7, g6, k6…) e faixa de diâmetro, e a folga ou interferência de cada ajuste furo/eixo."}},
     {id:"tol2768",label:"Tolerâncias Gerais",run:()=>tolerancias(),h:{l:"Usinagem • ISO 2768",t:"Tolerâncias <span>Gerais</span>",d:"ISO 2768 para cotas sem tolerância em peças usinadas. Digite a medida e veja a tolerância de cada classe."}},
     {id:"acab",label:"Acabamento Superficial",run:()=>acabamento(),h:{l:"Usinagem • Rugosidade",t:"Acabamento <span>Superficial</span>",d:"Símbolos de rugosidade (ISO 1302 / NBR 8404), equivalência Ra × classe N × triângulos e a rugosidade típica de cada processo."}},
+    {id:"gdt",label:"GD&T · ISO 1101",run:()=>setTolTab(tolCur),h:{l:"Usinagem • Tolerância geométrica",t:"Tolerância <span>Geométrica (GD&amp;T)</span>",d:"Símbolos e quadro de tolerância (ISO 1101), modificadores (ISO 1660 e 5458) e tolerância de tamanho (ISO 14405-1)."}},
   {g:"Elementos de Máquina"},
-    {id:"rol",label:"Rolamentos",run:()=>rolamentos(),h:{l:"Elementos de Máquina • Rolamentos",t:"Tabela de <span>Rolamentos</span>",d:"Dimensões d × D × B dos rolamentos rígidos de esferas, rolos cilíndricos, rolos cônicos e autocompensadores de rolos, com leitura do código e cálculo de vida."}},
+    {id:"rol",label:"Rolamentos e Mancais",run:()=>{rolamentos();mancais()},h:{l:"Elementos de Máquina • Rolamentos",t:"Tabela de <span>Rolamentos</span>",d:"Dimensões d × D × B dos rolamentos rígidos de esferas, rolos cilíndricos, rolos cônicos e autocompensadores de rolos, com leitura do código e cálculo de vida."}},
     {id:"polia",label:"Polias e Correias",run:()=>polias(),h:{l:"Elementos de Máquina • Transmissão",t:"Polias e <span>Correias em V</span>",d:"Dimensões do canal por perfil de correia, diâmetro mínimo e cálculo de comprimento da correia e relação de transmissão."}},
     {id:"maq-fix",tb:"fixacao",label:"Roscas e Fixação",h:{l:"Elementos de Máquina • Fixação",t:"Roscas e <span>Fixação</span>",d:"Furo para rosca, parafusos e porcas e chavetas DIN 6885."}},
   {g:"Materiais"},
     {id:"mat-equiv",tb:"equiv",label:"Equivalência de Aços",h:{l:"Materiais • Normas",t:"Equivalência de <span>Aços</span>",d:"AISI/SAE/ASTM, DIN, W.Nr, EN, JIS e nomes comerciais brasileiros."}},
     {id:"mat-acos",tb:"acos",label:"Aços Construção Mecânica",h:{l:"Materiais • Tratamento térmico",t:"Aços de <span>Construção Mecânica</span>",d:"Dureza de fornecimento, recozimento, têmpera, revenimento e composição química aproximada."}},
     {id:"mat-dureza",tb:"dureza",label:"Conversão de Dureza",h:{l:"Materiais • Dureza",t:"Conversão de <span>Dureza</span>",d:"Rockwell C em Brinell, Vickers, Rockwell A, B, D e Shore, com interpolação entre linhas."}},
-    {id:"mat-sobremetal",tb:"sobremetal",label:"Sobremetal Forjado",h:{l:"Materiais • Forjados",t:"Sobremetal de <span>Forjado</span>",d:"Bitola bruta de forjado a comprar para cada bitola usinada (DIN 7527)."}}
+    {id:"mat-sobremetal",tb:"sobremetal",label:"Sobremetal Forjado",h:{l:"Materiais • Forjados",t:"Sobremetal de <span>Forjado</span>",d:"Bitola bruta de forjado a comprar para cada bitola usinada (DIN 7527)."}},
+    {id:"plast",label:"Plásticos Técnicos",run:()=>plast(),h:{l:"Materiais • Polímeros",t:"Plásticos <span>Técnicos</span>",d:"Nylon, poliuretano, UHMW, POM, PTFE e outros: propriedades típicas, aplicação e peso de tarugos e placas."}},
+  {g:"Normas"},
+    {id:"normas",label:"Índice de Normas",run:()=>normas(),h:{l:"Normas • Índice",t:"Índice <span>de Normas</span>",d:"Todas as normas citadas no guia, o que cada uma cobre e onde encontrar aqui."}}
 ];
-const VIEW_ALIAS={tabelas:"mp-perfis",tol:"tol2768",cone:"calc",furo:"calc"};
-let current="processos";
+const VIEW_ALIAS={tabelas:"mp-perfis",tol:"tol2768"};
+let current="inicio";
+const SRC=[];let IDX=null;
 let navClosed=new Set(store.get("gt_navclosed")||[]);
 function renderNav(){
   const secs=[];VIEWS.forEach(v=>{if(v.g)secs.push({g:v.g,items:[]});else secs[secs.length-1].items.push(v)});
@@ -1477,8 +1896,13 @@ function renderNav(){
 }
 function badges(){
   const n=EPS.length,asme=EPS.filter(r=>r[3]==="ASME").length,aws=EPS.filter(r=>r[3]==="AWS").length,din=EPS.filter(r=>r[3]==="DIN").length;
+  const vb=VIEWS.find(x=>x.id===current);if(vb&&vb.badges)return vb.badges();
   const B={
-    calc:[["Perfis","5"],["Materiais",String(MATS.length)],["Unidades","mm · kg · m²"]],
+    inicio:[["Consultas",String(VIEWS.filter(x=>x.id).length-1)],["EPS",String(n)],["Busca","Ctrl + K"]],
+    cone:[["Entradas","D · d · h · e"],["Saída","RM · Rm · θ · blank"]],
+    furo:[["Materiais",String(FURO.length)],["Broca","HSS"]],
+    gdt:[["Normas","ISO 1101 · 1660 · 5458 · 14405-1"],["Características","14"]],
+    calc:[["Formas",String(Object.keys(SHAPES).length)],["Materiais",String(MATS.length)],["Unidades","mm · kg · m²"]],
     tinta:[["Método","SV · EPS · perdas"],["Unidades","m² · µm · L"]],
     conv:[["Grandezas",String(Object.keys(CONV).length)],["Unidades",String(Object.values(CONV).reduce((a,c)=>a+c.u.length,0))]],
     "mp-chapas":[["Espessuras",String(CHAPAS.length)],["Peso","kg/m² · kg/chapa"]],
@@ -1492,7 +1916,7 @@ function badges(){
     iso286:[["Norma","ISO 286-1 / 286-2"],["Faixa","até 500 mm"],["Classes",`${Object.keys(FD_SH).length} eixo · ${Object.keys(FD_SH).length} furo`]],
     tol2768:[["Norma","ISO 2768-1 / 2768-2"],["Classes","f/m/c/v · H/K/L"]],
     acab:[["Normas","ISO 1302 · NBR 8404"],["Classes","N1 a N12"]],
-    rol:[["Séries",String(Object.keys(ROL).length)],["Rolamentos",String(Object.values(ROL).reduce((a,r)=>a+r.rows.length,0))]],
+    rol:[["Séries",String(Object.keys(ROL).length)],["Rolamentos",String(Object.values(ROL).reduce((a,r)=>a+r.rows.length,0))],["Mancais","UK · UCP"]],
     polia:[["Norma","ISO 4183 · DIN 2211 / 2217"],["Perfis",String(POL.length)]],
     "maq-fix":[["Tabelas","roscas · parafusos · chavetas"]],
     ttat:[["Tratamentos",String(TT.length)],["Visuais","Fe-C · TTT · 3D"]],
@@ -1506,9 +1930,9 @@ function badges(){
   };
   return B[current]||[["EPS na tabela",String(n)],["ASME IX",String(asme)],["AWS D1.1",String(aws)],["DIN ISO",String(din)]];
 }
-function show(id){
+function show(id,opt){
   if(VIEW_ALIAS[id])id=VIEW_ALIAS[id];
-  if(!VIEWS.some(v=>v.id===id))id="processos";
+  if(!VIEWS.some(v=>v.id===id))id="inicio";
   current=id;const v=VIEWS.find(x=>x.id===id),sec=v.tb?"v-tabelas":"v-"+id;
   document.querySelectorAll(".view").forEach(s=>s.hidden=s.id!==sec);
   $("hLabel").textContent=v.h.l;$("hTitle").innerHTML=v.h.t;$("hDesc").textContent=v.h.d;
@@ -1519,6 +1943,7 @@ function show(id){
   window.scrollTo(0,0);
   if(v.tb)setTb(v.tb);
   if(v.run)v.run();
+  if(opt&&opt.after)opt.after();
 }
 /* sidebar retrátil */
 const app=$("app");
@@ -1616,12 +2041,40 @@ const SHAPES={
     sec:v=>v.A*v.B-(v.A-2*v.e)*(v.B-2*v.e),len:v=>v.C,paint:v=>2*(v.A+v.B)*v.C,dim:v=>`${v.A} × ${v.B} × ${v.e} × ${v.C}`,fx:"[A×B − (A−2e)(B−2e)] × C × ρ",
     svg:()=>`<rect x="30" y="26" width="104" height="104" ${SEC}/>${hatch(31,27,102,102)}<rect x="44" y="40" width="76" height="76" fill="var(--bg)" stroke="var(--strong)" stroke-width="2"/>
       <text x="82" y="36" text-anchor="middle" class="lbl">e</text>${dimH(30,134,150,"B")}${dimV(152,26,130,"A")}`},
+  cant:{t:"Cantoneira (L)",hint:"Abas iguais: use A = B. Cantos vivos; o peso de catálogo pode ser até 1% maior por causa dos raios.",
+    f:[["A","Aba A",50.8],["B","Aba B",50.8],["e","Espessura",6.35],["C","Comprimento",6000]],
+    check:v=>v.e>=Math.min(v.A,v.B)?"A espessura precisa ser menor que as abas.":null,
+    sec:v=>v.e*(v.A+v.B-v.e),len:v=>v.C,paint:v=>2*(v.A+v.B)*v.C,dim:v=>`L ${v.A} × ${v.B} × ${v.e} × ${v.C}`,fx:"e × (A + B − e) × C × ρ",
+    svg:()=>{const pts="40,18 40,140 152,140 152,124 56,124 56,18";return `<clipPath id="cl"><polygon points="${pts}"/></clipPath><polygon points="${pts}" ${SEC}/><g clip-path="url(#cl)">${hatch(40,18,112,122)}</g><polygon points="${pts}" fill="none" stroke="var(--strong)" stroke-width="2"/>
+      ${dimV(24,18,140,"A")}${dimH(40,152,156,"B")}<text x="64" y="40" class="lbl">e</text>`}},
+  viga:{t:"Viga I / H soldada",hint:"Duas mesas e uma alma de chapa. Não conta o cordão de solda.",
+    f:[["H","Altura total",400],["B","Largura da mesa",200],["tf","Espessura da mesa",12.5],["tw","Espessura da alma",8],["C","Comprimento",6000]],
+    check:v=>2*v.tf>=v.H?"As duas mesas somadas passam da altura total.":v.tw>=v.B?"A alma precisa ser mais fina que a largura da mesa.":null,
+    sec:v=>2*v.B*v.tf+(v.H-2*v.tf)*v.tw,len:v=>v.C,paint:v=>(2*v.H+4*v.B-2*v.tw)*v.C,dim:v=>`I ${v.H} × ${v.B} × ${v.tf}/${v.tw} × ${v.C}`,fx:"[2 × B × tf + (H − 2tf) × tw] × C × ρ",
+    extra:v=>`alma ${nf(v.H-2*v.tf,1)} × ${nf(v.tw,1)} mm · mesas 2 × ${nf(v.B,0)} × ${nf(v.tf,1)} mm`,
+    svg:()=>{const pts="30,18 150,18 150,32 97,32 97,126 150,126 150,140 30,140 30,126 83,126 83,32 30,32";return `<clipPath id="cv"><polygon points="${pts}"/></clipPath><polygon points="${pts}" ${SEC}/><g clip-path="url(#cv)">${hatch(30,18,120,122)}</g><polygon points="${pts}" fill="none" stroke="var(--strong)" stroke-width="2"/>
+      ${dimV(164,18,140,"H")}${dimH(30,150,156,"B")}<text x="12" y="30" class="lbl">tf</text><text x="104" y="84" class="lbl">tw</text>`}},
+  udob:{t:"Perfil U dobrado",hint:"Chapa dobrada em U (ou C sem enrijecedor). Peso pela linha neutra, sem descontar os raios.",
+    f:[["H","Altura (alma)",150],["B","Aba",50],["e","Espessura",3],["C","Comprimento",6000]],
+    check:v=>2*v.e>=v.H||v.e>=v.B?"A espessura está grande demais para a altura ou a aba.":null,
+    sec:v=>v.e*(v.H+2*v.B-2*v.e),len:v=>v.C,paint:v=>2*(v.H+2*v.B-v.e)*v.C,dim:v=>`U ${v.H} × ${v.B} × ${v.e} × ${v.C}`,fx:"e × (H + 2B − 2e) × C × ρ",
+    extra:v=>`blank (desenvolvimento) ≈ ${nf(v.H+2*v.B-2*v.e,1)} mm`,
+    svg:()=>{const pts="40,18 130,18 130,30 54,30 54,128 130,128 130,140 40,140";return `<clipPath id="cu"><polygon points="${pts}"/></clipPath><polygon points="${pts}" ${SEC}/><g clip-path="url(#cu)">${hatch(40,18,90,122)}</g><polygon points="${pts}" fill="none" stroke="var(--strong)" stroke-width="2"/>
+      ${dimV(24,18,140,"H")}${dimH(40,130,156,"B")}<text x="62" y="48" class="lbl">e</text>`}},
+  cat:{t:"Perfil de catálogo",hint:"Peso pelo kg/m de catálogo. Mudando a densidade, o peso é corrigido na mesma proporção.",
+    f:[["C","Comprimento",6000]],check:()=>catRow()?null:"Escolha um perfil.",
+    sec:()=>catRow().r[1]*1000/7.85,len:v=>v.C,paint:v=>{const c=catRow();return (PF[c.k].paint?PF[c.k].paint(c.r)*1000:(2*c.r[2]+4*c.r[3])/1)*v.C},dim:v=>`${catRow().r[0]} × ${v.C}`,fx:"kg/m de catálogo × C × (ρ / 7,85)",
+    extra:()=>`${nf(catRow().r[1],2)} kg/m em aço`,
+    svg:()=>{const pts="30,18 150,18 150,30 96,30 96,128 150,128 150,140 30,140 30,128 84,128 84,30 30,30";return `<clipPath id="cw"><polygon points="${pts}"/></clipPath><polygon points="${pts}" ${SEC}/><g clip-path="url(#cw)">${hatch(30,18,120,122)}</g><polygon points="${pts}" fill="none" stroke="var(--strong)" stroke-width="2"/>
+      ${dimV(164,18,140,"d")}${dimH(30,150,156,"bf")}`}},
   sext:{t:"Barra sextavada",hint:"F = distância entre faces (medida da chave).",f:[["F","Chave (entre faces)",25.4],["C","Comprimento",1000]],check:()=>null,
     sec:v=>R3/2*v.F*v.F,len:v=>v.C,paint:v=>2*R3*v.F*v.C+R3*v.F*v.F,dim:v=>`SW${v.F} × ${v.C}`,fx:"(√3/2 × F²) × C × ρ",
     svg:()=>{const cx=84,cy=80,r=56,p=[];for(let i=0;i<6;i++){const a=PI/3*i;p.push((cx+r*Math.cos(a)).toFixed(1)+","+(cy+r*Math.sin(a)).toFixed(1))}const fy=r*R3/2;
       return `<clipPath id="ch"><polygon points="${p.join(" ")}"/></clipPath><polygon points="${p.join(" ")}" ${SEC}/><g clip-path="url(#ch)">${hatch(28,24,112,112)}</g><polygon points="${p.join(" ")}" fill="none" stroke="var(--strong)" stroke-width="2"/>${dimV(158,cy-fy,cy+fy,"F")}`}}
 };
 let shape="chapa",last=null;
+const CAT_ALL=()=>Object.entries(PF).flatMap(([k,P])=>P.data.map(r=>({k,r})));
+function catRow(){const el=$("catSel");return el?CAT_ALL()[+el.value]:null}
 Object.entries(SHAPES).forEach(([k,s])=>{const b=document.createElement("button");b.className="c-shape";b.textContent=s.t;b.dataset.k=k;b.onclick=()=>setShape(k);$("cShapes").appendChild(b)});
 MATS.forEach((m,i)=>{const o=document.createElement("option");o.value=i;o.textContent=`${m.n} (${nf(m.d,2)})`;$("cMat").appendChild(o)});
 {const o=document.createElement("option");o.value="x";o.textContent="Outro (densidade manual)";$("cMat").appendChild(o)}
@@ -1637,6 +2090,9 @@ function setShape(k){
   const saved=(store.get("gt_vals")||{})[k]||{};
   $("cFields").innerHTML=s.f.map(([id,lab,def])=>`<label class="c-f"><span><span class="c-k">${id}</span>${lab}</span>
     <div class="c-inp" id="w_${id}"><input id="in_${k}_${id}" type="number" step="any" min="0" inputmode="decimal" value="${saved[id]??def}"><span>mm</span></div></label>`).join("");
+  if(k==="cat"){const sv=store.get("gt_catp");let n=0;
+    $("cFields").insertAdjacentHTML("afterbegin",`<label class="c-f" style="grid-column:1/-1"><span>Perfil</span><select class="c-sel" id="catSel">${Object.entries(PF).map(([pk,P])=>`<optgroup label="${P.t}">${P.data.map(r=>`<option value="${n++}">${esc(r[0])}</option>`).join("")}</optgroup>`).join("")}</select></label>`);
+    if(sv!=null&&CAT_ALL()[sv])$("catSel").value=sv;$("catSel").onchange=()=>{store.set("gt_catp",$("catSel").value);calc()}}
   $("cFields").querySelectorAll("input").forEach(i=>i.oninput=calc);
   if(k==="tubo"){
     const D=$("in_tubo_D"),e=$("in_tubo_e"),d=$("in_tubo_d"),r=x=>String(Math.round(x*1000)/1000);
@@ -2770,6 +3226,7 @@ function rolTable(){
   const fitE=d=>R.tipo==="esf"?(d<=18?"j5 / js5":d<=100?"k5 / k6":"m5 / m6"):(d<=40?"k6":d<=100?"m6":d<=200?"n6":"p6");
   $("rlBody").innerHTML=rows.map(r=>`<tr data-c="${r[0]}" class="${r[0]===rlSel?"hit":""}"><td style="font-weight:600;color:var(--strong)">${r[0]}</td><td class="n" style="color:var(--accent);font-weight:600">${r[1]}</td><td class="n">${r[2]}</td><td class="n">${nf(r[3],r[3]%1?2:0)}</td><td class="n bl">${fitE(r[1])}</td><td class="n">H7 / J7</td></tr>`).join("")||`<tr><td colspan="6" class="empty">Nenhum rolamento encontrado.</td></tr>`;
   $("rlBody").querySelectorAll("tr[data-c]").forEach(tr=>tr.onclick=()=>{$("rlCode").value=tr.dataset.c;rolamentos()});
+  skfCols(R);
   const hit=$("rlBody").querySelector("tr.hit");if(hit)centerRow($("rlWrap"),hit);
 }
 $("rlCode").addEventListener("input",rolamentos);$("rlSearch").addEventListener("input",rolTable);
@@ -3283,12 +3740,531 @@ $("ceFx").innerHTML=[["Carbono equivalente IIW","CE = C + Mn/6 + (Cr+Mo+V)/5 + (
 
 if($("ceAco").value!=="")ceFill();else ce();
 pwht();
+/* ======================= TRONCO DE CONE ======================= */
+{const s=store.get("gt_cn");if(Array.isArray(s))["cnD","cnd","cnH","cnE","cnRef","cnN","cnRho"].forEach((id,i)=>{if(s[i]!=null)$(id).value=s[i]})}
+["cnD","cnd","cnH","cnE","cnN","cnRho"].forEach(id=>$(id).addEventListener("input",cone));$("cnRef").addEventListener("change",cone);
+function cone(){
+  const ids=["cnD","cnd","cnH","cnE","cnRef","cnN","cnRho"];store.set("gt_cn",ids.map(id=>$(id).value));
+  let D=parseNum($("cnD").value),d=parseNum($("cnd").value);const h=parseNum($("cnH").value),e=parseNum($("cnE").value),ref=$("cnRef").value,n=Math.max(1,Math.min(12,parseInt($("cnN").value)||1)),rho=parseNum($("cnRho").value);
+  const fail=m=>{$("cnMsg").hidden=false;$("cnMsg").textContent=m;["cnRM","cnRm"].forEach(i=>$(i).textContent="–");$("cnSub").innerHTML="";$("cnFx").textContent="";$("cnSvg").innerHTML="";$("cnDraw").innerHTML=coneSide(1,.7);return};
+  if(!(D>0&&d>0&&h>0&&e>0&&rho>0))return fail("Preencha D, d, h, espessura e densidade com valores maiores que zero.");
+  if(d>D){const t=D;D=d;d=t}
+  if(ref==="e"){D-=e;d-=e}else if(ref==="i"){D+=e;d+=e}
+  if(d<=0)return fail("Com essa espessura o Ø menor médio fica zero ou negativo.");
+  $("cnMsg").hidden=true;$("cnDraw").innerHTML=coneSide(1,d/D);
+  const R=D/2,r=d/2;
+  if(R-r<1e-6){
+    $("cnRM").textContent="∞";$("cnRm").textContent="∞";
+    $("cnSub").innerHTML=`<span>Desenvolvido (π × Dm)</span><em>${nf(Math.PI*D,1)} mm</em><span>Altura</span><em>${nf(h,1)} mm</em><span>Peso</span><em>${nf(Math.PI*D*h*e*rho/1e6,1)} kg</em>`;
+    $("cnFx").textContent="D = d: é um cilindro. Calandre um retângulo de π × Dm por h.";$("cnSvg").innerHTML="";return}
+  const g=Math.hypot(R-r,h),RM=R*g/(R-r),Rm=RM-g,th=360*R/RM,tp=th/n,a=tp/2*Math.PI/180;
+  const cM=2*RM*Math.sin(a),cm=2*Rm*Math.sin(a);
+  const W=tp<180?cM:2*RM,B=tp<180?RM-Rm*Math.cos(a):RM+RM*Math.cos((360-tp)/2*Math.PI/180);
+  const Areal=tp/360*Math.PI*(RM*RM-Rm*Rm),kgReal=Areal*e*rho/1e6,kgBlank=W*B*e*rho/1e6;
+  $("cnPartLbl").textContent=n>1?`· ${n} partes`:"";
+  $("cnRM").textContent=nf(RM,1);$("cnRm").textContent=nf(Rm,1);
+  $("cnSub").innerHTML=[["Geratriz (g)",nf(g,1)+" mm"],["Ângulo total do setor",nf(th,2)+"°"],n>1?["Ângulo por parte",nf(tp,2)+"°"]:null,
+    [`Corda maior${n>1?" (por parte)":""}`,nf(cM,1)+" mm"],[`Corda menor${n>1?" (por parte)":""}`,nf(cm,1)+" mm"],
+    [`Arco maior / menor${n>1?" (por parte)":""}`,`${nf(Math.PI*D/n,1)} / ${nf(Math.PI*d/n,1)} mm`],
+    [`Blank${n>1?" por parte":""} (L × A)`,`${nf(W,0)} × ${nf(B,0)} mm`],["Chapa (blank × partes)",`${nf(W*B*n/1e6,2)} m² · ${nf(kgBlank*n,1)} kg`],
+    ["Peso real da peça",`${nf(kgReal*n,1)} kg`],["Diâmetros médios usados",`${nf(D,1)} / ${nf(d,1)} mm`],["Inclinação da parede",nf(Math.atan2(h,R-r)*180/Math.PI,2)+"° com a base"]]
+    .filter(Boolean).map(([k,v])=>`<span>${k}</span><em>${v}</em>`).join("");
+  $("cnFx").textContent=`RM = (Dm/2) × g / ((Dm − dm)/2)  ·  Rm = RM − g  ·  θ = 360 × (Dm/2) / RM  ·  g = √(((Dm−dm)/2)² + h²)`;
+  $("cnSvg").innerHTML=coneDev(RM,Rm,tp,W,B,cM);
+}
+function coneSide(D,k){ // vista lateral simples para o painel
+  const bot=140;return `<svg viewBox="0 0 180 170"><style>.k{font:700 11px var(--f-mono);fill:var(--on-accent)}</style>
+    <polygon points="${90-55*k},40 ${90+55*k},40 145,${bot} 35,${bot}" ${SEC}/>
+    ${dimH(35,145,156,"D")}${dimH(90-55*k,90+55*k,22,"d")}${dimV(163,40,bot,"h")}</svg>`}
+function coneDev(RM,Rm,tp,W,B,cM){
+  const a=tp*Math.PI/180,pts=[];const N=60;
+  for(let i=0;i<=N;i++){const t=-a/2+a*i/N;pts.push([RM*Math.sin(t),RM*Math.cos(t)])}
+  for(let i=N;i>=0;i--){const t=-a/2+a*i/N;pts.push([Rm*Math.sin(t),Rm*Math.cos(t)])}
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]),minx=Math.min(...xs),maxx=Math.max(...xs),miny=Math.min(...ys),maxy=Math.max(...ys);
+  const Wv=860,Hmax=360,s=Math.min((Wv-120)/(maxx-minx),(Hmax-90)/(maxy-miny));const H=(maxy-miny)*s+130;
+  const X=x=>60+(x-minx)*s,Y=y=>40+(maxy-y)*s;
+  const d="M"+pts.map(p=>X(p[0]).toFixed(1)+","+Y(p[1]).toFixed(1)).join(" L")+" Z";
+  const bx0=X(minx),bx1=X(maxx),by0=Y(maxy),by1=Y(miny);
+  const t0=-a/2,t1=a/2;
+  return `<svg viewBox="0 0 ${Wv} ${H.toFixed(0)}" style="width:100%;height:auto;display:block" role="img" aria-label="Desenho da planificação">
+    <rect x="${bx0}" y="${by0}" width="${bx1-bx0}" height="${by1-by0}" fill="none" stroke="var(--muted)" stroke-dasharray="6 5"/>
+    <path d="${d}" fill="rgba(240,138,75,.14)" stroke="var(--accent)" stroke-width="2"/>
+    <line x1="${X(RM*Math.sin(t0))}" y1="${Y(RM*Math.cos(t0))}" x2="${X(RM*Math.sin(t1))}" y2="${Y(RM*Math.cos(t1))}" stroke="var(--strong)" stroke-dasharray="3 4"/>
+    <text x="${Wv/2}" y="${by1+30}" text-anchor="middle" style="font:600 16px var(--f-mono);fill:var(--strong)">blank ${nf(W,0)} × ${nf(B,0)} mm</text>
+    <text x="${Wv/2}" y="${by1+54}" text-anchor="middle" style="font:500 15px var(--f-mono);fill:var(--muted)">corda ${nf(cM,1)} · RM ${nf(RM,1)} · Rm ${nf(Rm,1)} · θ ${nf(tp,2)}°</text></svg>`;
+}
+
+/* ======================= FURAÇÃO ======================= */
+// [material, Vc mín, Vc máx (m/min), avanços f (mm/rot) para Ø 1,59 · 3,17 · 6,35 · 9,52 · 12,70]
+const FURO=[
+ ["Aço baixo carbono (1010–1025, A36)",22,30,[.025,.075,.13,.18,.23]],
+ ["Aço médio carbono (1030–1050) sem tratamento",18,25,[.025,.075,.13,.18,.23]],
+ ["Aço de usinagem fácil (1213, 12L14)",30,40,[.025,.075,.13,.215,.3]],
+ ["Aço liga recozido (4140, 4340, 8620) até 225 HB",15,20,[.025,.075,.15,.2,.25]],
+ ["Aço liga beneficiado 275–325 HB",8,12,[.015,.05,.09,.115,.14]],
+ ["Aço anti-desgaste / temperado 300–450 HB (Hardox)",4,8,[.01,.025,.05,.063,.075]],
+ ["Inox austenítico (304, 316, 321)",10,15,[.025,.05,.102,.141,.18]],
+ ["Inox ferrítico / martensítico recozido (410, 430)",15,20,[.025,.075,.15,.2,.25]],
+ ["Ferro fundido cinzento (A48 cl. 20–35)",25,35,[.025,.075,.15,.225,.3]],
+ ["Ferro fundido nodular",18,25,[.025,.05,.102,.141,.18]],
+ ["Latão e bronze de usinagem fácil",45,70,[.025,.075,.15,.2,.25]],
+ ["Alumínio e ligas",60,90,[.025,.075,.15,.225,.3]]
+];
+const FD=[1.59,3.17,6.35,9.52,12.7];
+function feed(m,D){const f=FURO[m][3];if(D<=FD[0])return f[0]*D/FD[0];
+  for(let i=0;i<4;i++)if(D<=FD[i+1])return f[i]+(f[i+1]-f[i])*(D-FD[i])/(FD[i+1]-FD[i]);
+  return Math.min(f[4]+(f[4]-f[3])/(FD[4]-FD[3])*(D-FD[4]),f[4]*2)}
+$("fuMat").innerHTML=FURO.map((m,i)=>`<option value="${i}">${m[0]} · Vc ${m[1]}–${m[2]} m/min</option>`).join("");
+{const s=store.get("gt_fu");if(Array.isArray(s)){$("fuMat").value=s[0];$("fuD").value=s[1];$("fuL").value=s[2]}}
+["fuD","fuL"].forEach(id=>$(id).addEventListener("input",furacao));$("fuMat").addEventListener("change",furacao);
+function furacao(){
+  const m=+$("fuMat").value,D=parseNum($("fuD").value),L=parseNum($("fuL").value),M=FURO[m];store.set("gt_fu",[m,$("fuD").value,$("fuL").value]);
+  $("fuMatLbl").textContent=M[0];
+  const rpm=v=>v*1000/(Math.PI*D);
+  if(!(D>0)){$("fuRes").innerHTML=`<div class="tol-card"><h4>Furação</h4><p>Digite o diâmetro da broca.</p></div>`}
+  else{
+    const k=L>8*D?.8:L>4*D?.9:1,vc=(M[1]+M[2])/2*k,n=rpm(vc),f=feed(m,D)*k,vf=f*n,t=L>0?(L+.3*D)/vf:NaN;
+    const prof=L>8*D?"acima de 8×D: Vc e avanço −20%, use pica-pau":L>4*D?"entre 4 e 8×D: Vc e avanço −10%":"até 4×D: parâmetros cheios";
+    $("fuRes").innerHTML=`<div class="tol-card"><h4>Rotação</h4><div class="big">${nf(n,0)}<i>rpm</i></div><ul><li><span>Faixa (Vc ${M[1]}–${M[2]})</span><b>${nf(rpm(M[1]*k),0)} – ${nf(rpm(M[2]*k),0)}</b></li><li><span>Vc usada</span><b>${nf(vc,1)} m/min</b></li></ul></div>
+      <div class="tol-card"><h4>Avanço</h4><div class="big">${nf(f,3)}<i>mm/rot</i></div><ul><li><span>Avanço da mesa</span><b>${nf(vf,0)} mm/min</b></li></ul></div>
+      <div class="tol-card"><h4>Tempo de corte</h4><div class="big">${Number.isFinite(t)?(t<1?nf(t*60,0)+"<i>s</i>":nf(t,2)+"<i>min</i>"):"–"}</div><ul><li><span>Profundidade</span><b>${Number.isFinite(L)?nf(L,0)+" mm · "+nf(L/D,1)+"×D":"–"}</b></li></ul><p>${prof}. Inclui a ponta de 118° (0,3 × D).</p></div>`;
+  }
+  const ds=[];for(let x=1;x<=6;x+=.5)ds.push(x);for(let x=7;x<=20;x++)ds.push(x);for(let x=22;x<=40;x+=2)ds.push(x);
+  $("fuBody").innerHTML=ds.map(x=>{const n1=M[1]*1000/(Math.PI*x),n2=M[2]*1000/(Math.PI*x),f=feed(m,x);
+    return `<tr class="${Math.abs(x-D)<1e-9?"hit":""}"><td class="n" style="color:var(--strong);font-weight:600">${nf(x,x%1?1:0)}</td><td class="n">${nf(n1,0)}</td><td class="n">${nf(n2,0)}</td><td class="n bl">${nf(f,3)}</td><td class="n">${nf(f*(n1+n2)/2,0)}</td></tr>`}).join("");
+}
+
+/* ======================= GD&T · ISO 1101 / 1660 / 5458 / 14405 ======================= */
+const TOLT=[["gdt","Símbolos e quadro · ISO 1101"],["mod","Modificadores · 1660 · 5458"],["tam","Tamanho · ISO 14405"]];
+let tolCur=store.get("gt_tolt")||"gdt";if(!TOLT.some(t=>t[0]===tolCur))tolCur="gdt";
+$("tolTabs").innerHTML=TOLT.map(([k,t])=>`<button class="c-shape" data-k="${k}">${t}</button>`).join("");
+$("tolTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>setTolTab(b.dataset.k));
+function setTolTab(k){tolCur=k;store.set("gt_tolt",k);
+  $("tolTabs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===k));
+  TOLT.forEach(([id])=>$("tp-"+id).hidden=id!==k);
+  if(k==="gdt")gdFrame();if(k==="tam")ccCalc();}
+
+/* GD&T — ISO 1101:2017, Tabela 2. d: 0 sem referência · 1 exige · 2 opcional. dia: aceita zona cilíndrica (Ø) */
+const GDS={
+  ret:'<path d="M3 12h18"/>',
+  pla:'<path d="M7 7h14l-4 10H3z"/>',
+  cir:'<circle cx="12" cy="12" r="8"/>',
+  cil:'<circle cx="12" cy="12" r="6"/><path d="M4 21L13 3M11 21L20 3"/>',
+  pl:'<path d="M3 17a9 9 0 0 1 18 0"/>',
+  ps:'<path d="M3 17a9 9 0 0 1 18 0z"/>',
+  par:'<path d="M6 20L12 4M12 20L18 4"/>',
+  per:'<path d="M12 4v16M4 20h16"/>',
+  ang:'<path d="M3 20h18M3 20L18 6"/>',
+  pos:'<circle cx="12" cy="12" r="6"/><path d="M12 2v20M2 12h20"/>',
+  coa:'<circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="8.5"/>',
+  sim:'<path d="M3 12h18M6.5 7h11M6.5 17h11"/>',
+  bc:'<path d="M5 19L16 8"/><path d="M19 5l-7.5 2.2 5.3 5.3z" fill="currentColor"/>',
+  bt:'<path d="M2 21h7M2 21L10 13M9 21L17 13"/><path d="M13 10l-4.4 1.4 3 3zM20 10l-4.4 1.4 3 3z" fill="currentColor"/>'};
+const GD=[
+  ["ret","Retitude","Forma","g-forma",0,1,(t,D)=>D?`o eixo (linha média) deve ficar dentro de um cilindro de Ø${t} mm`:`cada linha da superfície, na direção da seta, deve ficar entre duas retas paralelas afastadas ${t} mm`,"Aresta de viga, eixo de rolo, trilho de guia"],
+  ["pla","Planeza","Forma","g-forma",0,0,t=>`a superfície inteira deve ficar entre dois planos paralelos afastados ${t} mm`,"Face de flange usinada, base de máquina, mesa de apoio"],
+  ["cir","Circularidade","Forma","g-forma",0,0,t=>`em cada seção transversal, o contorno deve ficar entre dois círculos concêntricos com ${t} mm de diferença de raio`,"Ovalização de virola calandrada, anel, tubo"],
+  ["cil","Cilindricidade","Forma","g-forma",0,0,t=>`a superfície deve ficar entre dois cilindros coaxiais com ${t} mm de diferença de raio`,"Eixo retificado, camisa, bucha"],
+  ["pl","Perfil de linha","Forma · orient. · loc.","g-forma",2,0,t=>`cada linha do perfil deve ficar numa faixa de ${t} mm (±${dec(String(+(t/2).toFixed(4)))}) em torno do perfil teórico das cotas em caixa`,"Came, gabarito, contorno de peça cortada"],
+  ["ps","Perfil de superfície","Forma · orient. · loc.","g-forma",2,0,t=>`a superfície deve ficar numa faixa de ${t} mm (±${dec(String(+(t/2).toFixed(4)))}) em torno da superfície teórica`,"Tampo conformado, chapa calandrada, carenagem"],
+  ["par","Paralelismo","Orientação","g-orient",1,1,(t,D)=>D?`o eixo deve ficar dentro de um cilindro de Ø${t} mm paralelo à referência`:`a superfície deve ficar entre dois planos paralelos à referência, afastados ${t} mm`,"Face de topo de base em relação à face de apoio"],
+  ["per","Perpendicularidade","Orientação","g-orient",1,1,(t,D)=>D?`o eixo deve ficar dentro de um cilindro de Ø${t} mm perpendicular à referência`:`a superfície deve ficar entre dois planos perpendiculares à referência, afastados ${t} mm`,"Coluna soldada em relação à placa de base"],
+  ["ang","Inclinação","Orientação","g-orient",1,1,(t,D)=>D?`o eixo deve ficar dentro de um cilindro de Ø${t} mm no ângulo teórico (cota em caixa) em relação à referência`:`a superfície deve ficar entre dois planos afastados ${t} mm, no ângulo teórico (cota em caixa) em relação à referência`,"Suporte inclinado, mão-francesa, chanfro funcional"],
+  ["pos","Posição","Localização","g-loc",2,1,(t,D)=>D?`o eixo de cada elemento deve ficar dentro de um cilindro de Ø${t} mm centrado na posição teórica (cotas em caixa)`:`o elemento deve ficar entre dois planos afastados ${t} mm, centrados na posição teórica (cotas em caixa)`,"Furação de flange, chumbadores, furos de ligação"],
+  ["coa","Coaxialidade · concentricidade","Localização","g-loc",1,1,t=>`o eixo (ou o centro, numa seção) deve ficar dentro de um cilindro (ou círculo) de Ø${t} mm coaxial à referência`,"Alojamentos de mancal de um mesmo eixo"],
+  ["sim","Simetria","Localização","g-loc",1,0,t=>`o plano médio deve ficar entre dois planos afastados ${t} mm, simétricos ao plano médio da referência`,"Rasgo de chaveta, orelha central, garfo"],
+  ["bc","Batimento circular","Batimento","g-bat",1,0,t=>`girando a peça no eixo de referência, o relógio em cada seção não pode variar mais que ${t} mm`,"Polia, flange de acoplamento, rolo"],
+  ["bt","Batimento total","Batimento","g-bat",1,0,t=>`girando a peça e correndo o relógio por toda a superfície, a leitura total não pode variar mais que ${t} mm`,"Rolo de transportador, tambor, eixo de bomba"]];
+const GDK=Object.fromEntries(GD.map(g=>[g[0],g]));
+const gdIco=k=>`<svg class="gd-ico" viewBox="0 0 24 24" aria-hidden="true">${GDS[k]}</svg>`;
+const GDMOD=[["dia","Ø zona cilíndrica"],["M","Ⓜ máx. material"],["L","Ⓛ mín. material"],["P","Ⓟ zona projetada"],["F","Ⓕ estado livre"],["CZ","CZ zona combinada"],["SZ","SZ zonas separadas"]];
+$("gdK").innerHTML=GD.map(g=>`<option value="${g[0]}">${g[1]}</option>`).join("");$("gdK").value="pos";
+$("gdMods").innerHTML=GDMOD.map(([k,t])=>`<label><input type="checkbox" data-m="${k}"${k==="dia"||k==="CZ"?" checked":""}> ${t.replace(/^[ⓂⓁⓅⒻ]/,c=>`<span class="cl">${{"Ⓜ":"M","Ⓛ":"L","Ⓟ":"P","Ⓕ":"F"}[c]}</span>`)}</label>`).join("");
+$("gdGrid").innerHTML=GD.map(([k,n,g,c,d])=>`<button class="gd-c" data-k="${k}"><div class="gd-sym"><svg viewBox="0 0 24 24" aria-hidden="true">${GDS[k]}</svg></div>
+  <b>${n}</b><span class="gd-tag ${c}">${g} · ${d===1?"exige referência":d===2?"referência opcional":"sem referência"}</span><small>${GDK[k][7]}</small></button>`).join("");
+$("gdGrid").querySelectorAll(".gd-c").forEach(b=>b.onclick=()=>{$("gdK").value=b.dataset.k;
+  const g=GDK[b.dataset.k],dia=$("gdMods").querySelector('[data-m="dia"]');dia.checked=b.dataset.k==="pos"||b.dataset.k==="coa";
+  if(g[4]===0)["gdR1","gdR2","gdR3"].forEach(id=>$(id).value="");else if(!$("gdR1").value)$("gdR1").value="A";
+  gdFrame();$("gdDraw").scrollIntoView({behavior:"smooth",block:"center"})});
+{const s=store.get("gt_gd");if(s&&GDK[s.k]){$("gdK").value=s.k;$("gdT").value=s.t;$("gdN").value=s.n;["gdR1","gdR2","gdR3"].forEach((id,i)=>$(id).value=s.r[i]||"");
+  $("gdMods").querySelectorAll("input").forEach(c=>c.checked=!!s.m[c.dataset.m])}}
+function gdFrame(){
+  const k=$("gdK").value,g=GDK[k],tN=parseNum($("gdT").value),n=Math.max(1,Math.round(parseNum($("gdN").value))||1);
+  const m={};$("gdMods").querySelectorAll("input").forEach(c=>m[c.dataset.m]=c.checked);
+  const R=["gdR1","gdR2","gdR3"].map(id=>$(id).value.trim().toUpperCase()).filter(Boolean);
+  store.set("gt_gd",{k,t:$("gdT").value,n:$("gdN").value,r:["gdR1","gdR2","gdR3"].map(id=>$(id).value),m});
+  $("gdGrid").querySelectorAll(".gd-c").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===k));
+  const t=tN>0?dec(String(tN)):"t",dia=m.dia&&g[5];
+  /* desenho do quadro */
+  const cw=9,H=36,pad=10,fs=15;let x=0,parts=[];
+  const cell=(w,inner)=>{parts.push(`<rect x="${x}" y="0" width="${w}" height="${H}"/>`+inner(x));x+=w};
+  cell(H,x0=>`<g transform="translate(${x0+6},6)"><svg width="24" height="24" viewBox="0 0 24 24" style="overflow:visible">${GDS[k]}</svg></g>`);
+  const toks=[];if(dia)toks.push(["t","Ø"]);toks.push(["t",t]);["M","L","P","F"].forEach(c=>m[c]&&toks.push(["c",c]));["CZ","SZ"].forEach(c=>m[c]&&toks.push(["g",""],["t",c]));
+  const tw=toks.reduce((s,[ty,v])=>s+(ty==="c"?22:ty==="g"?8:v.length*cw),0)+pad*2;
+  cell(tw,x0=>{let cx=x0+pad,o="";toks.forEach(([ty,v])=>{if(ty==="g"){cx+=8}else if(ty==="c"){o+=`<circle cx="${cx+10}" cy="${H/2}" r="8.5"/><text x="${cx+10}" y="${H/2+4.5}" text-anchor="middle" font-size="12" stroke="none" fill="currentColor">${v}</text>`;cx+=22}else{o+=`<text x="${cx}" y="${H/2+5.5}" stroke="none" fill="currentColor">${v}</text>`;cx+=v.length*cw}});return o});
+  R.forEach(r=>cell(Math.max(H,r.length*cw+pad*2),x0=>`<text x="${x0+Math.max(H,r.length*cw+pad*2)/2}" y="${H/2+5.5}" text-anchor="middle" stroke="none" fill="currentColor">${r}</text>`));
+  const top=n>1?22:0,W=x+2;
+  $("gdDraw").innerHTML=`<svg width="${W}" height="${H+top+2}" viewBox="-1 ${-top-1} ${W} ${H+top+2}" font-family="IBM Plex Mono,ui-monospace,monospace" font-size="${fs}" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Quadro de tolerância">
+    ${n>1?`<text x="0" y="-7" stroke="none" fill="currentColor">${n}×</text>`:""}${parts.join("")}</svg>`;
+  /* leitura */
+  const L=[],W2=[];
+  L.push(`<strong>${gdIco(k)} ${g[1]}</strong> (${g[2].toLowerCase()}): ${g[6](t,dia)}${n>1?`, em cada um dos ${n} elementos`:""}.`);
+  if(R.length)L.push(`Medida a partir ${R.length===1?`da referência <b>${R[0]}</b>`:`das referências <b>${R.join(" → ")}</b>: a peça encosta primeiro em ${R[0]} (3 pontos), depois em ${R[1]} (2 pontos)${R[2]?` e por fim em ${R[2]} (1 ponto)`:""}`}.`);
+  else if(g[4]!==1)L.push(k==="pl"||k==="ps"?"Sem referência: controla só a forma do perfil, não a posição.":k==="pos"?"Sem referência: controla os elementos só entre si (padrão de furos).":"Sem referência: compara a peça só com ela mesma.");
+  if(g[2]==="Localização")L.push("Por ser de localização, controla também a orientação e a forma do elemento.");
+  if(g[2]==="Orientação")L.push("Controla também a forma do elemento, mas não a posição.");
+  if(m.M)L.push(`<span class="cl">M</span> A tolerância de ${t} mm vale no máximo material (furo no menor Ø, eixo no maior). Quanto mais o tamanho real se afasta disso, maior a tolerância (bônus). Dá para inspecionar com calibrador de pinos fixos.`);
+  if(m.L)L.push(`<span class="cl">L</span> A tolerância vale no mínimo material; protege a espessura mínima de parede.`);
+  if(m.P)L.push(`<span class="cl">P</span> A zona se projeta para fora da peça, na altura indicada ao lado do símbolo, onde vai entrar o parafuso.`);
+  if(m.F)L.push(`<span class="cl">F</span> Verificar com a peça solta, sem fixar.`);
+  if(m.CZ)L.push("CZ: todos os elementos ficam numa zona única, travados entre si pelas cotas em caixa.");
+  if(m.SZ)L.push("SZ: cada elemento tem sua zona independente.");
+  if(g[4]===0&&R.length)W2.push("Tolerância de forma não usa referência (ISO 1101, Tabela 2). Tire as letras A/B/C.");
+  if(g[4]===1&&!R.length)W2.push(`${g[1]} exige pelo menos uma referência.`);
+  if(m.dia&&!g[5])W2.push(`Ø não se aplica a ${g[1].toLowerCase()}: a zona não é cilíndrica.`);
+  if(k==="pos"&&n>1&&!m.CZ&&!m.SZ)W2.push("ISO 5458, regra A: posição em vários elementos precisa de SZ, CZ ou CZR quando as referências não travam tudo.");
+  if(k==="pos"&&m.SZ&&!R.length)W2.push("Posição com SZ e sem referência não tem sentido (ISO 5458).");
+  if(m.CZ&&m.SZ)W2.push("CZ e SZ juntos se contradizem; escolha um.");
+  if(m.M&&m.L)W2.push("Ⓜ e Ⓛ juntos não fazem sentido no mesmo quadro.");
+  if((m.M||m.L)&&!g[5])W2.push("Ⓜ/Ⓛ só se usam em elemento com tamanho (furo, eixo, rasgo), nas características que aceitam Ø.");
+  if(!(tN>0))W2.push("Digite o valor da tolerância.");
+  $("gdTxt").innerHTML=L.map(s=>`<li>${s}</li>`).join("")+W2.map(s=>`<li class="fcf-warn">⚠ ${s}</li>`).join("");
+}
+["gdT","gdN","gdR1","gdR2","gdR3"].forEach(id=>$(id).addEventListener("input",gdFrame));
+$("gdK").addEventListener("change",()=>{const k=$("gdK").value;$("gdMods").querySelector('[data-m="dia"]').checked=k==="pos"||k==="coa";
+  if(GDK[k][4]===0)["gdR1","gdR2","gdR3"].forEach(id=>$(id).value="");else if(!$("gdR1").value)$("gdR1").value="A";gdFrame()});
+$("gdMods").addEventListener("change",gdFrame);
+
+/* Diâmetro pela circunferência (ISO 14405-1, CC) */
+{const s=store.get("gt_cc");if(Array.isArray(s))["ccP","ccE","ccN"].forEach((id,i)=>{if(s[i]!=null)$(id).value=s[i]})}
+function ccCalc(){
+  const P=parseNum($("ccP").value),e=parseNum($("ccE").value),N=parseNum($("ccN").value);
+  store.set("gt_cc",["ccP","ccE","ccN"].map(id=>$(id).value));
+  if(!(P>0)){$("ccRes").innerHTML=`<div class="tol-card"><h4>Fita perimétrica</h4><p>Digite o perímetro medido por fora.</p></div>`;return}
+  const de=P/Math.PI,ok=e>0&&2*e<de,dv=N>0?de-N:NaN;
+  $("ccRes").innerHTML=`<div class="tol-card"><h4>Ø externo (CC)</h4><div class="big">${nf(de,1)}<i>mm</i></div><ul>
+      <li><span>Ø médio (linha neutra)</span><b>${ok?nf(de-e,1)+" mm":"–"}</b></li><li><span>Ø interno</span><b>${ok?nf(de-2*e,1)+" mm":"–"}</b></li></ul><p>d = perímetro ÷ π. Mede o diâmetro "médio" do contorno; ovalização não aparece.</p></div>
+    <div class="tol-card"><h4>Contra o nominal</h4><div class="big">${Number.isFinite(dv)?(dv>=0?"+":"−")+nf(Math.abs(dv),1):"–"}<i>mm</i></div><ul>
+      <li><span>Perímetro do nominal</span><b>${N>0?nf(N*Math.PI,1)+" mm":"–"}</b></li><li><span>Diferença no perímetro</span><b>${N>0?(P-N*Math.PI>=0?"+":"−")+nf(Math.abs(P-N*Math.PI),1)+" mm":"–"}</b></li></ul><p>Cada 1 mm no diâmetro = ${nf(Math.PI,2)} mm no perímetro.</p></div>
+    <div class="tol-card"><h4>No desenho</h4><div class="callout">Ø${N>0?nf(N,0):"D"} ±t CC</div><p>Indica que o diâmetro é verificado pelo perímetro. Para limitar a ovalização junto, use SR (máx − mín) ou circularidade.</p></div>`;
+}
+["ccP","ccE","ccN"].forEach(id=>$(id).addEventListener("input",ccCalc));
+/* ======================= CHAPAS EXPANDIDAS E GRADES ======================= */
+// [código, malha A×B, E, A1, B1, C, área aberta %, kg/m²]
+const EXM={
+ carbono:{t:"Expandida · aço carbono",d:7.85,info:["Metal expandido losangular — aço carbono","Proteção de máquina, gradis, forros, degraus leves e telas. A primeira medida da malha (A) é a diagonal menor; o cordão C é a largura da tira."],
+  r:"EXP-2 2x4 .45 1 2 .5 50 1.77|EXP-3 3x6 .6 1.6 3.4 .8 46.5 2.51|EXP-4 4x8 .6 2.5 5 .8 60 1.88|EXP-5 5.5x10 .6 4 8 .8 71 1.37|EXP-5-A 5.5x10 .75 4 8 .8 71 1.71|EXP-5-B 5.5x10 .9 4 8 1 64 2.57|EXP-6 6.2x13 .75 5 10 .8 74 1.52|EXP-9 9x20 .9 7.5 15 1 78 1.57|EXP-9-A 9x20 1.25 7.5 15 1.5 66.5 3.27|EXP-12 12x25 .9 10 20 1 83 1.18|EXP-12-A 12x25 1.25 10 20 1.5 75 2.45|EXP-12-B 12x25 1.5 10 20 1.8 70 3.53|EXP-12-C 12x25 1.5 10 20 2.2 63 4.32|EXP-12-D 12x25 2 10 20 2.5 58 6.54|EXP-13 13.5x45 .9 10 39 1.8 73 1.88|EXP-13-A 13.5x45 1.25 10 39 2.5 63 3.63|EXP-13-B 13.5x45 2 10 39 2 70 4.65|EXP-13-C 13.5x45 2.65 10 39 3.5 48 10.8|EXP-14 14x32 .75 12 25 1.2 83 1|EXP-14-A 14x32 1.25 12 25 1.5 78.5 2.1|EXP-14-B 14x32 1.5 12 25 1.8 74 3.03|EXP-20 20x50 1.5 18 38 2 80 2.36|EXP-20-A 20x50 2 18 38 2.5 75 3.93|EXP-20-B 20x50 3 18 38 3.5 65 8.24|EXP-29 29x54 2 18 36 3 79 3.25|EXP-38 38x75 1.5 33 66 2 89 1.24|EXP-38-A 38x75 1.9 33 66 2.5 86.5 1.96|EXP-38-B 38x75 3 33 66 3.8 80 4.71|EXP-38-C 38x75 4.7 33 66 5 73.5 9.71|EXP-68 68x150 3 64 132 3.5 89.5 2.42|EXP-68-A 68x150 4.7 64 132 5.5 83.5 5.97"},
+ gme:{t:"Expandida pesada (GME) · pisos",d:7.85,info:["Metal expandido pesado — modelos GME","Pisos, passarelas, plataformas e degraus. Peça sempre pelo modelo ou pelo kg/m²: \"chapa expandida 1/4\" pode ser a GME-6 (27,9 kg/m²) ou a GME-1C (13,0 kg/m²)."],
+  r:"GME-1 36x100 6.35 26 71.5 7.5 59 20.77|GME-1A 40x100 6.35 31.4 72.6 6.5 59 16.2|GME-1B 45x100 6.35 36.5 73.5 6.5 58 14.4|GME-1C 50x100 6.35 40.5 81 6.5 52.6 12.96|GME-2 51x150 6.35 43 117.3 7.8 56.7 15.25|GME-3 34x133 4.75 28 87.6 4.7 69.4 10.31|GME-3A 40x100 4.75 34 76 4.8 59 8.95|GME-3B 45x100 4.75 39.2 76.5 4.8 58.4 7.95|GME-3C 41x133 4.75 35 92 4.8 66 8.73|GME-3D 50x100 4.75 43 84 4.8 53 7.16|GME-4 34x133 4.75 26.5 87.6 6.8 69.4 14.92|GME-4A 40x100 4.75 33.3 76 6.5 59 12.12|GME-4B 45x100 4.75 38.3 76.5 6.5 58.4 10.77|GME-4C 41x133 4.75 34 92 6.5 66 11.82|GME-4D 50x100 4.75 42 84.2 6.5 53 9.69|GME-5 34x133 6.35 24.2 84.2 7.6 69.8 22.28|GME-5A 34x133 6.35 25 84.2 6.5 69.8 19.06|GME-5B 41x133 6.35 32.5 88 6.5 67 15.81|GME-6 34x133 6.35 22.8 84.2 9.5 69.8 27.86|GME-6A 41x133 6.35 30.4 88 9.5 67 23.1|GME-7 34x133 8 21.5 81 8.9 70 32.88|GME-7A 41x133 8 29 84.6 8.9 67 27.26|GME-8 34x133 8 20.4 81 10.3 70 38.05|GME-8A 34x133 8 22.15 81 8 70 29.55|GME-8B 41x133 8 28 84.6 10.3 67 31.55|GME-9 34x133 9.5 19.4 78 9.5 71 41.67|GME-9A 41x133 9.5 27 82 9.5 67.5 34.56"},
+ inox:{t:"Expandida · inox",d:7.93,info:["Metal expandido losangular — aço inox","Indústria alimentícia, química e ambientes úmidos."],
+  r:"INOX-EXP-4 4x8 .4 2.75 6.65 1.4 54 2.24|INOX-EXP-12 12x25 1 10.5 20.1 1.8 56.5 2.4|INOX-EXP-12-A 12x25 1.2 10.1 19.75 2 56.7 3.2|INOX-EXP-12-B 12x25 1.5 9.5 19.2 2 56.6 4|INOX-EXP-20 20x50 1.2 18 38.5 2.5 61.5 2.4|INOX-EXP-20-A 20x50 1.5 17.8 38 2.7 62 3.24|INOX-EXP-38 38x75 1.5 36 67.2 2.8 53 1.77|INOX-EXP-38-A 38x75 2.4 35.1 66 3 53 3.03"},
+ alu:{t:"Expandida · alumínio",d:2.7,info:["Metal expandido losangular — alumínio","Leve: fachadas, forros, proteções e decoração."],
+  r:"AL-EXP-3 3x6 .6 2 4.3 .8 53 .87|AL-EXP-5 5.5x10 .8 4 7.6 .9 54 .71|AL-EXP-7 7x16 1.5 4.75 11.8 1.5 52 1.74|AL-EXP-12 12x50 1.25 10 19.7 2.2 57 1.24|AL-EXP-20 20x50 1.25 18 38.4 2.8 61.5 .95|AL-EXP-20-A 20x50 2 16.5 37 4 62 2.16|AL-EXP-28 28x116 3 25.7 78 3.5 70 2.03|AL-EXP-29 29x54 2.5 25.7 47.1 2.8 51.5 1.3|AL-EXP-38 38x75 2 35.5 66.7 3 52.5 .85|AL-EXP-38-A 38x75 3 34.1 64.7 4 52.5 1.71"},
+ grade:{t:"Grades de piso (Selmec)",info:["Grades soldadas para piso — carga admissível","Escolha o vão entre apoios e a carga distribuída exigida (ex.: passarela 300 a 500 kgf/m², plataforma de manutenção 500 a 750). A tabela mostra o que atende, do mais leve ao mais pesado."]}
+};
+Object.values(EXM).forEach(m=>{if(m.r)m.rows=m.r.split("|").map(s=>{const c=s.split(" ");return [c[0],c[1].replace("x"," × "),...c.slice(2).map(Number)]})});
+const GRV=[300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800];
+const GR="GS-B4-202 25x100 16 6803 3827 2449 1701 1250 870 608 443 331 255 186 138 105 0 0 0|GS-B4-204 25x100 22 10204 5740 3674 2551 1874 1304 911 665 497 383 238 207 157 121 0 0|GS-B4-206 25x100 34 15987 8993 5755 3997 2936 2044 1427 1043 779 599 436 324 246 189 149 118|GS-B4-252 25x100 20 10630 5979 3827 2657 1952 1495 1181 854 649 498 361 269 204 158 123 0|GS-B4-254 25x100 27 15944 8969 5740 3986 2950 2259 1785 1446 1066 753 547 406 308 238 187 148|GS-B4-256 25x100 42 24980 14051 8993 6245 4588 3513 2776 2007 1525 1170 849 631 480 371 290 231|GS-B4-302 25x100 23 15307 8610 5510 3827 2811 2153 1701 1378 1119 857 627 464 353 271 214 170|GS-B4-304 25x100 32 22960 12915 8266 5740 4217 3229 2551 2066 1678 1285 940 695 530 407 320 255|GS-B4-306 25x100 50 35971 20234 12949 8993 6607 5058 3997 3237 2628 2013 1473 1089 830 638 501 400|GS-B4-352 25x100 27 20834 11719 7500 5209 3827 2930 2315 1875 1550 1302 994 736 562 431 339 269|GS-B4-354 25x100 37 31251 17579 11250 7813 5740 4395 3742 2813 2324 1953 1490 1104 843 646 508 404|GS-B4-356 25x100 58 48960 27540 17626 12240 8993 6885 5440 4406 3642 3060 2335 1729 1320 1012 796 633|GS-B4-402 25x100 30 27212 15307 9796 6803 4998 3827 3024 2449 2024 1701 1449 1103 837 645 508 405|GS-B4-404 25x100 42 40818 22960 14694 10204 7497 5740 4535 3674 3036 2551 2174 1654 1256 967 763 608|GS-B4-406 25x100 66 63948 35971 23021 15987 11746 8993 7105 5755 4756 3997 3406 2591 1968 1516 1195 951|GS-A4-202 30x100 14 5807 3267 2091 1452 1067 743 518 379 283 218 158 118 0 0 0 0|GS-A4-204 30x100 19 8711 4900 3136 2178 1600 1113 778 568 424 326 238 176 134 103 0 0|GS-A4-206 30x100 30 13647 7677 4913 3412 2507 1745 1218 890 665 512 373 277 210 162 127 101|GS-A4-252 30x100 17 9074 5104 3267 2269 1667 1276 1008 729 554 425 308 230 174 135 105 0|GS-A4-254 30x100 24 13611 7656 4900 3403 2500 1914 1512 1094 831 638 463 344 261 202 158 126|GS-A4-256 30x100 37 21324 11995 7677 5331 3917 2999 2369 1713 1302 1000 725 539 409 317 247 197|GS-A4-302 30x100 20 13067 7350 4704 3267 2400 1838 1452 1176 955 732 535 396 302 231 182 145|GS-A4-304 30x100 28 19600 11025 7056 4900 3600 2756 2178 1764 1432 1097 803 593 452 347 273 218|GS-A4-306 30x100 43 30707 17273 11054 7677 5640 4318 3412 2764 2243 1718 1258 930 708 545 428 341|GS-A4-352 30x100 23 17785 10004 6403 4446 3267 2501 1976 1601 1323 1112 848 628 479 368 289 230|GS-A4-354 30x100 32 26678 15006 9604 6669 4900 3752 2964 2401 1984 1667 1273 942 719 552 434 345|GS-A4-356 30x100 50 41795 23510 15046 10449 7677 5877 4644 3762 3109 2612 1993 1476 1127 864 679 540|GS-A4-402 30x100 26 23320 13067 8363 5807 4267 3267 2581 2091 1728 1452 1237 941 715 551 434 346|GS-A4-404 30x100 37 34844 19600 12544 8711 6400 4900 3872 3136 2592 2178 1856 1411 1072 826 651 514|GS-A4-406 30x100 57 54590 30707 19652 13647 10027 7677 6066 4913 4060 3412 2907 2212 1680 1294 1020 812|GS-C4-202 35x100 13 4978 2800 1792 1244 914 636 444 325 242 187 136 101 0 0 0 0|GS-C4-204 35x100 17 7467 4200 2688 1867 1371 955 667 487 363 280 204 151 115 0 0 0|GS-C4-206 35x100 26 11947 6720 4301 2987 2194 1527 1066 779 582 448 326 242 184 142 111 0|GS-C4-252 35x100 15 7778 4375 2800 1944 1429 1094 864 625 475 365 264 197 149 115 0 0|GS-C4-254 35x100 20 11667 6563 4200 2917 2143 1641 1296 938 713 547 396 295 224 173 135 108|GS-C4-256 35x100 32 18667 10500 6720 4667 3429 2625 2074 1500 1139 875 634 472 359 277 217 173|GS-C4-302 35x100 18 11200 6300 4032 2800 2057 1575 1244 1008 818 627 458 339 258 199 156 124|GS-C4-304 35x100 25 16800 9450 6048 4200 3086 2363 1867 1512 1228 940 688 508 388 298 234 187|GS-C4-306 35x100 38 26880 15120 9677 6720 4937 3780 2987 2419 1963 1504 1101 814 620 476 375 299|GS-C4-352 35x100 21 15244 8575 5488 3811 2800 2144 1694 1372 1134 953 727 538 411 315 248 197|GS-C4-354 35x100 28 22867 12863 8232 5717 4200 3216 2541 2058 1701 1429 1091 808 617 473 371 295|GS-C4-356 35x100 44 36587 20580 13171 9147 6720 5145 4065 3293 2721 2287 1744 1292 986 756 61 473|GS-C4-402 35x100 23 19911 11200 7168 4978 3657 2800 2212 1792 1481 1244 1060 806 612 472 372 296|GS-C4-404 35x100 32 29867 16800 10752 7467 5486 4200 3319 2688 2221 1867 1591 1210 919 708 558 445|GS-C4-406 35x100 50 47785 26880 17203 11947 8777 6720 5310 4301 3554 2987 2545 1936 1470 1133 893 705|GS-P3-42 33x33 29 11362 7272 5050 3710 2481 2244 1818 1262 818 0 0 0 0 0 0 0|GS-P3-43 33x33 36 15339 9817 6817 5009 3835 3030 2454 1704 1104 0 0 0 0 0 0 0".split("|").map(s=>{const c=s.split(" ");return [c[0],c[1].replace("x"," × "),+c[2],c.slice(3).map(Number)]});
+let exCur=store.get("gt_ex")||"carbono",exSel=null;if(!EXM[exCur])exCur="carbono";
+$("exTabs").innerHTML=Object.entries(EXM).map(([k,m])=>`<button class="c-shape" data-k="${k}">${m.t}</button>`).join("");
+$("exTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{exCur=b.dataset.k;exSel=null;store.set("gt_ex",exCur);expandido()});
+$("grVao").innerHTML=GRV.map(v=>`<option value="${v}">${nf(v,0)} mm</option>`).join("");$("grVao").value=store.get("gt_grv")||"1000";
+function expandido(){
+  const M=EXM[exCur];
+  $("exTabs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===exCur));
+  $("exInfo").querySelector("h4").textContent=M.info[0];$("exInfo").querySelector("p").textContent=M.info[1];
+  $("exMalha").hidden=exCur==="grade";$("exGrade").hidden=exCur!=="grade";
+  if(exCur==="grade")return grades();
+  const L=parseNum($("exL").value),C=parseNum($("exC").value),Q=Math.max(1,Math.round(parseNum($("exQ").value))||1),area=L>0&&C>0?L*C/1e6:NaN;
+  const q=sNorm($("exSearch").value).replace(/\s*x\s*/g,"x");
+  const rows=M.rows.map((r,i)=>[r,i]).filter(([r])=>!q||sNorm(r[0]).includes(q)||r[1].replace(/ × /g,"x").startsWith(q)||String(r[2]).replace(".",",").startsWith(q.replace(".",","))||String(r[2]).startsWith(q));
+  $("exBody").innerHTML=rows.map(([r,i])=>`<tr data-i="${i}" class="${i===exSel?"hit":""}"><td style="color:var(--strong);font-weight:600">${r[0]}</td><td class="n">${r[1]}</td><td class="n">${nf(r[2],2)}</td><td class="n">${nf(r[3],1)} × ${nf(r[4],1)}</td><td class="n">${nf(r[5],2)}</td><td class="n">${nf(r[6],1)}%</td><td class="n" style="color:var(--strong);font-weight:600">${nf(r[7],2)}</td><td class="n">${Number.isFinite(area)?nf(r[7]*area,2):"–"}</td></tr>`).join("")||`<tr><td colspan="8" class="none">Nenhuma malha com esse filtro.</td></tr>`;
+  $("exBody").querySelectorAll("tr[data-i]").forEach(tr=>tr.onclick=()=>{exSel=+tr.dataset.i;expandido()});
+  if(exSel==null||!M.rows[exSel]){$("exAns").innerHTML=`<span class="msg">${Number.isFinite(area)?`Peça de ${nf(area,3)} m². `:""}Clique numa malha para ver o peso total.</span>`;return}
+  const r=M.rows[exSel],kg=r[7]*area;
+  $("exAns").innerHTML=`<div><small>Malha</small><b>${r[0]}</b></div><div><small>kg/m²</small><b>${nf(r[7],2)}</b></div><div><small>Área (un.)</small><b>${nf(area,3)} m²</b></div><div><small>Peso (un.)</small><b>${nf(kg,2)} kg</b></div><div><small>Peso total (${Q} pç)</small><b>${nf(kg*Q,2)} kg</b></div>`;
+}
+function grades(){
+  const v=+$("grVao").value,j=GRV.indexOf(v),q=parseNum($("grCarga").value),A=parseNum($("grArea").value);store.set("gt_grv",String(v));
+  $("grCol").textContent=`Carga em ${nf(v,0)} mm (kgf/m²)`;
+  const rows=GR.map(r=>[r,r[3][j]||0]).sort((a,b)=>(b[1]>=q)-(a[1]>=q)||a[0][2]-b[0][2]);
+  const ok=rows.filter(([,c])=>Number.isFinite(q)&&c>=q);
+  $("grBody").innerHTML=rows.map(([r,c])=>{const at=Number.isFinite(q)&&c>=q;return `<tr class="${at&&r===ok[0][0]?"hit":""}"><td style="color:var(--strong);font-weight:600">${r[0]}</td><td class="n">${r[1]}</td><td class="n">${r[2]}</td><td class="n">${c?nf(c,0):"–"}</td><td class="n">${A>0?nf(r[2]*A,0)+" kg":"–"}</td><td>${!c?'<span class="none">fora da tabela</span>':at?'<b style="color:var(--accent4)">atende</b>':'<span style="color:var(--red)">não atende</span>'}</td></tr>`}).join("");
+  $("grAns").innerHTML=ok.length?`<div><small>Mais leve que atende</small><b>${ok[0][0][0]}</b></div><div><small>Malha</small><b>${ok[0][0][1]}</b></div><div><small>Peso</small><b>${ok[0][0][2]} kg/m²</b></div><div><small>Admissível no vão</small><b>${nf(ok[0][1],0)} kgf/m²</b></div>${A>0?`<div><small>Peso da área</small><b>${nf(ok[0][0][2]*A,0)} kg</b></div>`:""}`
+    :`<span class="msg">${Number.isFinite(q)?`Nenhuma grade da tabela aguenta ${nf(q,0)} kgf/m² em ${nf(v,0)} mm. Diminua o vão (mais apoios) ou consulte o fabricante.`:"Digite a carga necessária."}</span>`;
+}
+["exL","exC","exQ","exSearch"].forEach(id=>$(id).addEventListener("input",expandido));
+["grCarga","grArea"].forEach(id=>$(id).addEventListener("input",grades));$("grVao").addEventListener("change",grades);
+VIEWS.find(v=>v.id==="expandido").badges=()=>[["Malhas",String(["carbono","gme","inox","alu"].reduce((a,k)=>a+EXM[k].rows.length,0))],["Grades",String(GR.length)]];
+SRC.push(()=>["carbono","gme","inox","alu"].flatMap(k=>EXM[k].rows.map((r,i)=>({k:"Expandida",i:"expandido",t:`${r[0]} · malha ${r[1]}`,s:`${nf(r[7],2)} kg/m² · E ${nf(r[2],2)} mm · ${EXM[k].t}`,x:"chapa expandida metal expandido tela",w:2,
+  go:()=>{exCur=k;exSel=i;$("exSearch").value="";show("expandido")}}))).concat(GR.map(r=>({k:"Grade",i:"expandido",t:`Grade ${r[0]}`,s:`malha ${r[1]} · ${r[2]} kg/m² · Selmec`,x:"grade piso plataforma",w:2,go:()=>{exCur="grade";show("expandido")}}))));
+
+/* ======================= PLÁSTICOS TÉCNICOS ======================= */
+// [id, nome, nomes comerciais, densidade, tração MPa, dureza, T máx contínua °C, atrito (seco × aço), absorção de água %, aplicação, cuidado]
+const PL=[
+ ["PA6","Nylon 6 (poliamida)","Tecnil, nylon extrudado",1.14,80,"Shore D 80",90,"0,35","3 (saturado 9)","Buchas, engrenagens, roletes, polias, guias","Absorve umidade e incha: deixe folga e evite peça de precisão molhada."],
+ ["PA6F","Nylon 6 fundido","Nylon fundido, Nylatron",1.15,85,"Shore D 82",95,"0,3","2,5 (saturado 6,5)","Peças grandes: rodas, coroas, buchas de grande diâmetro","Menos tensão interna que o extrudado; melhor para usinar peça grande."],
+ ["PA6MO","Nylon com MoS₂","Nylon grafitado, Nylatron GS",1.15,80,"Shore D 80",95,"0,25","2,5","Buchas sem lubrificação, guias deslizantes","Cor preta; atrito menor que o nylon natural."],
+ ["PA66","Nylon 6.6","Technyl, Zytel",1.14,85,"Shore D 82",100,"0,35","2,5 (saturado 8)","Engrenagens e peças técnicas mais quentes","Mais rígido e aguenta mais temperatura que o PA6."],
+ ["POM","Poliacetal (POM)","Delrin, Celcon, Tecaform",1.41,65,"Shore D 85",100,"0,25","0,2","Engrenagens precisas, buchas, cames, peças de válvula","Muito estável, quase não absorve água. Não resiste a ácido forte."],
+ ["UHMW","Polietileno UHMW (PEUAPM)","UHMW, Polystone M, PE 1000",0.93,30,"Shore D 63",80,"0,15","< 0,01","Guias de corrente, raspadores, revestimento de chute e silo, estrelas de transportador","O melhor contra desgaste por abrasão. Mole: não serve como peça estrutural."],
+ ["PEAD","Polietileno de alta densidade (PEAD)","HDPE, PE 500",0.95,25,"Shore D 62",80,"0,2","< 0,01","Tábuas de corte, tanques, revestimento leve","Mais barato que o UHMW e desgasta mais."],
+ ["PP","Polipropileno (PP)","PP homopolímero",0.91,33,"Shore D 72",100,"0,3","< 0,1","Tanques e peças em contato com produto químico","Soldável a quente; fica frágil no frio."],
+ ["PTFE","PTFE","Teflon",2.17,25,"Shore D 55",260,"0,08","0","Vedações, gaxetas, mancais químicos, isolação","Atrito muito baixo, mas deforma com o tempo sob carga."],
+ ["PU","Poliuretano (elastômero)","PU, Vulkollan, Adiprene",1.2,40,"Shore A 60 a D 75",80,"0,5 a 0,9","1","Rodas, raspadores, batentes, revestimento antidesgaste, acoplamentos","Escolha a dureza pela aplicação (tabela abaixo). Não gosta de água quente."],
+ ["PEEK","PEEK","Ketron, Victrex",1.31,100,"Rockwell M 100",250,"0,35","0,2","Peças quentes e químicas, bombas","Muito caro; use só quando os outros não aguentam."],
+ ["CEL","Celeron (fenolite com tecido)","Celeron, fenolite",1.35,80,"Rockwell M 105",120,"0,3","1,5","Engrenagens silenciosas, isoladores, buchas","Isolante elétrico; gasta a ferramenta (use metal duro)."],
+ ["PVC","PVC rígido","PVC cinza",1.4,50,"Shore D 80",60,"0,4","0,1","Tanques, dutos e peças químicas","Soldável; amolece cedo com calor."],
+ ["PC","Policarbonato","Lexan, Makrolon",1.2,65,"Rockwell M 70",120,"0,4","0,15","Visores e proteções de máquina","Transparente e muito resistente a impacto."],
+ ["PMMA","Acrílico (PMMA)","Acrílico, Plexiglas",1.19,70,"Rockwell M 95",80,"0,5","0,3","Visores, placas, sinalização","Transparente, mas trinca com impacto."]];
+const PU=[["Shore A 60 – 70","Macio, borracha firme","Amortecedores, vedações, coxins, revestimento contra impacto leve"],["Shore A 75 – 85","Médio","Raspadores de correia, rodas de baixa velocidade, batentes, polias revestidas"],
+  ["Shore A 90 – 95","Duro, ainda elástico","Rodas industriais, roletes, buchas elásticas, revestimento de chute e peneira"],["Shore D 55 – 75","Muito duro, quase plástico","Substitui nylon onde há impacto; engrenagens e peças de desgaste com choque"]];
+$("plMat").innerHTML=PL.map((p,i)=>`<option value="${i}">${p[1]} (${dec(p[3])})</option>`).join("")+`<option value="aco">Aço (7,85) — comparação</option>`;
+$("puBody").innerHTML=PU.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("");
+function plast(){
+  const q=sNorm($("plSearch").value);
+  const rows=PL.map((p,i)=>[p,i]).filter(([p])=>!q||q.split(" ").every(t=>sNorm(p.join(" ")).includes(t)));
+  $("plGrid").innerHTML=rows.map(([p,i])=>`<div class="pl-card"><div class="pl-h"><b>${p[1]}</b><span>${p[0]}</span></div><small>${p[2]}</small>
+    <dl><dt>Densidade</dt><dd>${dec(p[3])} g/cm³</dd><dt>Tração</dt><dd>${p[4]} MPa</dd><dt>Dureza</dt><dd>${p[5]}</dd><dt>T. máx. contínua</dt><dd>${p[6]} °C</dd><dt>Atrito × aço</dt><dd>${p[7]}</dd><dt>Absorção de água</dt><dd>${p[8]}%</dd></dl>
+    <p><strong>Uso:</strong> ${p[9]}.</p><p class="pl-warn">${p[10]}</p></div>`).join("")||`<p class="none">Nenhum material com esse filtro.</p>`;
+  plCalc();
+}
+function plCalc(){
+  const f=$("plForma").value,mi=$("plMat").value,rho=mi==="aco"?7.85:PL[+mi][3],A=parseNum($("plA").value),B=parseNum($("plB").value),C=parseNum($("plC").value);
+  $("plAT").textContent=f==="placa"?"Espessura":f==="bucha"?"Ø externo":"Diâmetro";$("plBT").textContent=f==="placa"?"Largura":"Ø interno";$("plBL").hidden=f==="tarugo";
+  const vol=f==="tarugo"?Math.PI*A*A/4*C:f==="placa"?A*B*C:Math.PI*(A*A-B*B)/4*C,kg=vol*rho/1e6;
+  const ok=Number.isFinite(kg)&&kg>0&&!(f==="bucha"&&B>=A);
+  $("plRes").innerHTML=`<div class="tol-card"><h4>Peso</h4><div class="big">${ok?nf(kg,kg<10?3:2):"–"}<i>kg</i></div><ul><li><span>Densidade</span><b>${dec(rho)} g/cm³</b></li><li><span>Volume</span><b>${ok?nf(vol/1e6,3)+" dm³":"–"}</b></li></ul></div>
+   <div class="tol-card"><h4>Mesma peça em aço</h4><div class="big">${ok?nf(kg*7.85/rho,kg<10?3:2):"–"}<i>kg</i></div><p>${ok&&mi!=="aco"?`O plástico pesa ${nf(rho/7.85*100,0)}% do aço.`:""}</p></div>`;
+}
+$("plSearch").addEventListener("input",plast);["plMat","plForma"].forEach(id=>$(id).addEventListener("change",plCalc));["plA","plB","plC"].forEach(id=>$(id).addEventListener("input",plCalc));
+VIEWS.find(v=>v.id==="plast").badges=()=>[["Materiais",String(PL.length)],["Dados","valores típicos"]];
+SRC.push(()=>PL.map(p=>({k:"Plástico",i:"plast",t:p[1],s:`${p[2]} · ${dec(p[3])} g/cm³ · ${p[9]}`,x:"plastico polimero",w:3,go:()=>{$("plSearch").value=p[0];show("plast")}})));
+
+/* ======================= ÍNDICE DE NORMAS ======================= */
+// [norma, título, área, o que cobre, página do guia]
+const NM=[
+ ["ASME IX","Qualificação de soldagem e brasagem","Soldagem","Regras para qualificar EPS (WPS), RQPS (PQR) e soldadores. Define P-Numbers, F-Numbers, A-Numbers e as variáveis essenciais.","tabela"],
+ ["AWS D1.1","Código de soldagem estrutural — aço","Soldagem","Projeto, pré-qualificação de procedimentos, qualificação e inspeção de estruturas soldadas de aço carbono e baixa liga.","tabela"],
+ ["ISO 15614-1","Qualificação de procedimento de soldagem (aços e níquel)","Soldagem","Ensaio de procedimento para arco e gás; base das EPS DIN EN ISO.","tabela"],
+ ["ISO 15608","Grupos de materiais para soldagem","Soldagem","Agrupa aços e ligas (grupos 1 a 11) para qualificação, como o P-Number do ASME.","grupos"],
+ ["AWS A2.4","Símbolos de soldagem, brasagem e END","Soldagem","Símbolo de solda americano: seta, linha de referência, símbolos e cotas.","simb"],
+ ["ISO 2553","Representação simbólica de soldas no desenho","Soldagem","Símbolo de solda europeu (linha tracejada, cotas a e z).","simb"],
+ ["ISO 4063","Números de referência dos processos de soldagem","Soldagem","111 eletrodo revestido, 135 MAG, 136 arame tubular, 141 TIG, 121 arco submerso.","processos"],
+ ["AWS A5.x","Especificações de consumíveis","Soldagem","A5.1 eletrodo carbono, A5.4 inox, A5.18 arame MIG, A5.20 tubular, A5.17 arco submerso, A5.32 gases.","processos"],
+ ["WRC 452 / 485","Tratamento térmico localizado pós-solda","Soldagem","Faixa aquecida, isolamento e controle de temperatura no TTAT localizado de vasos e tubulação.",""],
+ ["ISO 13920","Tolerâncias gerais para construções soldadas","Tolerâncias","Classes A–D (medidas e ângulos) e E–H (retitude, planeza, paralelismo) para peças soldadas.","tol13920"],
+ ["ISO 2768-1 / -2 (NBR)","Tolerâncias gerais","Tolerâncias","Parte 1: medidas lineares e angulares (f, m, c, v). Parte 2: tolerâncias geométricas (H, K, L).","tol2768"],
+ ["ISO 1101","Tolerâncias geométricas (GD&T)","Tolerâncias","Símbolos de forma, orientação, localização e batimento, quadro de tolerância e modificadores.","gdt"],
+ ["ISO 1660","Tolerância de perfil","Tolerâncias","Regras para perfil de linha e de superfície.","gdt"],
+ ["ISO 5458","Especificação de padrões (grupos de furos)","Tolerâncias","Uso de CZ, SZ, CZR e SIM em vários elementos.","gdt"],
+ ["ISO 14405-1","Tolerância de tamanho linear","Tolerâncias","Tamanho em dois pontos (padrão), envoltória Ⓔ e modificadores GG, GX, GN, CC etc.","gdt"],
+ ["ISO 8015","Princípios fundamentais de GPS","Tolerâncias","Princípio da independência: tamanho e forma são verificados separadamente.","gdt"],
+ ["ISO 2692","Requisitos de máximo e mínimo material","Tolerâncias","Ⓜ, Ⓛ e reciprocidade Ⓡ; bônus de tolerância.","gdt"],
+ ["ISO 286","Sistema de tolerâncias e ajustes","Tolerâncias","Classes de furo e eixo (H7, h6, k6…) para ajustes com folga, incerto e com interferência.","iso286"],
+ ["DIN 7527","Sobremetal para forjados","Usinagem","Bitola bruta de barra forjada para cada bitola usinada.","mat-sobremetal"],
+ ["ASME B36.10M","Tubos de aço soldados e sem costura","Matéria-prima","Diâmetros externos e paredes por schedule (10 a 160, STD, XS, XXS).","mp-tubos"],
+ ["NBR 5580 / DIN 2440","Tubos de aço para condução","Matéria-prima","Tubos de condução classe leve e média, com rosca BSP.","mp-tubos"],
+ ["ASME B16.5","Flanges e conexões flangeadas","Matéria-prima","Dimensões, furação e classes de pressão de flanges de ½\" a 24\".","mp-flanges"],
+ ["ASTM A6 / Gerdau","Perfis estruturais laminados","Matéria-prima","Tolerâncias e dimensões de perfis W, HP e U.","mp-perfis"],
+ ["DIN 13 / ISO 724 / ISO 965","Rosca métrica ISO","Fixação","Perfil, passos grossos e finos e tolerâncias da rosca métrica.","maq-fix"],
+ ["ASME B1.1","Roscas unificadas (UNC, UNF)","Fixação","Rosca em polegada: fios por polegada e classes 2A/2B.","maq-fix"],
+ ["ISO 228-1","Rosca gás paralela (G / BSP)","Fixação","Roscas G para tubos e conexões sem vedação na rosca.","maq-fix"],
+ ["DIN 931 / ISO 4014","Parafuso sextavado com rosca parcial","Fixação","Medidas de cabeça, chave e comprimento de rosca.","maq-fix"],
+ ["DIN 934 / ISO 4032","Porca sextavada","Fixação","Altura e chave das porcas (a ISO 4032 tem chave diferente da DIN em alguns tamanhos).","maq-fix"],
+ ["ISO 273","Furos passantes para parafusos","Fixação","Furo fino, médio e grosso para cada rosca.","maq-fix"],
+ ["DIN 6885","Chavetas paralelas","Fixação","Seção da chaveta e profundidade do rasgo no eixo e no cubo por faixa de diâmetro.","maq-fix"],
+ ["ASTM A36 / A572 / A283","Aços estruturais","Materiais","Aços carbono e alta resistência para chapas e perfis.","mat-equiv"],
+ ["SAE J403 / J404","Composição de aços carbono e liga","Materiais","Designação SAE/AISI (1020, 1045, 4140, 4340, 8620).","mat-acos"],
+ ["EN 10025 / DIN 17100","Aços estruturais europeus","Materiais","S235, S275, S355 (antigos St 37, St 44, St 52).","mat-equiv"],
+ ["ASTM E140","Conversão de dureza","Materiais","Tabelas de equivalência entre Rockwell, Brinell, Vickers e Shore.","mat-dureza"],
+ ["ISO 15","Dimensões de rolamentos radiais","Elementos","Medidas d × D × B das séries de rolamentos (60, 62, 63…).","rol"],
+ ["ISO 281","Capacidade de carga e vida de rolamentos","Elementos","Cálculo da vida L10 a partir de C e P.","rol"],
+ ["ISO 3228 / JIS B 1559","Mancais com rolamento Y (UC, UCP, UCF)","Elementos","Dimensões de intercambialidade de mancais de pé e flange.","rol"]];
+$("nmCat").innerHTML=`<option value="">Todas as áreas</option>`+[...new Set(NM.map(n=>n[2]))].map(c=>`<option>${c}</option>`).join("");
+function normas(){
+  const q=sNorm($("nmSearch").value),c=$("nmCat").value;
+  const rows=NM.filter(n=>(!c||n[2]===c)&&(!q||q.split(" ").every(t=>sNorm(n.join(" ")).includes(t))));
+  $("nmList").innerHTML=rows.map(n=>{const v=VIEWS.find(x=>x.id===n[4]);return `<div class="nm-item"><div class="nm-c">${n[0]}</div><div><b>${n[1]}</b><span class="gd-tag">${n[2]}</span><p>${n[3]}</p></div>${v?`<button class="link-btn" data-v="${v.id}">${v.label} →</button>`:"<span></span>"}</div>`}).join("")||`<p class="none">Nenhuma norma com esse filtro.</p>`;
+  $("nmList").querySelectorAll("button[data-v]").forEach(b=>b.onclick=()=>show(b.dataset.v));
+  $("nmCount").textContent=`${rows.length} de ${NM.length} normas`;
+}
+$("nmSearch").addEventListener("input",normas);$("nmCat").addEventListener("change",normas);
+VIEWS.find(v=>v.id==="normas").badges=()=>[["Normas",String(NM.length)],["Áreas",String(new Set(NM.map(n=>n[2])).size)]];
+SRC.push(()=>NM.map(n=>({k:"Norma",i:"normas",t:n[0],s:`${n[1]} — ${n[3]}`,x:"norma "+n[2],w:4,go:()=>n[4]?show(n[4]):($("nmSearch").value=n[0],show("normas"))})));
+
+/* ======================= ROLAMENTOS · CARGAS SKF E MANCAIS ======================= */
+const SKFC=Object.fromEntries("6001 5,4 2,36|6002 5,85 2,85|6003 6,37 3,25|6004 9,95 5|6005 11,9 6,55|6006 13,8 8,3|6007 16,8 10,2|6008 17,8 11|6009 22,1 14,6|6010 22,9 16|6011 29,6 21,2|6012 30,7 23,2|6013 31,9 25|6014 39,7 31|6015 41,6 33,5|6016 49,4 40|6017 52 43|6018 60,5 50|6019 63,7 54|6201 7,28 3,1|6202 8,06 3,75|6203 9,95 4,75|6204 13,5 6,55|6205 14,8 7,8|6206 20,3 11,2|6207 27 15,3|6208 32,5 19|6209 35,1 21,6|6210 37,1 23,2|6211 46,2 29|6212 55,3 36|6213 58,5 40,5|6214 63,7 45|6215 68,9 49|6216 72,8 55|6217 87,1 64|6218 101 73,5|6219 114 81,5|6301 10,1 4,15|6302 11,9 5,4|6303 14,3 6,55|6304 16,8 7,8|6305 23,4 11,6|6306 29,6 16|6307 35,1 19|6308 42,3 24|6309 55,3 31,5|6310 65 38".split("|").map(s=>{const c=s.split(" ");return [c[0],[parseNum(c[1]),parseNum(c[2])]]}));
+/* acrescenta C e C0 (SKF) na tabela de rolamentos rígidos de esferas e leva o C para o cálculo de vida */
+function skfCols(R){
+  if(!R.rows.some(r=>SKFC[r[0]]))return;
+  const hr=$("rlHead").querySelector("tr");hr.insertAdjacentHTML("beforeend",`<th class="n bl">C (kN)</th><th class="n">C0 (kN)</th>`);
+  $("rlBody").querySelectorAll("tr[data-c]").forEach(tr=>{const c=SKFC[tr.dataset.c];
+    tr.insertAdjacentHTML("beforeend",`<td class="n bl">${c?nf(c[0],c[0]<100?2:0):"—"}</td><td class="n">${c?nf(c[1],c[1]<100?2:0):"—"}</td>`);
+    if(c)tr.addEventListener("click",()=>{$("lvC").value=dec(String(c[0]));vida()})});
+}
+// UK + bucha: designação, Ø eixo, bucha, D, Bi, Be, L, W, d1, Y, Cr kgf, C0r kgf, peso kg
+const UK="UK205 20 H2305 52 21 17 35 38 25 8 1430 800 .25|UK206 25 H2306 62 25 19 38 45 30 8 2000 1140 .4|UK207 30 H2307 72 27 20 43 52 35 9 2640 1550 .55|UK208 35 H2308 80 29 21 46 58 40 10 2990 1860 .7|UK209 40 H2309 85 30 22 50 65 45 11 3350 2120 .75|UK210 45 H2310 90 31 24 55 70 50 12 3600 2370 .9|UK211 50 H2311 100 33 25 59 75 55 12 4400 2980 1.15|UK212 55 H2312 110 36 27 62 80 60 13 5350 3350 1.45|UK213 60 H2313 120 36 28 65 85 65 14 5850 4080 1.8|UK215 65 H2315 130 41 30 73 98 75 15 6750 5050 2.6|UK216 70 H2316 140 44 33 78 105 80 17 7400 5530 3.3|UK217 75 H2317 150 44 35 82 110 85 18 8500 6510 3.9|UK218 80 H2318 160 48 38 86 120 90 18 9750 7300 4.7|UK305 20 H2305 62 27 21 35 38 25 8 2280 1170 .4|UK306 25 H2306 72 30 24 38 45 30 8 2760 1550 .45|UK307 30 H2307 80 33 25 43 52 35 9 3420 1960 .75|UK308 35 H2308 90 35 28 46 58 40 10 4140 2450 .8|UK310 45 H2310 110 40 32 55 70 50 12 6300 3860 1.35|UK311 50 H2311 120 43 34 59 75 55 12 7300 4570 1.8|UK312 55 H2312 130 47 36 62 80 60 13 8330 5290 2.05|UK313 60 H2313 140 49 38 65 85 65 14 9580 6170 2.7|UK315 65 H2315 160 55 42 73 98 75 15 11570 7840 4|UK316 70 H2316 170 55 44 78 105 80 17 12540 8830 4.55|UK317 75 H2317 180 60 46 82 110 85 18 13530 9850 5.45|UK318 80 H2318 190 60 48 86 120 90 18 14590 11020 6.25|UK319 85 H2319 200 66 50 90 125 95 19 15920 12450 8.7|UK320 90 H2320 215 68 54 97 130 100 20 17510 14290 10.8|UK324 110 H2324 260 86 63 112 155 120 22 21100 18800 18|UK326 115 H2326 280 90 67 121 165 130 23 22900 21400 23.3|UK328 125 H2328 300 95 71 131 180 140 24 25300 24600 28.9".split("|").map(s=>{const c=s.split(" ");return [c[0],+c[1],c[2],...c.slice(3).map(Number)]});
+// mancal UCP: designação, Ø eixo, H (centro), L (comprimento), J (entre furos), A (largura da base), parafuso
+const UCP="UCP204 20 33.3 127 95 38 M10|UCP205 25 36.5 140 105 38 M10|UCP206 30 42.9 165 121 48 M14|UCP207 35 47.6 167 127 48 M14|UCP208 40 49.2 184 137 54 M14|UCP209 45 54 190 146 54 M14|UCP210 50 57.2 206 159 60 M16|UCP211 55 63.5 219 171 60 M16|UCP212 60 69.8 241 184 70 M16|UCP213 65 76.2 265 203 70 M20|UCP215 75 82.6 275 217 74 M20|UCP216 80 88.9 292 232 78 M20|UCP217 85 95.2 310 247 83 M20|UCP218 90 101.6 327 262 88 M22".split("|").map(s=>{const c=s.split(" ");return [c[0],+c[1],+c[2],+c[3],+c[4],+c[5],c[6]]});
+const MC={
+ uk:{t:"Rolamentos Y com bucha (UK + H)",info:["Rolamento autocompensador de esferas com bucha cônica","Monta direto em eixo comercial (h9) sem rebaixo: a bucha aperta no eixo. Série 200 = normal, 300 = pesada. Vai em mancais UKP, UKF e SN."],
+  head:`<tr><th>Rolamento</th><th class="n">Ø eixo</th><th>Bucha</th><th class="n">D</th><th class="n">Bi</th><th class="n">L</th><th class="n">Cr (kgf)</th><th class="n">C0r (kgf)</th><th class="n">kg</th></tr>`,
+  data:UK,cells:r=>[r[0].replace("UK","UK "),nf(r[1],0)+" mm",r[2],nf(r[3],0),nf(r[4],0),nf(r[6],0),nf(r[10],0),nf(r[11],0),nf(r[12],2)],
+  src:"Fonte: catálogos FCM UK 200 (serviço normal) e UK 300 (serviço pesado). Buchas em polegada: HE, HA e HS no lugar de H (mesmo rolamento)."},
+ ucp:{t:"Mancais de pé UCP 200",info:["Mancal de pé UCP (rolamento UC com parafuso de fixação)","O mancal mais comum em transportador e máquina leve. H = altura do centro do eixo até a base, J = distância entre os furos de fixação."],
+  head:`<tr><th>Mancal</th><th class="n">Ø eixo</th><th class="n">H (centro)</th><th class="n">L (total)</th><th class="n">J (entre furos)</th><th class="n">A (base)</th><th>Parafuso</th></tr>`,
+  data:UCP,cells:r=>[r[0].replace("UCP","UCP "),nf(r[1],0)+" mm",nf(r[2],1),nf(r[3],0),nf(r[4],0),nf(r[5],0),r[6]],
+  src:"Dimensões de intercambialidade da série UCP 200 (iguais entre fabricantes; UCP 204 conferido no catálogo de mancais da pasta). Parafuso: tamanho típico, confira o furo do fabricante."}
+};
+let mcCur=store.get("gt_mc2")||"uk",mcSel=null;if(!MC[mcCur])mcCur="uk";
+$("mcTabs").innerHTML=Object.entries(MC).map(([k,r])=>`<button class="c-shape" data-k="${k}">${r.t}</button>`).join("");
+$("mcTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{mcCur=b.dataset.k;mcSel=null;store.set("gt_mc2",mcCur);mancais()});
+function mancais(){
+  const R=MC[mcCur],raw=$("mcSearch").value.trim(),q=raw.replace(/\s+/g,"").toUpperCase(),isIn=/["”\/]/.test(raw)||/\s/.test(raw),v=parseNum(raw.replace(/["”]/g,"")),dmm=isIn?v*25.4:v;
+  $("mcTabs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===mcCur));
+  $("mcInfo").querySelector("h4").textContent=R.info[0];$("mcInfo").querySelector("p").textContent=R.info[1];
+  $("mcHead").innerHTML=R.head;$("mcSrc").textContent=R.src;
+  const rows=R.data.map((r,i)=>[r,i]).filter(([r])=>!raw||r[0].toUpperCase().includes(q)||(Number.isFinite(dmm)&&Math.abs(r[1]-dmm)<(isIn?0.6:0.01)));
+  $("mcBody").innerHTML=rows.map(([r,i])=>`<tr data-i="${i}" class="${i===mcSel?"hit":""}">${R.cells(r).map((c,j)=>`<td class="${j?"n":""}"${j?"":' style="color:var(--strong);font-weight:600"'}>${c}</td>`).join("")}</tr>`).join("")||`<tr><td colspan="9" class="none">Nada com esse filtro${isIn&&Number.isFinite(dmm)?` (${nf(dmm,1)} mm)`:""}.</td></tr>`;
+  $("mcBody").querySelectorAll("tr[data-i]").forEach(tr=>tr.onclick=()=>{mcSel=+tr.dataset.i;mancais()});
+}
+$("mcSearch").addEventListener("input",mancais);
+SRC.push(()=>[...UK.map(r=>({k:"Rolamento",i:"rol",t:`${r[0].replace("UK","UK ")} + ${r[2]}`,s:`eixo ${r[1]} mm · D ${r[3]} · Cr ${nf(r[10],0)} kgf · com bucha`,x:"rolamento bucha adaptadora",w:2,go:()=>{mcCur="uk";$("mcSearch").value=r[0];show("rol")}})),
+  ...UCP.map(r=>({k:"Mancal",i:"rol",t:`Mancal ${r[0].replace("UCP","UCP ")}`,s:`eixo ${r[1]} mm · altura de centro ${dec(String(r[2]))} mm · furos a ${r[4]} mm`,x:"mancal pedestal",w:2,go:()=>{mcCur="ucp";$("mcSearch").value=r[0];show("rol")}}))]);
+
+/* ======================= BUSCA GLOBAL ======================= */
+/* Cada fonte devolve itens {k:tipo, i:ícone, t:título, s:detalhe, x:palavras extras, go:abrir}. Módulos novos fazem SRC.push(). */
+
+const sNorm=s=>String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/<[^>]+>/g," ").replace(/×/g," x ").replace(/[“”″]/g,'"').replace(/,/g,".").replace(/\s+/g," ").trim();
+const sComp=s=>s.replace(/[\s.\-\/()"'·:]/g,"");
+const KW={inicio:"home inicio",calc:"peso kg calcular massa chapa barra tubo viga cantoneira perfil soldado densidade",tinta:"pintura tinta litros demao",cone:"planificacao reducao concentrica traçado caldeiraria",
+  furo:"broca rpm rotacao avanco usinagem",tabela:"wps eps procedimento soldagem qualificacao",simb:"simbolo solda filete chanfro bisel junta desenho aws a2.4 iso 2553",processos:"smaw gmaw fcaw gtaw saw mig mag tig eletrodo arame",
+  grupos:"p-number pn grupo material asme ix","mp-chapas":"chapa espessura msg bitola kg/m2 csn usiminas","mp-perfis":"viga perfil w hp u i h laminado gerdau cantoneira ue enrijecido dobrado","mp-barras":"barra redonda quadrada sextavada chata trefilada",
+  "mp-tubos":"tubo schedule sch nbr 5580 din 2440 conducao inox mecanico","mp-flanges":"flange b16.5 ansi classe 150 300 cego sobreposto pescoco",conex:"curva te reducao cap b16.9 conexao",expandido:"metal expandido tela grade piso degrau plataforma malha",
+  "mat-equiv":"equivalencia aco astm din sae en jis","mat-acos":"aco construcao mecanica 1045 4140 4340 8620 tempera","mat-dureza":"dureza hrc hb hv brinell vickers rockwell shore",
+  plast:"plastico nylon poliamida pu poliuretano uhmw pead polietileno pom tecnil celeron ptfe teflon","maq-fix":"rosca parafuso porca arruela chave torque chaveta macho broca",
+  rol:"rolamento mancal skf ucp uk snh bucha esferas rolos",polia:"polia correia v transmissao",tol13920:"tolerancia soldado 13920",tol2768:"tolerancia geral 2768 usinagem",iso286:"ajuste h7 g6 k6 286 furo eixo",
+  acab:"rugosidade ra acabamento superficial",gdt:"gdt tolerancia geometrica 1101 planeza retitude posicao perpendicularidade","mat-sobremetal":"sobremetal forjado usinagem din 7527",
+  ttat:"tratamento termico tempera revenimento recozimento normalizacao","ttat-acos":"aco dureza tratamento","ttat-pwht":"alivio de tensoes pwht ttat","ttat-ce":"carbono equivalente pre aquecimento soldabilidade",
+  normas:"norma iso nbr asme aws din astm",conv:"conversao unidade polegada mm pol fracao kgf psi mpa torque"};
+SRC.push(()=>VIEWS.filter(v=>v.id).map(v=>({k:"Página",i:v.id,t:v.label,s:v.h.d,x:KW[v.id]||"",w:6,go:()=>show(v.id)})));
+SRC.push(()=>EPS.map(r=>({k:"EPS",i:"tabela",t:`EPS ${r[0]} · rev. ${r[1]}`,s:`${r[5]} · ${r[3]} ${r[4]} · ${String(r[6]).replace(/<[^>]+>/g," ")} · ${r[12]}`,x:`${r[7]} ${r[15]} ${r[19]} eps wps`,w:3,
+  go:()=>show("tabela",{after:()=>{exact=null;["filterProcesso","filterNorma","filterTT"].forEach(i=>$(i)&&($(i).value=""));$("searchInput").value=r[0];renderEPS()}})})));
+SRC.push(()=>Object.entries(PF).flatMap(([k,P])=>P.data.map(r=>({k:"Perfil",i:"mp-perfis",t:r[0],s:`${nf(r[1],2)} kg/m · ${P.t}`,x:"perfil viga",w:2,
+  go:()=>{pfTipo=k;pfSel=null;$("pfSearch").value=r[0].toLowerCase();if($("pfSerie"))$("pfSerie").value="";show("mp-perfis")}}))));
+SRC.push(()=>Object.entries(TU).flatMap(([k,T])=>T.data.map(r=>({k:"Tubo",i:"mp-tubos",t:`Tubo ${r[0]}${/^[\d ]+(\/\d+)?$/.test(String(r[0]))&&["sch","schs","nbr"].includes(k)?'"':""}`,s:`${typeof r[1]==="number"?"Ø externo "+nf(r[1],1)+" mm · ":""}${T.t}`,x:`tubo ${r[0]} pol`,w:2,
+  go:()=>{tuNorma=k;tuSel=null;$("tuSearch").value=String(r[0]);show("mp-tubos")}}))));
+SRC.push(()=>CHAPAS.map((c,i)=>({k:"Chapa",i:"mp-chapas",t:`Chapa ${nf(c[0],2)} mm${c[1]?` · ${c[1]}"`:""}`,s:`${nf(c[0]*7.85,2)} kg/m²${c[2]?` · bitola nº ${c[2]}`:""}${c[3]?` · ${c[3]}`:""}`,x:"chapa espessura",w:2,
+  go:()=>{chSel=i;show("mp-chapas")}})));
+SRC.push(()=>Object.entries(FLG).flatMap(([k,D])=>D.map(r=>({k:"Flange",i:"mp-flanges",t:`Flange ${r[0]}" · classe ${k}#`,s:`Ø ext. ${nf(r[2],0)} mm · ${r[5]} furos · ASME B16.5`,x:"flange",w:2,
+  go:()=>{fgCls=k;fgSel=null;$("fgSearch").value=r[0];show("mp-flanges")}}))));
+SRC.push(()=>Object.entries(FR).flatMap(([k,T])=>T.d.split("|").map(row=>{const m=row.match(/^(Nº \d+|G \d+(?: \d+\/\d+)?|\d+ \d+\/\d+"?|\S+)\s+(\S+)\s+(\S+)/);if(!m)return null;
+  return {k:"Rosca",i:"maq-fix",t:`${m[1]}${k==="M"||k==="MF"?" × "+m[2]:" · "+m[2]+" fios/pol"} · broca ${m[3]} mm`,s:T.t,x:"rosca macho furo broca",w:2,
+    go:()=>{fxCur="furo";frTipo=k;$("frTipo").value=k;$("frSearch").value=m[1].replace(/"/g,"");show("maq-fix")}}}).filter(Boolean)));
+SRC.push(()=>PFX.split("|").map(r=>{const c=r.split(" ");return {k:"Parafuso",i:"maq-fix",t:`Parafuso ${c[0]} · chave ${c[4]} mm`,s:`Passo ${dec(c[1])} · furo passante ${c[3].replace(/\//g," / ")} mm · DIN 931 / ISO 4032`,x:"parafuso porca sextavado chave",w:2,
+  go:()=>{fxCur="paraf";$("pfxSearch").value=c[0];show("maq-fix")}}}));
+SRC.push(()=>EQ.map(r=>({k:"Aço",i:"mat-equiv",t:r[1],s:[r[2]!=="—"&&"DIN "+r[2],r[3]!=="—"&&"W.Nr "+r[3],r[4]!=="—"&&"EN "+r[4],r[5]!=="—"&&"JIS "+r[5]].filter(Boolean).join(" · ")||r[7],x:`${r[0]} ${r[6]} ${r[7]}`,w:2,
+  go:()=>{$("eqCat").value="";$("eqSearch").value=r[1].replace(/\s*\(.*\)/,"");show("mat-equiv")}})));
+SRC.push(()=>Object.entries(CONV).flatMap(([k,c])=>c.u.map(u=>({k:"Unidade",i:"conv",t:`${u[0]} — ${u[1]}`,s:`Conversão de ${c.t.toLowerCase()}`,x:"converter unidade",w:1,
+  go:()=>show("conv",{after:()=>{setCat(k);$("cvFrom").value=u[0];convert()}})}))));
+SRC.push(()=>GD.map(g=>({k:"GD&T",i:"gdt",t:g[1],s:`${g[2]} · ISO 1101 · ${g[7]}`,x:"tolerancia geometrica simbolo",w:2,
+  go:()=>show("gdt",{after:()=>{setTolTab("gdt");$("gdK").value=g[0];$("gdK").dispatchEvent(new Event("change"))}})})));
+SRC.push(()=>WSYM.map(s=>({k:"Solda",i:"simb",t:`Símbolo: ${s.n}`,s:String(s.d||"").replace(/<[^>]+>/g," ").slice(0,140),x:"simbolo solda simbologia",w:3,
+  go:()=>show("simb",{after:()=>{const o=$("sbTipo");if(o&&[...o.options].some(x=>x.value===s.k)){o.value=s.k;o.dispatchEvent(new Event("change"))}}})})));
+SRC.push(()=>Object.entries(ROL).flatMap(([k,R])=>R.rows.map(r=>{const c=SKFC[r[0]];return {k:"Rolamento",i:"rol",t:`Rolamento ${r[0]}`,s:`${r[1]} × ${r[2]} × ${r[3]} mm · ${R.t}${c?` · C ${dec(c[0])} kN`:""}`,x:"rolamento",w:3,
+  go:()=>show("rol",{after:()=>{$("rlCode").value=r[0];rolamentos()}})}})));
+SRC.push(()=>TT.map(t=>({k:"Tratamento",i:"ttat",t:t[1],s:`${t[2]} · tratamento térmico`,x:"tratamento termico ttat",w:3,go:()=>show("ttat")})));
+SRC.push(()=>TT_ACOS.map(r=>({k:"Aço · TTAT",i:"ttat-acos",t:`${r[1]} · ${r[2]}`,s:`${r[0]} · composição e dureza`,x:"aco dureza",w:1,go:()=>show("ttat-acos")})));
+SRC.push(()=>POL.map(p=>({k:"Polia",i:"polia",t:`Correia / canal ${p[0]}`,s:`correia ${p[1]} mm · dp mín. ${p[9]} mm`,x:"polia correia",w:2,go:()=>show("polia")})));
+function buildIdx(){IDX=SRC.flatMap(f=>{try{return f()}catch(e){console.warn(e);return[]}}).map(e=>{const T=sNorm(e.t),A=sNorm(e.t+" "+e.s+" "+(e.x||"")+" "+e.k);return Object.assign(e,{T,A,TW:T.split(" "),AW:A.split(/[\s·]+/),TC:sComp(T)})})}
+function sSearch(q){
+  if(!IDX)buildIdx();
+  const nq=sNorm(q),toks=nq.split(" ").filter(Boolean);if(!toks.length)return[];
+  const out=[];
+  for(const e of IDX){let sc=0,ok=true;
+    for(const t of toks){const tc=sComp(t);
+      if(e.TW.includes(t))sc+=14;
+      else if(e.TW.some(w=>w.startsWith(t))||(tc.length>2&&e.TC.startsWith(tc)))sc+=10;
+      else if(e.AW.some(w=>w.startsWith(t)||(t.length>3&&w.includes(t))))sc+=3;
+      else{ok=false;break}}
+    if(!ok)continue;
+    if(e.T.startsWith(nq)||e.TC.startsWith(sComp(nq)))sc+=12;else if(e.T.includes(nq))sc+=8;if(e.T===nq)sc+=20;
+    out.push([sc+(e.w||0),e])}
+  return out.sort((a,b)=>b[0]-a[0]).slice(0,40).map(x=>x[1]);
+}
+/* mm ↔ polegada */
+function frac(inch,den=64){if(!(inch>=0))return "–";let w=Math.floor(inch),n=Math.round((inch-w)*den),d=den;if(n===d){w++;n=0}while(n&&n%2===0){n/=2;d/=2}return((w?w:"")+(n?(w?" ":"")+n+"/"+d:"")||"0")+'"'}
+function convLine(q){
+  const m=String(q).trim().match(/^(\d+(?:[.,]\d+)?|\d+\s+\d+\/\d+|\d+\/\d+)\s*(mm|"|”|''|pol|in|polegadas?)?$/i);if(!m)return "";
+  const v=parseNum(m[1]),u=(m[2]||"").toLowerCase();if(!(v>0)||(!u&&!/\//.test(m[1])&&v>600))return "";
+  const toMm=`${esc(m[1])}" = <b>${nf(v*25.4,2)} mm</b>`,toIn=`${esc(m[1])} mm = <b>${nf(v/25.4,4)}"</b> ≈ <b>${frac(v/25.4)}</b>`;
+  const parts=u==="mm"?[toIn]:u?[toMm]:/\//.test(m[1])?[toMm]:[toIn,toMm];
+  return `<div class="sr-conv">${parts.map(p=>`<div><span>conversão · </span>${p}</div>`).join("")}</div>`;
+}
+const svgI=k=>`<svg viewBox="0 0 24 24">${ICON[k]||ICON.tabela}</svg>`;
+function hlQ(t,q){let h=esc(t);sNorm(q).split(" ").filter(x=>x.length>0).forEach(x=>{const re=new RegExp("("+x.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig");h=h.replace(re,"<mark>$1</mark>")});return h}
+function renderResults(box,q,res,sel){
+  const cv=convLine(q);
+  if(!res.length&&!cv){box.innerHTML=`<div class="sr-none">Nada encontrado para "${esc(q)}". Tente só o número ou parte do nome (ex.: 310, 4140, M16).</div>`;return}
+  box.innerHTML=cv+res.map((e,i)=>`<button class="sr-item${i===sel?" on":""}" data-i="${i}">${svgI(e.i)}<b>${hlQ(e.t,q)}</b><small>${esc(e.s)}</small><i>${e.k}</i></button>`).join("");
+  box.querySelectorAll(".sr-item").forEach(b=>b.onclick=()=>{closePal();res[+b.dataset.i].go()});
+}
+/* Início */
+let hsRes=[];
+function hsRun(){const q=$("hsQ").value;
+  if(!q.trim()){$("hsRes").innerHTML="";$("hsHome").hidden=false;$("hsHint").hidden=false;return}
+  hsRes=sSearch(q);$("hsHome").hidden=true;$("hsHint").hidden=true;
+  $("hsRes").className="sr-list";renderResults($("hsRes"),q,hsRes,-1);
+  if(hsRes.length)$("hsRes").insertAdjacentHTML("afterbegin",`<div class="sr-head">${hsRes.length>=40?"40+ resultados":hsRes.length+" resultado"+(hsRes.length>1?"s":"")}</div>`);
+}
+$("hsQ").addEventListener("input",hsRun);
+$("hsQ").addEventListener("keydown",e=>{if(e.key==="Enter"&&hsRes[0])hsRes[0].go();if(e.key==="Escape"){$("hsQ").value="";hsRun()}});
+$("hsHint").querySelectorAll("button").forEach(b=>b.onclick=()=>{$("hsQ").value=b.textContent;hsRun();$("hsQ").focus()});
+const QA=[["calc","Peso de materiais","Chapa, barra, tubo, viga, cantoneira e perfil de catálogo"],["tabela","Tabela de EPS","Procedimentos de solda por processo, norma e material"],
+  ["simb","Simbologia de solda","Como ler o símbolo de solda do desenho"],["conv","mm ↔ polegada","Frações de polegada e todas as unidades"]];
+$("qaGrid").innerHTML=QA.map(([id,t,d])=>`<button class="qa" data-v="${id}"><svg viewBox="0 0 24 24">${ICON[id]}</svg><b>${t}</b><small>${d}</small></button>`).join("");
+$("qaGrid").querySelectorAll(".qa").forEach(b=>b.onclick=()=>show(b.dataset.v));
+{const G=[];VIEWS.forEach(v=>{if(v.g)G.push({g:v.g,it:[]});else if(v.id!=="inicio")G[G.length-1].it.push(v)});
+ $("catGrid").innerHTML=G.map(g=>`<div class="cat"><h4>${g.g}</h4>${g.it.map(v=>`<button data-v="${v.id}"><svg viewBox="0 0 24 24">${ICON[v.id]}</svg>${v.label}</button>`).join("")}</div>`).join("");
+ $("catGrid").querySelectorAll("button").forEach(b=>b.onclick=()=>show(b.dataset.v));}
+function mcCalc(from){
+  const mmEl=$("mcMm"),inEl=$("mcIn");let mm;
+  if(from==="in"){const v=parseNum(inEl.value);mm=v*25.4;mmEl.value=Number.isFinite(mm)?dec(String(+mm.toFixed(3))):""}
+  else{mm=parseNum(mmEl.value);inEl.value=Number.isFinite(mm)?dec(String(+(mm/25.4).toFixed(4))):""}
+  store.set("gt_mc",mmEl.value);
+  if(!(mm>0)){$("mcOut").innerHTML="Digite um valor em mm ou em polegada (aceita 1 1/4).";return}
+  const i=mm/25.4,f64=frac(i),e64=(parseNum(f64)*25.4-mm),f16=frac(i,16);
+  $("mcOut").innerHTML=`<span>Fração: <b>${f64}</b> (${e64===0||Math.abs(e64)<.005?"exata":(e64>0?"+":"−")+nf(Math.abs(e64),2)+" mm"})</span><span>Em 1/16: <b>${f16}</b></span><span>Decimal: <b>${nf(i,4)}"</b></span><span>Pés: <b>${nf(i/12,4)} ft</b></span>`;
+}
+$("mcMm").addEventListener("input",()=>mcCalc("mm"));$("mcIn").addEventListener("input",()=>mcCalc("in"));
+{const s=store.get("gt_mc");if(s)$("mcMm").value=s}
+function home(){mcCalc("mm")}
+/* Paleta (Ctrl+K) */
+let palRes=[],palSel=0;
+function openPal(){$("pal").hidden=false;$("palQ").value="";palRun();setTimeout(()=>$("palQ").focus(),0)}
+function closePal(){$("pal").hidden=true}
+function palRun(){const q=$("palQ").value;
+  if(!q.trim()){palRes=VIEWS.filter(v=>v.id).map(v=>({k:"Página",i:v.id,t:v.label,s:v.h.d,go:()=>show(v.id)}));palSel=0;renderResults($("palRes"),"",palRes,palSel);return}
+  palRes=sSearch(q);palSel=0;renderResults($("palRes"),q,palRes,palSel)}
+$("palQ").addEventListener("input",palRun);
+$("palQ").addEventListener("keydown",e=>{
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();palSel=Math.max(0,Math.min(palRes.length-1,palSel+(e.key==="ArrowDown"?1:-1)));
+    $("palRes").querySelectorAll(".sr-item").forEach((b,i)=>{b.classList.toggle("on",i===palSel);if(i===palSel)b.scrollIntoView({block:"nearest"})})}
+  if(e.key==="Enter"&&palRes[palSel]){closePal();palRes[palSel].go()}
+  if(e.key==="Escape")closePal()});
+$("pal").addEventListener("click",e=>{if(e.target===$("pal"))closePal()});
+$("sbSearch").onclick=()=>{closeDrawer();openPal()};$("topSearch").onclick=openPal;
+document.addEventListener("keydown",e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("pal").hidden?openPal():closePal()}
+  else if(e.key==="/"&&!/input|textarea|select/i.test(document.activeElement.tagName)){e.preventDefault();if(current==="inicio")$("hsQ").focus();else openPal()}});
+
 /* ======================= INÍCIO ======================= */
 setTb(tbCur);
 renderEPS();
 setShape(SHAPES[store.get("gt_shape")]?store.get("gt_shape"):"chapa");
 const h=(location.hash||"").slice(1);
-show(VIEWS.some(v=>v.id===h)||VIEW_ALIAS[h]?h:(store.get("gt_view")||"calc"));
+show(VIEWS.some(v=>v.id===h)||VIEW_ALIAS[h]?h:"inicio");
 window.addEventListener("hashchange",()=>{const k=(location.hash||"").slice(1);if(k&&k!==current&&(VIEWS.some(v=>v.id===k)||VIEW_ALIAS[k]))show(k)});
 })();
 </script>

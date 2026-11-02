@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projetos · Guilherme Braz</title>
+<meta name="description" content="Plataforma de projetos de Guilherme dos Santos Braz: ferramentas técnicas de caldeiraria e usinagem, software de produção e materiais de estudo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Identidade do portfólio: navy + laranja, IBM Plex, cantos retos, rótulos em mono */
+:root{
+  --navy:#0E1B2C; --laranja:#F08A4B; --ferrugem:#B4410E; --ferrugem-esc:#8A3009;
+  --fundo:#F2F4F7; --papel:#FFFFFF; --painel:#E4E9EF;
+  --texto:#26364B; --suave:#4A5A70; --linha:#D9DFE7; --linha-forte:#C9D2DD; --claro:#C9D4E2;
+  --sans:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fundo);color:var(--navy);font-family:var(--sans);line-height:1.55}
+a{color:var(--ferrugem)} a:hover{color:var(--ferrugem-esc)}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+.mono{font-family:var(--mono)}
+:focus-visible{outline:2px solid var(--laranja);outline-offset:2px}
+
+/* topo */
+.top{background:var(--navy);color:#fff}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:18px}
+.marca{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.marca:hover{color:#fff}
+.mono-gb{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:2px solid var(--laranja);font-family:var(--mono);font-weight:500;font-size:15px}
+.marca b{font-weight:600;font-size:16px;letter-spacing:.02em}
+.marca small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--laranja);font-weight:400}
+.top nav{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:15px}
+.top nav a{color:#D5DEE9;text-decoration:none;padding:8px 0}
+.top nav a:hover{color:#fff}
+
+.hero{background:var(--navy);color:#fff;border-bottom:4px solid var(--laranja)}
+.hero .wrap{padding-block:56px 64px;display:grid;gap:22px}
+.eyebrow{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--laranja)}
+.hero h1{margin:0;font-size:clamp(2.1rem,4.4vw,3.5rem);line-height:1.08;font-weight:700;max-width:820px;text-wrap:balance}
+.hero p.lead{margin:0;font-size:18px;color:var(--claro);max-width:680px}
+.numeros{display:flex;flex-wrap:wrap;gap:2px;margin-top:8px;background:#22324A;border:1px solid #22324A;width:fit-content;max-width:100%}
+.numeros div{background:var(--navy);padding:12px 20px;display:grid;gap:2px;min-width:120px}
+.numeros dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8FA2BA}
+.numeros dd{margin:0;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* filtros */
+.barra{position:sticky;top:0;z-index:5;background:rgba(242,244,247,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.barra .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.seg{display:inline-flex;flex-wrap:wrap;background:var(--papel);border:1px solid var(--linha-forte);padding:3px}
+.seg button{all:unset;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;font-size:14px;font-weight:500;color:var(--suave)}
+.seg button:hover{color:var(--navy)}
+.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.seg button:focus-visible{outline:2px solid var(--ferrugem);outline-offset:2px}
+.seg .n{font-family:var(--mono);font-size:11px;opacity:.7}
+.busca{display:flex;align-items:center;gap:8px;background:var(--papel);border:1px solid var(--linha-forte);padding:0 12px;min-height:44px;flex:0 1 300px}
+.busca input{all:unset;flex:1;font-size:15px;color:var(--navy);min-width:0}
+.busca svg{flex:none;color:var(--suave)}
+
+/* grade */
+main .wrap{padding-block:48px 88px;display:grid;gap:56px}
+.secao-cab{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px 24px;margin-bottom:24px}
+.secao-cab .num{margin:0 0 6px;font-family:var(--mono);font-size:13px;color:var(--ferrugem)}
+.secao-cab h2{margin:0;font-size:30px;line-height:1.15}
+.secao-cab p{margin:0;max-width:460px;color:var(--suave);font-size:16px}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:24px}
+@media (max-width:420px){.grade{grid-template-columns:1fr}}
+
+.card{background:var(--papel);border:1px solid var(--linha);display:flex;flex-direction:column;min-width:0;transition:border-color .2s,transform .2s,box-shadow .2s}
+.card:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 14px 30px -20px rgba(14,27,44,.45)}
+.capa{position:relative;display:block;aspect-ratio:16/10;background:var(--painel);overflow:hidden;border-bottom:1px solid var(--linha)}
+.capa img{width:100%;height:100%;object-fit:cover;object-position:top left;transition:transform .5s}
+.card:hover .capa img{transform:scale(1.03)}
+.capa .selo{position:absolute;left:0;top:0;background:var(--navy);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:5px 10px;display:flex;align-items:center;gap:7px}
+.capa .selo::before{content:"";width:7px;height:7px;background:var(--laranja)}
+.capa.gerada{display:grid;place-items:center;background:var(--navy);color:#fff;text-decoration:none}
+.capa.gerada span{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--laranja);text-align:center;padding:0 20px;line-height:1.8}
+.capa.gerada strong{display:block;font-family:var(--sans);font-size:30px;letter-spacing:0;text-transform:none;color:#fff;font-weight:700}
+.corpo{padding:22px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.linha1{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
+.cod{font-family:var(--mono);font-size:12.5px;color:var(--suave)}
+.tag{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border:1px solid var(--navy);color:var(--navy);white-space:nowrap}
+.tag.ativo{background:var(--navy);color:#fff}
+.card h3{margin:0;font-size:22px;line-height:1.2}
+.card p.desc{margin:0;font-size:15.5px;color:var(--texto)}
+.destaques{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14.5px;color:var(--texto)}
+.tec{margin:auto 0 0;padding-top:12px;border-top:1px solid var(--painel);font-family:var(--mono);font-size:12px;color:var(--suave)}
+.acoes{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:15px}
+.btn:hover{background:#1B2E47;color:#fff}
+.btn.sec{background:transparent;color:var(--navy);border:1px solid var(--linha-forte);font-weight:500}
+.btn.sec:hover{border-color:var(--navy);color:var(--navy)}
+.vazio{padding:40px;border:1px dashed var(--linha-forte);color:var(--suave);text-align:center;font-size:16px}
+
+footer{background:var(--papel);border-top:1px solid var(--linha)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;padding-block:28px;font-size:14px;color:var(--suave)}
+footer a{color:var(--suave)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.card:hover,.capa img,.card:hover .capa img{transition:none;transform:none}}
+@media (max-width:640px){.hero .wrap{padding-block:40px 48px}.busca{flex:1 1 100%}.corpo{padding:18px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="marca" href="./">
+      <span class="mono-gb">GB</span>
+      <span><b>Guilherme Braz</b><small>Projetos</small></span>
+    </a>
+    <nav aria-label="Links">
+      <a href="#projetos">Projetos</a>
+      <a href="https://guisbraz.github.io/portifolio/">Portfólio ↗</a>
+      <a href="https://github.com/GuisBraz">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Plataforma de projetos · ROSTAG Soluções</p>
+    <h1>Tudo o que eu construo para o chão de fábrica e para os estudos, num lugar só.</h1>
+    <p class="lead">Ferramentas de consulta de caldeiraria e usinagem, sistemas de planejamento da produção e materiais de estudo da engenharia. Cada projeto abre direto daqui.</p>
+    <dl class="numeros" id="numeros"></dl>
+  </div>
+</section>
+
+<div class="barra">
+  <div class="wrap">
+    <div class="seg" role="group" aria-label="Filtrar por categoria" id="filtros"></div>
+    <label class="busca">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="busca" type="search" placeholder="Buscar projeto ou assunto" aria-label="Buscar projeto ou assunto">
+    </label>
+  </div>
+</div>
+
+<main id="projetos">
+  <div class="wrap" id="secoes"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Guilherme dos Santos Braz · ROSTAG Soluções</span>
+    <span><a href="https://github.com/GuisBraz/Projetos-Gerais">Código desta plataforma ↗</a></span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   CATÁLOGO DE PROJETOS
+   Para adicionar um projeto, acrescente um objeto nesta lista.
+   - local: true  → o site está numa pasta deste repositório (link relativo)
+   - local: false → o site vive em outro repositório ou serviço
+   - capa: imagem em assets/capas/ (ou deixe vazio para gerar uma capa)
+   ============================================================ */
+const CATEGORIAS = {
+  ferramentas: 'Ferramentas técnicas',
+  software: 'Software de produção',
+  estudos: 'Estudos',
+  pessoal: 'Pessoal',
+};
+
+const PROJETOS = [
+  {
+    id: 'usinagem', codigo: 'PG-01', local: true, categoria: 'ferramentas',
+    titulo: 'Escola de Usinagem',
+    status: 'Ativo',
+    descricao: 'Guia interativo de usinagem, do básico ao avançado, para quem monta roteiros de processo e calcula tempos.',
+    destaques: ['18 módulos, de grandezas de corte a planejamento de processo', 'Furadeira, torno, mandrilhadora e centro de usinagem em 3D', 'Calculadoras passo a passo e simulador CNC'],
+    tecnologia: 'HTML · three.js · Sem build',
+    url: 'usinagem/', capa: 'assets/capas/usinagem.jpg',
+    busca: 'torno fresamento mandrilhadora furadeira cnc código g kienzle taylor tempo de usinagem',
+  },
+  {
+    id: 'guia-tecnico', codigo: 'PG-02', local: true, categoria: 'ferramentas',
+    titulo: 'Guia Técnico',
+    status: 'Ativo',
+    descricao: 'Consulta rápida de caldeiraria e solda para o dia a dia: pesquise bitola, EPS, norma, aço, rosca ou rolamento numa busca só.',
+    destaques: ['Peso de chapas, perfis, tubos, barras e flanges', 'EPS, simbologia de solda, tratamentos térmicos e pré-aquecimento', 'Conversões mm ↔ polegada, GD&T e normas'],
+    tecnologia: 'HTML · JavaScript · Sem build',
+    url: 'guia-tecnico/', capa: 'assets/capas/guia-tecnico.jpg',
+    busca: 'calculadora de peso caldeiraria solda eps aço norma rosca rolamento ttat pwht chapa perfil tubo',
+  },
+  {
+    id: 'projtec-1d', codigo: 'PG-03', local: false, categoria: 'software',
+    titulo: 'PROJTEC 1D',
+    status: 'Produto · v1.5.3',
+    descricao: 'Otimização de corte linear de perfis e barras, com relatório em PDF, etiquetas na impressora Zebra e banco compartilhado em rede.',
+    destaques: ['Aproveitamento calculado considerando as sobras em estoque', 'Histórico por commessa e numeração automática de RCs', 'Instalador para Windows com atualização automática'],
+    tecnologia: 'Python · PySide6 · Supabase · Vercel',
+    url: 'https://projtec1d-site.vercel.app', capa: 'https://projtec1d-site.vercel.app/screenshot-inicio.jpg',
+    busca: 'corte linear barras perfis otimização zebra etiqueta first fit',
+  },
+  {
+    id: 'rostag-pcp', codigo: 'PG-04', local: false, categoria: 'software',
+    titulo: 'ROSTAG PCP',
+    status: 'Login obrigatório',
+    descricao: 'Planejamento e controle da produção: projetos e commessas por equipe, com cronograma macro, checklist do PCP e acompanhamento das OPs até o CQ.',
+    destaques: ['Equipes com cargos: gerente de PCP, GP, técnico, programador e CQ', 'Dados compartilhados ao vivo entre a equipe', 'Instalável no PC e no celular, funciona offline'],
+    tecnologia: 'HTML · Firebase · PWA',
+    url: 'https://guisbraz.github.io/rostag-pcp/', capa: '',
+    busca: 'pcp planejamento controle produção commessa ordens de produção op cronograma equipe',
+  },
+  {
+    id: 'faculdade-de-bolso', codigo: 'PG-05', local: false, categoria: 'estudos',
+    titulo: 'Faculdade de Bolso',
+    status: 'Em andamento',
+    descricao: 'Hub de estudos da Engenharia Mecânica no IFMG Betim: as 65 matérias dos 10 períodos, com oficinas interativas e cartas de revisão.',
+    destaques: ['Matérias organizadas por período', 'Oficinas de Cálculo II, GAAL, Usinagem e Inglês', 'Cartas de revisão espaçada'],
+    tecnologia: 'HTML · JavaScript · Supabase · PWA',
+    url: 'https://guisbraz.github.io/Faculdade-de-bolso/', capa: 'assets/capas/faculdade-de-bolso.jpg',
+    busca: 'faculdade engenharia mecânica ifmg cálculo gaal física revisão anki',
+  },
+  {
+    id: 'portfolio', codigo: 'PG-06', local: false, categoria: 'pessoal',
+    titulo: 'Portfólio',
+    status: 'Ativo',
+    descricao: 'Minha trajetória na caldeiraria pesada, experiência, formação e os projetos de engenharia e software em destaque.',
+    destaques: ['Experiência na Sofir do Brasil e formação', 'Suporte articulado TC-2025-01 em 3D', 'PROJTEC 1D em detalhe'],
+    tecnologia: 'HTML · three.js',
+    url: 'https://guisbraz.github.io/portifolio/', capa: 'assets/capas/portfolio.jpg',
+    busca: 'portfólio currículo experiência sobre contato',
+  },
+];
+
+/* ============================ render ============================ */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+let filtro = 'todos', termo = '';
+
+$('#numeros').innerHTML = [
+  ['Projetos', PROJETOS.length],
+  ['Hospedados aqui', PROJETOS.filter(p => p.local).length],
+  ['Categorias', new Set(PROJETOS.map(p => p.categoria)).size],
+].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+
+const contagem = c => c === 'todos' ? PROJETOS.length : PROJETOS.filter(p => p.categoria === c).length;
+$('#filtros').innerHTML = ['todos', ...Object.keys(CATEGORIAS)].map(c =>
+  `<button type="button" data-cat="${c}" aria-pressed="${c === 'todos'}">${c === 'todos' ? 'Todos' : CATEGORIAS[c]} <span class="n">${contagem(c)}</span></button>`).join('');
+$('#filtros').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  filtro = b.dataset.cat;
+  document.querySelectorAll('#filtros button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  render();
+});
+$('#busca').addEventListener('input', e => { termo = norm(e.target.value.trim()); render(); });
+
+function card(p) {
+  const ext = !p.local, alvo = ext ? ' target="_blank" rel="noopener"' : '';
+  const capa = p.capa
+    ? `<a class="capa" href="${esc(p.url)}"${alvo} tabindex="-1" aria-hidden="true"><img src="${esc(p.capa)}" alt="" loading="lazy"><span class="selo">${ext ? 'Repositório próprio' : 'Nesta plataforma'}</span></a>`
+    : `<a class="capa gerada" href="${esc(p.url)}"${alvo} tabindex="-1" aria-hidden="true"><span>${esc(CATEGORIAS[p.categoria])}<strong>${esc(p.titulo)}</strong></span></a>`;
+  return `<article class="card">
+    ${capa}
+    <div class="corpo">
+      <div class="linha1"><span class="cod">${esc(p.codigo)}</span><span class="tag${p.status === 'Ativo' ? ' ativo' : ''}">${esc(p.status)}</span></div>
+      <h3>${esc(p.titulo)}</h3>
+      <p class="desc">${esc(p.descricao)}</p>
+      <ul class="destaques">${p.destaques.map(d => `<li>${esc(d)}</li>`).join('')}</ul>
+      <p class="tec">${esc(p.tecnologia)}</p>
+      <div class="acoes"><a class="btn" href="${esc(p.url)}"${alvo}>Abrir${ext ? ' ↗' : ' →'}</a></div>
+    </div>
+  </article>`;
+}
+
+function render() {
+  const lista = PROJETOS.filter(p =>
+    (filtro === 'todos' || p.categoria === filtro) &&
+    (!termo || norm([p.titulo, p.descricao, p.destaques.join(' '), p.tecnologia, p.busca || ''].join(' ')).includes(termo)));
+  const grupos = [
+    ['01', 'Nesta plataforma', 'Sites hospedados neste repositório, abertos na mesma aba.', lista.filter(p => p.local)],
+    ['02', 'Projetos independentes', 'Cada um vive no próprio repositório ou serviço e abre em outra aba.', lista.filter(p => !p.local)],
+  ].filter(g => g[3].length);
+  $('#secoes').innerHTML = grupos.length
+    ? grupos.map(([n, t, s, ps]) => `<section aria-labelledby="g${n}">
+        <div class="secao-cab"><div><p class="num">${n}</p><h2 id="g${n}">${t}</h2></div><p>${s}</p></div>
+        <div class="grade">${ps.map(card).join('')}</div></section>`).join('')
+    : `<p class="vazio">Nenhum projeto encontrado para essa busca.</p>`;
+}
+render();
+</script>
+</body>
+</html>

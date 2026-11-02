@@ -2,7 +2,7 @@
 
 Guia interativo de usinagem, do básico ao avançado, para quem monta roteiros de processo e calcula tempos.
 
-**Site:** https://guisbraz.github.io/usinagem/
+**Site:** https://guisbraz.github.io/Projetos-Gerais/usinagem/
 
 ## Conteúdo
 

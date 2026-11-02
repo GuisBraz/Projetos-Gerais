@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Suporte articulado para condensadora TC-2025-01 — ROSTAG Soluções. Apresentação do projeto, cargas de vento de 140 km/h e verificações estruturais.">
+<title>Suporte Articulado TC-2025-01 · Projetos · Guilherme Braz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0}
+/* Layout: hero em duas colunas (texto | palco 3D), depois seções em grade: uso, variáveis do vento, casos com 3D próprio, verificações, fixação, ficha. Fundo off-white com arcos finos de prancheta. */
+:root{
+  --bg:#F2F4F7; --surface:#FFFFFF; --ink:#0E1B2C; --muted:#4A5A70; --line:#D9DFE7;
+  --accent:#B4410E; --accent-soft:rgba(240,138,75,.14); --ok:#2B7A4B; --warn:#F08A4B; --pull:#C8361F; --push:#7D93AE; --load:#1F4FBF;
+  --wall:#e3e6eb; --shadow:0 10px 26px -14px rgba(14,27,44,.4);
+  --laranja:#F08A4B; --navy:#0E1B2C;
+  --f-display:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--f-display);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,56px);overflow-x:hidden}
+.arcs{position:fixed;inset:0;pointer-events:none;z-index:0;width:100%;height:100%}
+.arcs path{fill:none;stroke:var(--line);stroke-width:1}
+main{position:relative;z-index:1;max-width:1240px;margin-inline:auto}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.02em}
+.brand .mark{width:30px;height:30px;border:1.6px solid var(--ink);border-radius:7px;display:grid;place-items:center;font-weight:700;font-size:15px}
+.brand small{display:block;font-weight:500;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;line-height:1.1}
+.doc{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+nav.toc{display:flex;gap:6px 18px;flex-wrap:wrap;font-size:13.5px}
+nav.toc a{color:var(--muted);text-decoration:none}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink)}
+
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,48px);align-items:center;padding-block:clamp(12px,3vw,36px) 24px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+h1{font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-.035em;font-weight:600;margin:14px 0 18px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--muted)}
+.lead{color:var(--muted);font-size:clamp(16px,1.3vw,18px);max-width:36ch;margin:0 0 26px}
+.figures{display:flex;gap:clamp(18px,3vw,36px);flex-wrap:wrap;margin-bottom:28px}
+.figures div{display:flex;flex-direction:column}
+.figures b{font-size:clamp(26px,2.6vw,34px);font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.figures span{font-size:12.5px;color:var(--muted)}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;box-shadow:var(--shadow)}
+.seg button{all:unset;cursor:pointer;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:500;color:var(--muted);transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible,.step:focus-visible,.parts li:focus-visible,.cases button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.angle{font-family:var(--f-mono);font-size:13px;color:var(--muted);padding:8px 12px;border:1px dashed var(--line);border-radius:999px;font-variant-numeric:tabular-nums}
+.angle b{color:var(--ink);font-weight:500}
+
+.stage{position:relative;aspect-ratio:7/6;width:100%;max-width:100%;min-height:340px;border-radius:28px}
+.stage canvas{position:absolute;inset:0;width:100%!important;height:100%!important;cursor:grab;border-radius:28px;outline:none}
+.stage canvas:active{cursor:grabbing}
+.chip,.tag{position:absolute;left:0;top:0;display:flex;align-items:center;gap:8px;background:var(--surface);color:var(--ink);font-size:13.5px;font-weight:500;padding:8px 14px 8px 12px;border-radius:12px;box-shadow:var(--shadow);white-space:nowrap;pointer-events:none;transition:opacity .35s;will-change:transform}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.chip small,.tag small{color:var(--muted);font-family:var(--f-mono);font-size:11.5px;font-weight:400}
+.chip.dim,.tag.dim{opacity:0}
+.tag{font-size:12.5px;padding:6px 10px;border-radius:10px;font-family:var(--f-mono);font-weight:500}
+.tag.load{color:var(--load)} .tag.pull{color:var(--pull)} .tag.push{color:var(--push)}
+.hint{position:absolute;right:16px;bottom:14px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);pointer-events:none}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:12px}
+
+section{padding-block:clamp(48px,7vw,96px) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,48px);margin-bottom:28px;align-items:end}
+h2{font-size:clamp(26px,3vw,38px);letter-spacing:-.03em;line-height:1.08;font-weight:600;margin:10px 0 0;text-wrap:balance}
+h3{text-wrap:balance}
+.sec-head p{color:var(--muted);margin:0;max-width:56ch}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.step{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;transition:border-color .25s,transform .25s}
+.step:hover{border-color:var(--accent);transform:translateY(-2px)}
+.step .n{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+.step h3{margin:0;font-size:19px;font-weight:600;letter-spacing:-.015em}
+.step p{margin:0;color:var(--muted);font-size:14.5px}
+.step .go{margin-top:auto;font-size:13px;font-weight:500;color:var(--ink)}
+
+/* vento */
+.wind{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,48px);align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:clamp(18px,2.4vw,28px);min-width:0}
+.slider{display:flex;flex-direction:column;gap:10px}
+.slider label{font-size:13px;color:var(--muted)}
+.slider .big{font-size:clamp(40px,5vw,58px);font-weight:600;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.slider .big small{font-size:18px;color:var(--muted);font-weight:500;letter-spacing:0;margin-left:6px}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.ticks{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.chain{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.chain li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
+.chain li:last-child{border-bottom:0}
+.chain .f{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);grid-column:1}
+.chain .lbl{font-weight:500}
+.chain .val{grid-row:1/3;grid-column:2;font-family:var(--f-mono);font-size:17px;font-weight:500;font-variant-numeric:tabular-nums;text-align:right;align-self:center}
+.chain .val small{font-size:12px;color:var(--muted)}
+.vars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;margin:18px 0 0;border-top:1px solid var(--line)}
+.vars div{padding:11px 0;border-bottom:1px solid var(--line);min-width:0}
+.vars dt{font-size:12px;color:var(--muted)}
+.vars dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
+.note-sm{font-size:13px;color:var(--muted);margin:14px 0 0}
+
+/* casos */
+.cases{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.cases button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:var(--surface);min-width:0;transition:border-color .2s,background .2s}
+.cases button b{font-family:var(--f-mono);font-size:13px;font-weight:500}
+.cases button span{font-size:12.5px;color:var(--muted)}
+.cases button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink)}
+.cases button[aria-pressed="true"] b,.cases button[aria-pressed="true"] span{color:var(--bg)}
+.case-wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(16px,2.4vw,32px);align-items:stretch}
+.stage2{position:relative;width:100%;max-width:100%;aspect-ratio:4/3;min-height:320px;border-radius:24px;background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.stage2 canvas{position:absolute;inset:0;width:100%!important;height:100%!important;cursor:grab;outline:none}
+.legend{position:absolute;left:14px;bottom:12px;display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);pointer-events:none}
+.legend i{display:inline-block;width:14px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.case-info{display:flex;flex-direction:column;gap:16px;min-width:0}
+.case-info h3{margin:0;font-size:22px;letter-spacing:-.02em}
+.case-info p{margin:0;color:var(--muted);font-size:14.5px}
+.loads{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.loads li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
+.loads li span:last-child{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.res div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;min-width:0}
+.res dt{font-size:12px;color:var(--muted)}
+.res dd{margin:2px 0 0;font-size:22px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.res dd small{font-size:12px;color:var(--muted);font-weight:500}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:12px;color:var(--ok)}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+
+/* gráfico FS */
+.fs-chart{margin-top:28px}
+.fs-row{display:grid;grid-template-columns:150px minmax(0,1fr) 64px;gap:12px;align-items:center;padding:7px 0}
+.fs-row .nm{font-size:13.5px}
+.fs-row .nm small{display:block;color:var(--muted);font-size:12px}
+.fs-track{position:relative;height:14px;border-radius:7px;background:var(--accent-soft)}
+.fs-bar{position:absolute;left:0;top:0;bottom:0;border-radius:7px;background:var(--accent)}
+.fs-goal{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--warn)}
+.fs-row .v{font-family:var(--f-mono);font-variant-numeric:tabular-nums;text-align:right}
+.fs-axis{display:grid;grid-template-columns:150px minmax(0,1fr) 64px;gap:12px}
+.fs-axis .sc{position:relative;height:18px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.fs-axis .sc span{position:absolute;transform:translateX(-50%)}
+.fs-key{font-size:12.5px;color:var(--muted);margin-top:6px}
+.fs-key i{display:inline-block;width:2px;height:12px;background:var(--warn);vertical-align:middle;margin-right:6px}
+
+/* verificações */
+.checks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card .k{font-size:13px;color:var(--muted)}
+.card .v{font-size:26px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.card .v small{font-size:13px;color:var(--muted);font-weight:500;letter-spacing:0}
+.card .t{font-size:13px;color:var(--muted)}
+.card .f{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
+
+/* tabela chumbadores */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-variant-numeric:tabular-nums}
+th,td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--line);font-size:14px;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.04em}
+tbody tr:last-child td{border-bottom:0}
+td.max{color:var(--pull);font-weight:600}
+td small{color:var(--muted);font-size:12px}
+.anch-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(16px,2.4vw,32px);align-items:start}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.note h3{margin:0 0 6px;font-size:16px}
+.note p,.note li{margin:0;color:var(--muted);font-size:14px}
+.note ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px}
+
+.spec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.spec div{padding:20px 18px 22px 0;border-bottom:1px solid var(--line);min-width:0}
+.spec dt{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.spec dd{margin:0;font-size:17px;font-weight:500;letter-spacing:-.01em}
+.spec dd small{display:block;font-family:var(--f-mono);font-size:12px;color:var(--muted);font-weight:400;margin-top:2px}
+.parts-wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3vw,48px);align-items:start}
+.parts{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.parts li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:14px 4px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .2s}
+.parts li:hover,.parts li.on{background:var(--accent-soft)}
+.parts .code{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.parts .name{font-weight:500}
+.parts .name small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+.parts .kg{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.parts .tot{font-weight:600;color:var(--ink)}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;list-style:none;margin:0;padding:0}
+.rules li{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;min-width:0}
+.rules b{display:block;margin-bottom:4px}
+.rules span{color:var(--muted);font-size:14px}
+footer{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-block:56px 40px;margin-top:64px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+
+@media (max-width:980px){
+  .hero,.sec-head,.parts-wrap,.wind,.case-wrap,.anch-grid{grid-template-columns:minmax(0,1fr)}
+  .stage{aspect-ratio:1/1}
+  .spec,.checks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rules{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .steps,.checks,.res{grid-template-columns:minmax(0,1fr)}
+  .vars{grid-template-columns:minmax(0,1fr)}
+  .chip{font-size:12px;padding:6px 10px 6px 9px}
+  .chip small{display:none}
+  .fs-row,.fs-axis{grid-template-columns:96px minmax(0,1fr) 46px}
+  nav.toc{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ===== identidade da plataforma (navy + laranja, cantos retos) ===== */
+*,*::before,*::after{border-radius:0!important}
+.eyebrow{color:var(--accent)} .eyebrow::before{background:var(--laranja)}
+.chip::before{background:var(--laranja)}
+h1,h2{letter-spacing:-.02em}
+h1 em{color:var(--accent)}
+.seg button[aria-pressed="true"],.cases button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.cases button[aria-pressed="true"] b,.cases button[aria-pressed="true"] span{color:#fff}
+.parts{border-top-color:var(--navy)}
+.pg-top{background:var(--navy);color:#fff;margin-inline:calc(-1*clamp(16px,4vw,56px));padding-inline:clamp(16px,4vw,56px)}
+.pg-top .in{max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px;padding-block:16px}
+.pg-marca{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.pg-gb{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:2px solid var(--laranja);font-family:var(--f-mono);font-weight:500;font-size:14px}
+.pg-marca b{font-weight:600;font-size:15px}
+.pg-marca small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--laranja)}
+.pg-top a.volta{color:#D5DEE9;text-decoration:none;font-size:14.5px}
+.pg-top a.volta:hover{color:#fff}
+.pg-faixa{height:4px;background:var(--laranja);margin-inline:calc(-1*clamp(16px,4vw,56px))}
+header.top .brand .mark{border-color:var(--laranja);border-width:2px}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;padding:5px 10px;border:1px solid var(--navy);margin-bottom:6px}
+.status::before{content:"";width:7px;height:7px;background:var(--laranja)}
+
+/* desenhos */
+.sheets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.sheet{background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0;transition:border-color .2s}
+.sheet:hover{border-color:var(--navy)}
+.sheet a.prev{display:block;background:#fff;border-bottom:1px solid var(--line);aspect-ratio:1754/1241;overflow:hidden}
+.sheet a.prev img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s}
+.sheet:hover a.prev img{transform:scale(1.02)}
+.sheet .bd{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.sheet .row{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline}
+.sheet h3{margin:0;font-size:18px}
+.sheet p{margin:0;color:var(--muted);font-size:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 18px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:14.5px;width:fit-content}
+.btn:hover{background:#1B2E47;color:#fff}
+.btn.sec{background:transparent;color:var(--navy);border:1px solid #C9D2DD;font-weight:500}
+.btn.sec:hover{border-color:var(--navy)}
+.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:8px}
+
+/* memorial */
+.mc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,48px);align-items:start}
+.mc-doc{background:var(--navy);color:#fff;padding:26px;display:flex;flex-direction:column;gap:14px}
+.mc-doc .eyebrow{color:var(--laranja)}
+.mc-doc h3{margin:0;font-size:22px;line-height:1.2}
+.mc-doc p{margin:0;color:#C9D4E2;font-size:14.5px}
+.mc-doc dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#22324A;border:1px solid #22324A;margin:4px 0 0}
+.mc-doc dl div{background:var(--navy);padding:10px 12px}
+.mc-doc dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#8FA2BA}
+.mc-doc dd{margin:2px 0 0;font-size:14.5px;font-weight:500}
+.mc-doc .btn{background:var(--laranja);color:var(--navy)}
+.mc-doc .btn:hover{background:#F4A06B;color:var(--navy)}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.figs figure{margin:0;background:var(--surface);border:1px solid var(--line);min-width:0}
+.figs figure.wide{grid-column:1/-1}
+.figs img{display:block;width:100%;height:auto}
+.figs figcaption{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding:9px 12px;border-top:1px solid var(--line)}
+.pend{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--navy)}
+.pend li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:12px;padding:12px 4px;border-bottom:1px solid var(--line);align-items:baseline;font-size:14.5px}
+.pend .c{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+.pend .r{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.pend-h{margin:36px 0 0;font-size:18px}
+@media (max-width:980px){.mc{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.sheets,.figs{grid-template-columns:minmax(0,1fr)}.pend li{grid-template-columns:40px minmax(0,1fr)}.pend .r{grid-column:2}}
+</style>
+</head>
+<body>
+
+
+
+<div class="pg-top"><div class="in">
+  <a class="pg-marca" href="../../"><span class="pg-gb">GB</span><span><b>Guilherme Braz</b><small>Projetos · Engenharia</small></span></a>
+  <a class="volta" href="../../">← Todos os projetos</a>
+</div></div>
+<div class="pg-faixa"></div>
+<main>
+  <header class="top">
+    <div class="brand"><span class="mark">R</span><span>ROSTAG<small>Soluções</small></span></div>
+    <nav class="toc" aria-label="Seções">
+      <a href="#uso">Uso</a><a href="#vento">Vento</a><a href="#casos">Casos de carga</a><a href="#verificacoes">Verificações</a><a href="#fixacao">Fixação</a><a href="#ficha">Ficha</a><a href="#desenhos">Desenhos</a><a href="#memorial">Memorial</a>
+    </nav>
+    <span class="doc">TC-2025-01 · Rev. 02 · out/2026</span>
+  </header>
+
+  <section class="hero" style="padding-top:0">
+    <div>
+      <span class="status">Projeto independente · para aprovação</span>
+      <div class="eyebrow">Suporte articulado para condensadora</div>
+      <h1>A condensadora vem até a janela. <em>Depois volta para o lugar.</em></h1>
+      <p class="lead">Plataforma em cantoneira que gira 180° num pivô central. Em trabalho, fica afastada da janela. Para limpar ou consertar, chega até a mão de quem está do lado de dentro.</p>
+      <div class="figures" aria-label="Números principais">
+        <div><b>180°</b><span>de giro no pivô</span></div>
+        <div><b>30 kg</b><span>de condensadora</span></div>
+        <div><b>140 km/h</b><span>vento de projeto</span></div>
+        <div><b>FS 2,72</b><span>no pior caso (meta 2,0)</span></div>
+      </div>
+      <div class="ctrl">
+        <div class="seg" role="group" aria-label="Posição da plataforma">
+          <button id="b-work" type="button" aria-pressed="true">Trabalho</button>
+          <button id="b-maint" type="button" aria-pressed="false">Manutenção</button>
+        </div>
+        <span class="angle" aria-live="polite">giro <b id="deg">180°</b></span>
+      </div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="loading" id="loading">carregando modelo…</div>
+      <div class="chip" id="c-giro">Giro de 180° <small>pivô central</small></div>
+      <div class="chip" id="c-cond">Condensadora <small>30 kg · 4 pés parafusados</small></div>
+      <div class="chip" id="c-pivo">Pivô Ø1¼" <small>tubo Ø44,45 × 3</small></div>
+      <div class="chip" id="c-trava">Trava baioneta <small>placa maciça</small></div>
+      <div class="chip" id="c-mf">Mão francesa <small>apoio da ponta</small></div>
+      <span class="hint">arraste para girar a vista</span>
+    </div>
+  </section>
+
+  <section id="uso">
+    <div class="sec-head">
+      <div><div class="eyebrow">Como funciona</div><h2>Três movimentos, feitos da janela</h2></div>
+      <p>Toque em cada passo para ver no modelo. A plataforma gira pelo lado de fora, longe da parede, e só fica livre com a trava aberta. Nas duas posições a ponta assenta numa mão francesa.</p>
+    </div>
+    <div class="steps">
+      <button class="step" type="button" data-step="1"><span class="n">1 · destravar</span><h3>Puxe o pino-trava</h3><p>O pino tipo baioneta atravessa a orelha de cima e a placa de trava da plataforma. Gire 90° e puxe para cima.</p><span class="go">Ver no modelo →</span></button>
+      <button class="step" type="button" data-step="2"><span class="n">2 · girar</span><h3>Gire a plataforma 180°</h3><p>As buchas de nylon no pino de Ø1¼" deixam o giro leve. No fim do curso, a ponta assenta na outra mão francesa.</p><span class="go">Ver no modelo →</span></button>
+      <button class="step" type="button" data-step="3"><span class="n">3 · travar</span><h3>Recoloque o pino</h3><p>O outro furo da placa de trava para embaixo do mesmo pino. Desça o pino e gire 90°: a plataforma fica travada contra o vento.</p><span class="go">Ver no modelo →</span></button>
+    </div>
+  </section>
+
+  <section id="vento">
+    <div class="sec-head">
+      <div><div class="eyebrow">Variáveis de projeto</div><h2>De 140 km/h para newtons</h2></div>
+      <p>O vento vira força pela NBR 6123. Arraste a velocidade para ver como cada número da cadeia muda. O projeto usa 140 km/h, valor definido pelo cliente.</p>
+    </div>
+    <div class="wind">
+      <div class="panel">
+        <div class="slider">
+          <label for="v">Velocidade do vento (rajada de 3 s)</label>
+          <div class="big"><span id="v-out">140</span><small>km/h</small></div>
+          <input type="range" id="v" min="40" max="180" step="5" value="140" aria-describedby="v-help">
+          <div class="ticks"><span>40</span><span>80</span><span>120</span><span>160</span><span>180</span></div>
+          <p class="note-sm" id="v-help">Fatores S1 (relevo), S2 (rugosidade e altura) e S3 (estatístico) adotados iguais a 1,0.</p>
+        </div>
+        <dl class="vars">
+          <div><dt>Condensadora</dt><dd>30 kg · 810 × 560 × 300 mm</dd></div>
+          <div><dt>Fator dinâmico no manuseio</dt><dd>1,5 → 441 N</dd></div>
+          <div><dt>Coeficiente de arrasto Ca</dt><dd>1,3 (prisma)</dd></div>
+          <div><dt>Centro de pressão</dt><dd>286 mm acima da plataforma</dd></div>
+          <div><dt>Área frontal / lateral</dt><dd>0,454 / 0,168 m²</dd></div>
+          <div><dt>Peso da plataforma</dt><dd>≈ 16,3 kg (giram juntos)</dd></div>
+        </dl>
+      </div>
+      <div class="panel">
+        <ol class="chain" aria-live="polite">
+          <li><span class="lbl">Velocidade característica</span><span class="f">Vk = V0 · S1 · S2 · S3</span><span class="val" id="o-vk">38,9 <small>m/s</small></span></li>
+          <li><span class="lbl">Pressão dinâmica</span><span class="f">q = 0,613 · Vk²</span><span class="val" id="o-q">927 <small>N/m²</small></span></li>
+          <li><span class="lbl">Pressão na condensadora</span><span class="f">p = Ca · q</span><span class="val" id="o-p">1.205 <small>N/m²</small></span></li>
+          <li><span class="lbl">Força frontal (face 810 × 560)</span><span class="f">Ff = p · 0,454 m²</span><span class="val" id="o-ff">547 <small>N</small></span></li>
+          <li><span class="lbl">Força lateral (face 300 × 560)</span><span class="f">Fl = p · 0,168 m²</span><span class="val" id="o-fl">203 <small>N</small></span></li>
+          <li><span class="lbl">Momento na plataforma (frontal)</span><span class="f">M = Ff · 0,286 m</span><span class="val" id="o-m">156 <small>N·m</small></span></li>
+          <li><span class="lbl">Força no pino-trava</span><span class="f">F = Ff · 447 mm ÷ 57,2 mm</span><span class="val" id="o-tr">4,27 <small>kN</small></span></li>
+        </ol>
+        <p class="note-sm">547 N é o peso de uns 56 kg empurrando a condensadora de lado. Por isso a trava e a fixação são dimensionadas pelo vento, não pelo peso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos">
+    <div class="sec-head">
+      <div><div class="eyebrow">Casos de carga</div><h2>Cada situação de uso, verificada</h2></div>
+      <p>Cada caso foi simulado no Autodesk Inventor por elementos finitos (T1 a T4) ou calculado à mão (T5). A posição de manutenção (M) é o espelho da de trabalho. Setas azuis são as cargas; na parede, vermelho é o que puxa o chumbador e azul-acinzentado o que empurra.</p>
+    </div>
+    <div class="cases" role="group" aria-label="Escolha o caso de carga" id="cases"></div>
+    <div class="case-wrap">
+      <div class="stage2" id="stage2">
+        <div class="legend"><span><i style="background:var(--load)"></i>carga</span><span><i style="background:var(--pull)"></i>arranca da parede</span><span><i style="background:var(--push)"></i>comprime a parede</span></div>
+      </div>
+      <div class="case-info" aria-live="polite">
+        <div><span class="doc" id="ci-code">T3</span><h3 id="ci-name">Vento puxando da parede</h3></div>
+        <p id="ci-desc"></p>
+        <ul class="loads" id="ci-loads"></ul>
+        <dl class="res">
+          <div><dt>Fator de segurança</dt><dd id="ci-fs">2,72</dd></div>
+          <div><dt>Tensão máx.</dt><dd id="ci-vm">92 <small>MPa</small></dd></div>
+          <div><dt>Deslocamento</dt><dd id="ci-d">0,29 <small>mm</small></dd></div>
+        </dl>
+        <span class="badge" id="ci-ok">aprovado · FS acima da meta 2,0</span>
+      </div>
+    </div>
+    <div class="fs-chart" role="img" aria-label="Fator de segurança mínimo por caso, todos acima da meta 2,0">
+      <div id="fs-rows"></div>
+      <div class="fs-axis"><span></span><div class="sc" id="fs-scale"></div><span></span></div>
+      <p class="fs-key"><i></i>meta FS = 2,0 sobre o escoamento do aço (250 MPa no ASTM A36)</p>
+    </div>
+  </section>
+
+  <section id="verificacoes">
+    <div class="sec-head">
+      <div><div class="eyebrow">Verificações à mão</div><h2>As peças que seguram tudo, uma a uma</h2></div>
+      <p>Contas feitas com fórmulas clássicas de resistência dos materiais, para conferir o modelo de elementos finitos e cobrir o giro, quando a ponta fica sem apoio.</p>
+    </div>
+    <div class="checks">
+      <div class="card"><span class="k">Pino-trava Ø18 · vento frontal</span><span class="v">FS 7,2</span><span class="t">16,8 MPa de cisalhamento com 4,27 kN a 57 mm do eixo</span><span class="f">τ = F ÷ (π·d²/4)</span></div>
+      <div class="card"><span class="k">Tubo do pivô · torção</span><span class="v">FS 4,5</span><span class="t">32,2 MPa com 244 N·m. Com parede de 2 mm seriam 45,1 MPa</span><span class="f">τ = T·r ÷ J</span></div>
+      <div class="card"><span class="k">Orelha superior · girando</span><span class="v">FS 5,0</span><span class="t">49,8 MPa com 917 N no plano da chapa 60 × 9,5</span><span class="f">σ = M ÷ (t·b²/6)</span></div>
+      <div class="card"><span class="k">Orelha inferior · com reforço</span><span class="v">FS 5,8</span><span class="t">42,9 MPa no fim do reforço. Sem o reforço seriam 206 MPa (FS 1,2)</span><span class="f">seção T: chapa + reforço</span></div>
+      <div class="card"><span class="k">Pino do pivô Ø1¼" · SAE 1020</span><span class="v">FS 34</span><span class="t">5,8 MPa de flexão: as cargas chegam junto das orelhas</span><span class="f">σ = M ÷ (π·d³/32)</span></div>
+      <div class="card"><span class="k">Buchas de nylon 6.6</span><span class="v">1,2 <small>MPa</small></span><span class="t">pressão de contato com o binário do giro; limite usual ≈ 7 MPa</span><span class="f">p = F ÷ (d·L), L = 25 mm</span></div>
+      <div class="card"><span class="k">Solda da orelha inferior</span><span class="v">FS 10</span><span class="t">14 MPa no filete de 5 mm, contra 145 MPa admissíveis (E70)</span><span class="f">método das linhas</span></div>
+      <div class="card"><span class="k">Deslocamento máximo</span><span class="v">0,29 <small>mm</small></span><span class="t">no caso T3. Imperceptível a olho nu</span><span class="f">elementos finitos</span></div>
+    </div>
+  </section>
+
+  <section id="fixacao">
+    <div class="sec-head">
+      <div><div class="eyebrow">Fixação na parede</div><h2>Quanto cada chumbador precisa segurar</h2></div>
+      <p>Força no chumbador mais carregado de cada apoio, a partir das reações da simulação. Considera giro da placa na borda, o que é conservador.</p>
+    </div>
+    <div class="anch-grid">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Apoio</th><th>T2</th><th>T3</th><th>T4</th><th>T5 giro</th></tr></thead>
+          <tbody>
+            <tr><td>Placa superior <small>4 × PBA 3/8"</small></td><td>6 <small>/ 1</small></td><td>35 <small>/ 4</small></td><td>6 <small>/ 1</small></td><td>23 <small>/ 0</small></td></tr>
+            <tr><td>Placa inferior <small>4 × PBA 3/8"</small></td><td>7 <small>/ 25</small></td><td>50 <small>/ 12</small></td><td>27 <small>/ 18</small></td><td>71 <small>/ 15</small></td></tr>
+            <tr><td>Mão francesa <small>2 × PBA 3/8"</small></td><td>77 <small>/ 13</small></td><td class="max">112 <small>/ 28</small></td><td>99 <small>/ 21</small></td><td>— <small>sem apoio</small></td></tr>
+          </tbody>
+        </table>
+        <p class="note-sm" style="padding:0 14px 14px">Valores em kgf: tração / corte por chumbador. Mão francesa com furos a 150 mm de distância.</p>
+      </div>
+      <aside class="note">
+        <h3>O que a parede precisa ter</h3>
+        <ul>
+          <li>Chumbador com carga de trabalho de pelo menos <b>115 kgf à tração</b> e <b>30 kgf ao corte</b> no material real da parede.</li>
+          <li>Em concreto, chumbador mecânico PBA 3/8" × 3".</li>
+          <li>Em bloco ou tijolo furado, chumbador químico com tela ou barra passante com contraplaca.</li>
+          <li>Confirme o tipo de parede antes de furar. O pior ponto é o chumbador de cima da mão francesa no caso T3.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="ficha">
+    <div class="sec-head">
+      <div><div class="eyebrow">Ficha técnica</div><h2>O que vai na parede</h2></div>
+      <p>Estrutura em aço ASTM A36, pino do pivô em SAE 1020 e buchas em nylon 6.6. Passe o mouse (ou toque) numa peça para destacá-la no modelo lá em cima.</p>
+    </div>
+    <dl class="spec">
+      <div><dt>Plataforma</dt><dd>850 × 350 mm<small>L 2" × 1/4", abas para cima, barras chatas</small></dd></div>
+      <div><dt>Equipamento</dt><dd>até 30 kg<small>810 × 560 × 300 mm</small></dd></div>
+      <div><dt>Afastamento</dt><dd>≈ 150 mm<small>condensadora → parede</small></dd></div>
+      <div><dt>Giro</dt><dd>180°<small>pivô a 309,5 mm da parede</small></dd></div>
+      <div><dt>Pivô</dt><dd>Pino Ø1¼"<small>tubo Ø44,45 × 3,00 · 2 buchas</small></dd></div>
+      <div><dt>Orelhas</dt><dd>325 mm, com reforço<small>chapa 3/8" · placa 150 × 150</small></dd></div>
+      <div><dt>Fixação</dt><dd>12 chumbadores<small>PBA 3/8" × 3" (em concreto)</small></dd></div>
+      <div><dt>Peso do conjunto</dt><dd>≈ 33,6 kg<small>sem a condensadora</small></dd></div>
+    </dl>
+    <div class="parts-wrap" style="margin-top:32px">
+      <ol class="parts" id="parts">
+        <li tabindex="0" data-part="plat"><span class="code">-01</span><span class="name">Plataforma soldada<small>quadro em L, barras chatas, tubo do pivô, diagonal e placa de trava</small></span><span class="kg">≈ 16,3 kg</span></li>
+        <li tabindex="0" data-part="inf"><span class="code">-02</span><span class="name">Suporte inferior<small>orelha com reforço e pino Ø1¼" soldado</small></span><span class="kg">6,13 kg</span></li>
+        <li tabindex="0" data-part="sup"><span class="code">-03</span><span class="name">Suporte superior<small>orelha com furo do pino-trava</small></span><span class="kg">4,01 kg</span></li>
+        <li tabindex="0" data-part="buch"><span class="code">-04</span><span class="name">Buchas de nylon 6.6 (2)<small>com colar de apoio</small></span><span class="kg">0,08 kg</span></li>
+        <li tabindex="0" data-part="mfw"><span class="code">-05</span><span class="name">Mão francesa · trabalho<small>apoio da ponta em 180°</small></span><span class="kg">3,13 kg</span></li>
+        <li tabindex="0" data-part="mfm"><span class="code">-06</span><span class="name">Mão francesa · manutenção<small>apoio da ponta em 0°, sob a janela</small></span><span class="kg">3,31 kg</span></li>
+        <li tabindex="0" data-part="trava"><span class="code">-07</span><span class="name">Pino-trava<small>tipo baioneta, Ø18</small></span><span class="kg">0,60 kg</span></li>
+        <li tabindex="0" data-part="chumb"><span class="code">—</span><span class="name">Chumbadores PBA 3/8" × 3" (12)<small>4 por suporte do pivô, 2 por mão francesa</small></span><span class="kg">—</span></li>
+        <li style="cursor:default"><span class="code"></span><span class="name tot">Total</span><span class="kg tot">33,56 kg</span></li>
+      </ol>
+      <aside class="note">
+        <h3>Condições de uso</h3>
+        <ul>
+          <li>Só gire a plataforma com o tempo calmo. O vento de projeto vale para a plataforma travada.</li>
+          <li>Depois de girar, confira se o pino-trava desceu e girou 90°.</li>
+          <li>Carga máxima: uma condensadora de até 30 kg, parafusada pelos 4 pés.</li>
+          <li>Inspeção anual: aperto dos chumbadores, folga das buchas e pintura ou galvanização.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+
+  <section id="desenhos">
+    <div class="sec-head">
+      <div><div class="eyebrow">Desenhos de fabricação</div><h2>Quatro folhas, do conjunto a cada peça</h2></div>
+      <p>Folhas em A2, 1º diedro, detalhadas no Inventor e no AutoCAD. Clique na folha para abrir o PDF em tamanho real.</p>
+    </div>
+    <div class="sheets">
+      <article class="sheet">
+        <a class="prev" href="docs/TC-2025-01-00.pdf" target="_blank" rel="noopener" aria-label="Abrir o desenho TC-2025-01-00 em PDF"><img src="img/TC-2025-01-00.jpg" alt="Folha do desenho TC-2025-01-00: Conjunto geral" loading="lazy"></a>
+        <div class="bd">
+          <div class="row"><span class="doc">TC-2025-01-00</span><span class="doc">Rev. 02 · A2</span></div>
+          <h3>Conjunto geral</h3>
+          <p>Montagem, cotas de instalação, as três posições (trabalho, em movimento e manutenção) e a lista de material. Peso total 33,64 kg.</p>
+          <div class="acts"><a class="btn sec" href="docs/TC-2025-01-00.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a></div>
+        </div>
+      </article>
+      <article class="sheet">
+        <a class="prev" href="docs/TC-2025-01-01_Rev2.pdf" target="_blank" rel="noopener" aria-label="Abrir o desenho TC-2025-01-01 em PDF"><img src="img/TC-2025-01-01_Rev2.jpg" alt="Folha do desenho TC-2025-01-01: Plataforma soldada" loading="lazy"></a>
+        <div class="bd">
+          <div class="row"><span class="doc">TC-2025-01-01</span><span class="doc">Rev. 02 · A2 · 1:1</span></div>
+          <h3>Plataforma soldada</h3>
+          <p>Quadro 850 × 350 em L 2" × 1/4", barras chatas, tubo do pivô Ø44,45 × 3, diagonal e placa de trava (detalhe 2:1). 16,28 kg.</p>
+          <div class="acts"><a class="btn sec" href="docs/TC-2025-01-01_Rev2.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a></div>
+        </div>
+      </article>
+      <article class="sheet">
+        <a class="prev" href="docs/TC-2025-01-02_Rev2.pdf" target="_blank" rel="noopener" aria-label="Abrir o desenho TC-2025-01-02 a 04 em PDF"><img src="img/TC-2025-01-02_Rev2.jpg" alt="Folha do desenho TC-2025-01-02 a 04: Suportes do pivô e buchas" loading="lazy"></a>
+        <div class="bd">
+          <div class="row"><span class="doc">TC-2025-01-02 a 04</span><span class="doc">Rev. 02 · A2</span></div>
+          <h3>Suportes do pivô e buchas</h3>
+          <p>Suporte inferior com pino Ø1¼" soldado, suporte superior com furo do pino-trava e buchas de nylon 6.6 com colar (detalhe 3:1).</p>
+          <div class="acts"><a class="btn sec" href="docs/TC-2025-01-02_Rev2.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a></div>
+        </div>
+      </article>
+      <article class="sheet">
+        <a class="prev" href="docs/TC-2025-01-05.pdf" target="_blank" rel="noopener" aria-label="Abrir o desenho TC-2025-01-05 a 07 em PDF"><img src="img/TC-2025-01-05.jpg" alt="Folha do desenho TC-2025-01-05 a 07: Mãos francesas e pino-trava" loading="lazy"></a>
+        <div class="bd">
+          <div class="row"><span class="doc">TC-2025-01-05 a 07</span><span class="doc">Rev. 01 · A2</span></div>
+          <h3>Mãos francesas e pino-trava</h3>
+          <p>Mão francesa de trabalho e de manutenção em L 2" × 1/4" com reforço a 45°, e o pino-trava tipo baioneta Ø18.</p>
+          <div class="acts"><a class="btn sec" href="docs/TC-2025-01-05.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="memorial">
+    <div class="sec-head">
+      <div><div class="eyebrow">Memorial de cálculo</div><h2>Todos os casos acima da meta de FS 2,0</h2></div>
+      <p>O caso dimensionante é o T3, com o vento puxando a estrutura da parede: 91,8 MPa, deslocamento de 0,29 mm e cerca de 112 kgf no chumbador superior da mão francesa. As revisões do projeto levaram o FS desse caso de 0,61 para 2,72.</p>
+    </div>
+    <div class="mc">
+      <div class="mc-doc">
+        <div class="eyebrow">TC-2025-01-MC · Rev. 1</div>
+        <h3>Memorial de cálculo estrutural</h3>
+        <p>Verificação da estrutura soldada, do pivô, da trava e da fixação na parede para uma condensadora de 30 kg sob vento de 140 km/h. Elementos finitos para os casos T1 a T4 e cálculo manual para o giro (T5).</p>
+        <dl>
+          <div><dt>Normas</dt><dd>NBR 6123 · NBR 8800 · AISC 360</dd></div>
+          <div><dt>Programa</dt><dd>Inventor 2027 · análise de tensão</dd></div>
+          <div><dt>Critério</dt><dd>FS = fy ÷ σVM ≥ 2,0</dd></div>
+          <div><dt>Data</dt><dd>13/10/2026 · 13 páginas</dd></div>
+        </dl>
+        <a class="btn" href="docs/TC-2025-01-MC_Rev1_memorial.pdf" target="_blank" rel="noopener">Abrir o memorial (PDF) ↗</a>
+        <p style="font-size:12.5px;color:#8FA2BA">Projeto e cálculo de minha autoria. Liberação final com ART de engenheiro habilitado.</p>
+      </div>
+      <div class="figs">
+        <figure class=""><a href="img/posicao-trabalho.jpg" target="_blank" rel="noopener"><img src="img/posicao-trabalho.jpg" alt="Fig. 1 · Posição de trabalho (180°)" loading="lazy"></a><figcaption>Fig. 1 · Posição de trabalho (180°)</figcaption></figure>
+        <figure class=""><a href="img/posicao-manutencao.jpg" target="_blank" rel="noopener"><img src="img/posicao-manutencao.jpg" alt="Fig. 2 · Posição de manutenção (0°)" loading="lazy"></a><figcaption>Fig. 2 · Posição de manutenção (0°)</figcaption></figure>
+        <figure class=""><a href="img/t3-von-mises.jpg" target="_blank" rel="noopener"><img src="img/t3-von-mises.jpg" alt="Fig. 3 · T3, Von Mises: máx. 91,8 MPa" loading="lazy"></a><figcaption>Fig. 3 · T3, Von Mises: máx. 91,8 MPa</figcaption></figure>
+        <figure class=""><a href="img/t3-fs.jpg" target="_blank" rel="noopener"><img src="img/t3-fs.jpg" alt="Fig. 4 · T3, fator de segurança: mín. 2,72" loading="lazy"></a><figcaption>Fig. 4 · T3, fator de segurança: mín. 2,72</figcaption></figure>
+        <figure class=""><a href="img/t3-deslocamento.jpg" target="_blank" rel="noopener"><img src="img/t3-deslocamento.jpg" alt="Fig. 5 · T3, deslocamento: máx. 0,29 mm" loading="lazy"></a><figcaption>Fig. 5 · T3, deslocamento: máx. 0,29 mm</figcaption></figure>
+        <figure class=""><a href="img/t2-fs.jpg" target="_blank" rel="noopener"><img src="img/t2-fs.jpg" alt="Fig. 6 · T2, fator de segurança: mín. 2,93" loading="lazy"></a><figcaption>Fig. 6 · T2, fator de segurança: mín. 2,93</figcaption></figure>
+        <figure class="wide"><a href="img/t3-esforcos-parede.jpg" target="_blank" rel="noopener"><img src="img/t3-esforcos-parede.jpg" alt="Fig. 9 · T3: cargas aplicadas e esforços na parede" loading="lazy"></a><figcaption>Fig. 9 · T3: cargas aplicadas e esforços na parede</figcaption></figure>
+      </div>
+    </div>
+    <h3 class="pend-h">Pendências antes da fabricação</h3>
+    <ol class="pend">
+      <li><span class="c">P1</span><span>Definir o tipo de parede e o chumbador correspondente (115 kgf tração / 30 kgf corte)</span><span class="r">cliente / obra</span></li>
+      <li><span class="c">P2</span><span>Confirmar a furação da chapa da mão francesa (adotado 150 mm entre furos)</span><span class="r">projeto</span></li>
+      <li><span class="c">P3</span><span>Confirmar o material da placa de trava e da peça -07 (modelo com 350 MPa)</span><span class="r">projeto</span></li>
+      <li><span class="c">P4</span><span>Confirmar o comprimento de apoio das buchas (adotado 25 mm)</span><span class="r">projeto</span></li>
+      <li><span class="c">P5</span><span>Verificar a posição de manutenção (0°) por elementos finitos</span><span class="r">projeto · Rev. 2</span></li>
+      <li><span class="c">P6</span><span>Revisar desenhos e lista de materiais conforme esta revisão</span><span class="r">projeto</span></li>
+    </ol>
+  </section>
+
+  <footer>
+    <span>ROSTAG Soluções · Suporte articulado para condensadora · Projeto e cálculo: Guilherme dos Santos Braz</span>
+    <span class="doc"><a href="../../" style="color:inherit">← Voltar para todos os projetos</a></span>
+  </footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+const fmt=(x,d=0)=>x.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+/* ---------- calculadora do vento (funciona mesmo sem o 3D) ---------- */
+const vIn=document.getElementById('v');
+function wind(){const kmh=+vIn.value,vk=kmh/3.6,q=.613*vk*vk,p=1.3*q,ff=p*.4536,fl=p*.168;
+  document.getElementById('v-out').textContent=kmh;
+  const set=(id,t,u)=>document.getElementById(id).innerHTML=t+' <small>'+u+'</small>';
+  set('o-vk',fmt(vk,1),'m/s');set('o-q',fmt(q),'N/m²');set('o-p',fmt(p),'N/m²');set('o-ff',fmt(ff),'N');set('o-fl',fmt(fl),'N');
+  set('o-m',fmt(ff*.286),'N·m');set('o-tr',fmt(ff*447/57.2/1000,2),'kN')}
+vIn.addEventListener('input',wind);wind();
+
+/* ---------- dados dos casos ---------- */
+const CASES=[
+ {id:'T1',short:'peso + uso',name:'Peso próprio e uso',desc:'Plataforma travada, condensadora com fator dinâmico 1,5 para cobrir a instalação e a manutenção. Sem vento.',
+  loads:[['Condensadora × 1,5','441 N ↓'],['Peso da estrutura','gravidade']],fs:8.96,vm:27.9,d:0.12,ang:-Math.PI,
+  arrows:[{k:'g',F:441}],reac:[]},
+ {id:'T2',short:'vento contra a parede',name:'Vento empurrando para a parede',desc:'Rajada de 140 km/h de frente, empurrando a condensadora contra a parede. A placa superior e a inferior trabalham comprimidas.',
+  loads:[['Condensadora','294 N ↓'],['Vento frontal','547 N → parede'],['Momento do vento','156 N·m']],fs:2.93,vm:85.2,d:0.16,ang:-Math.PI,
+  arrows:[{k:'g',F:294},{k:'wIn',F:547}],reac:[['sup',431.6],['inf',271.0],['mf',-155.6]]},
+ {id:'T3',short:'vento puxando',name:'Vento puxando da parede',desc:'A mesma rajada no sentido contrário, tentando arrancar a estrutura. É o caso crítico: maior tensão e maior tração nos chumbadores.',
+  loads:[['Condensadora','294 N ↓'],['Vento frontal','547 N ← parede'],['Momento do vento','156 N·m']],fs:2.72,vm:91.8,d:0.29,ang:-Math.PI,
+  arrows:[{k:'g',F:294},{k:'wOut',F:547}],reac:[['sup',-573.0],['inf',284.2],['mf',-258.3]]},
+ {id:'T4',short:'vento lateral',name:'Vento lateral',desc:'Rajada de 140 km/h ao longo da parede, na face menor da condensadora. Gera torção no pivô, segurada pela trava.',
+  loads:[['Condensadora','294 N ↓'],['Vento lateral','203 N'],['Momento do vento','58 N·m']],fs:7.72,vm:32.4,d:0.10,ang:-Math.PI,
+  arrows:[{k:'g',F:294},{k:'wLat',F:203}],reac:[['sup',-61.4],['inf',-28.4],['mf',89.8]]},
+ {id:'T5',short:'girando',name:'Girando, sem apoio na ponta',desc:'Durante o giro a ponta não toca a mão francesa: o pivô segura tudo em balanço. Fator dinâmico 1,5. Cálculo à mão; não se gira com vento forte.',
+  loads:[['Condensadora × 1,5','441 N ↓'],['Plataforma','160 N ↓'],['Momento no pivô','261 N·m'],['Binário nas buchas','917 N']],fs:5.0,vm:49.8,d:null,ang:-Math.PI/2,
+  arrows:[{k:'g',F:441}],reac:[['sup',-917],['inf',917]],hand:true},
+ {id:'M',short:'manutenção',name:'Posição de manutenção',desc:'A plataforma gira 180° e fica em frente à janela, apoiada na mão francesa -06. O pivô, as orelhas, a trava e a mão francesa são os mesmos, espelhados: os casos T1 a T4 valem também aqui. O pior caso, T3 espelhado, está no modelo.',
+  loads:[['Condensadora','294 N ↓'],['Vento frontal','547 N ← parede'],['Momento do vento','156 N·m']],fs:2.72,vm:91.8,d:0.29,ang:0,
+  arrows:[{k:'g',F:294},{k:'wOutM',F:547}],reac:[['sup',-573.0],['inf',284.2],['mfm',-258.3]],sym:true,chart:false,mirror:true},
+];
+const casesEl=document.getElementById('cases');
+CASES.forEach(c=>{const b=document.createElement('button');b.type='button';b.dataset.id=c.id;b.setAttribute('aria-pressed','false');b.innerHTML=`<b>${c.id}</b><span>${c.short}</span>`;casesEl.appendChild(b)});
+/* gráfico de FS (escala 0–10, meta 2,0) */
+const MAXFS=10,rows=document.getElementById('fs-rows');
+CASES.filter(c=>c.chart!==false).forEach(c=>{const r=document.createElement('div');r.className='fs-row';
+  r.innerHTML=`<span class="nm">${c.id} · ${c.short}<small>${c.hand?'cálculo à mão':'elementos finitos'}</small></span><div class="fs-track"><div class="fs-bar" style="width:${Math.min(100,c.fs/MAXFS*100)}%"></div><div class="fs-goal" style="left:${2/MAXFS*100}%"></div></div><span class="v">${fmt(c.fs,2)}</span>`;rows.appendChild(r)});
+const sc=document.getElementById('fs-scale');[0,2,4,6,8,10].forEach(t=>{const s=document.createElement('span');s.style.left=t/MAXFS*100+'%';s.textContent=t;sc.appendChild(s)});
+
+function showInfo(c){
+  document.getElementById('ci-code').textContent=c.id+(c.hand?' · cálculo à mão':c.sym?' · elementos finitos, por simetria':' · elementos finitos');
+  document.getElementById('ci-name').textContent=c.name;
+  document.getElementById('ci-desc').textContent=c.desc;
+  document.getElementById('ci-loads').innerHTML=c.loads.map(l=>`<li><span>${l[0]}</span><span>${l[1]}</span></li>`).join('');
+  document.getElementById('ci-fs').textContent=fmt(c.fs,2);
+  document.getElementById('ci-vm').innerHTML=fmt(c.vm,1)+' <small>MPa</small>';
+  document.getElementById('ci-d').innerHTML=c.d==null?'— <small>não calculado</small>':fmt(c.d,2)+' <small>mm</small>';
+  casesEl.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.id===c.id));
+}
+
+/* ---------- 3D ---------- */
+const stage=document.getElementById('stage'), stage2=document.getElementById('stage2');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let selectCase=c=>showInfo(c);
+casesEl.addEventListener('click',e=>{const b=e.target.closest('button');if(b)selectCase(CASES.find(c=>c.id===b.dataset.id))});
+showInfo(CASES[2]);
+if(!window.THREE){document.getElementById('loading').textContent='não foi possível carregar o 3D';return}
+document.getElementById('loading').remove();
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+function mkRenderer(el,label){const r=new THREE.WebGLRenderer({antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio,2));
+  r.outputEncoding=THREE.sRGBEncoding;r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=1.0;r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;
+  el.prepend(r.domElement);r.domElement.setAttribute('aria-label',label);r.domElement.tabIndex=0;return r}
+const renderer=mkRenderer(stage,'Modelo 3D do suporte articulado');
+const renderer2=mkRenderer(stage2,'Modelo 3D com as cargas do caso selecionado');
+
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(28,1,10,30000);
+const camera2=new THREE.PerspectiveCamera(30,1,10,30000); camera2.layers.enable(1);
+const root=new THREE.Group(); scene.add(root);
+
+const hemi=new THREE.HemisphereLight(0xffffff,0xb8b2a8,0.55);
+const sun=new THREE.DirectionalLight(0xfff8ef,1.7); sun.position.set(-1400,2900,2600); sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048); Object.assign(sun.shadow.camera,{left:-2000,right:2000,top:2000,bottom:-1600,near:100,far:9000});
+sun.shadow.bias=-0.0004; sun.shadow.radius=4;
+const fill=new THREE.DirectionalLight(0xdfe6ff,0.35); fill.position.set(2200,600,1800);
+[hemi,sun,fill].forEach(l=>{l.layers.enableAll();scene.add(l)});
+
+const parts={};
+function M(key,color,o={}){const m=new THREE.MeshStandardMaterial(Object.assign({color,roughness:.5,metalness:.35},o));(parts[key]=parts[key]||[]).push(m);return m}
+function add(parent,geo,mat,cast=true){const m=new THREE.Mesh(geo,mat);m.castShadow=cast;m.receiveShadow=true;parent.add(m);return m}
+function box(parent,mat,x0,x1,y0,y1,z0,z1){[x0,x1]=[Math.min(x0,x1),Math.max(x0,x1)];[y0,y1]=[Math.min(y0,y1),Math.max(y0,y1)];[z0,z1]=[Math.min(z0,z1),Math.max(z0,z1)];
+  const g=new THREE.BoxGeometry(x1-x0,y1-y0,z1-z0);const m=add(parent,g,mat);m.position.set((x0+x1)/2,(y0+y1)/2,(z0+z1)/2);return m}
+function cyl(parent,mat,r,y0,y1,x=0,z=0,seg=40){const g=new THREE.CylinderGeometry(r,r,y1-y0,seg);const m=add(parent,g,mat);m.position.set(x,(y0+y1)/2,z);return m}
+function rod(parent,mat,r,a,b,seg=24){const A=new THREE.Vector3(...a),B=new THREE.Vector3(...b);const d=B.clone().sub(A);const g=new THREE.CylinderGeometry(r,r,d.length(),seg);const m=add(parent,g,mat);m.position.copy(A.clone().add(B).multiplyScalar(.5));m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d.normalize());return m}
+function flat(parent,mat,x,a,b,w,t){ // barra chata no plano y-z, entre a=[y,z] e b=[y,z], largura w (no plano), espessura t (em x)
+  const dy=b[0]-a[0],dz=b[1]-a[1],L=Math.hypot(dy,dz);const m=add(parent,new THREE.BoxGeometry(t,L,w),mat);
+  m.position.set(x,(a[0]+b[0])/2,(a[1]+b[1])/2);m.rotation.x=Math.atan2(dz,dy);return m}
+function gusset(parent,mat,pts,x){const s=new THREE.Shape(); s.moveTo(pts[0][0],pts[0][1]); pts.slice(1).forEach(p=>s.lineTo(p[0],p[1]));
+  const g=new THREE.ExtrudeGeometry(s,{depth:6.3,bevelEnabled:false}); const m=add(parent,g,mat); m.rotation.y=-Math.PI/2; m.position.set(x+3.15,0,0); return m}
+function ear(parent,mat,y,lockHole){const s=new THREE.Shape(); s.moveTo(-30,-9.5); s.lineTo(30,-9.5); s.lineTo(30,-309.5); s.absarc(0,-309.5,30,0,Math.PI,true); s.lineTo(-30,-9.5);
+  const h=new THREE.Path(); h.absarc(0,-309.5,16.3,0,Math.PI*2,false); s.holes.push(h);
+  if(lockHole){const k=new THREE.Path(); k.absarc(0,-252.3,10,0,Math.PI*2,false); s.holes.push(k)}
+  const g=new THREE.ExtrudeGeometry(s,{depth:9.5,bevelEnabled:false,curveSegments:28}); const m=add(parent,g,mat); m.rotation.x=-Math.PI/2; m.position.y=y; return m}
+
+const steelC=new THREE.Color('#a9afb6'), galv={roughness:.42,metalness:.5};
+const mCh=M('chumb',0x8b9096,{roughness:.3,metalness:.85});
+function anchor(parent,x,y,z0){ // arruela + porca sextavada + ponta da barra roscada, apontando para fora da parede (+z)
+  const w=cyl(parent,mCh,12,0,2.5,x,0,24);w.rotation.x=Math.PI/2;w.position.set(x,y,z0+1.25);
+  const n=cyl(parent,mCh,9.6,0,8,x,0,6);n.rotation.x=Math.PI/2;n.position.set(x,y,z0+6.5);
+  const s=cyl(parent,mCh,4.8,0,9,x,0,12);s.rotation.x=Math.PI/2;s.position.set(x,y,z0+15)}
+
+/* ---------- parede de alvenaria com janela de correr ---------- */
+const wallG=new THREE.Group(); root.add(wallG);
+const wallM=new THREE.MeshStandardMaterial({color:new THREE.Color(css('--wall')||'#e6e3dd'),roughness:.95,metalness:0});
+const WX0=-1700,WX1=1650,WY0=-950,WY1=1650, JX0=80,JX1=1080,JY0=230,JY1=1430;
+[[WX0,JX0,WY0,WY1],[JX1,WX1,WY0,WY1],[JX0,JX1,WY0,JY0],[JX0,JX1,JY1,WY1]].forEach(r=>{const m=box(wallG,wallM,r[0],r[1],r[2],r[3],-200,0);m.castShadow=false});
+const sillM=new THREE.MeshStandardMaterial({color:0xcfccc6,roughness:.6,metalness:.05});
+box(wallG,sillM,JX0-40,JX1+40,JY0-28,JY0,-150,32); // peitoril de granito, pingadeira para fora
+const frameM=new THREE.MeshStandardMaterial({color:0x2b2e33,roughness:.5,metalness:.4});
+[[JX0,JX0+45],[JX1-45,JX1]].forEach(r=>box(wallG,frameM,r[0],r[1],JY0,JY1,-110,-60));
+[[JY1-45,JY1],[JY0,JY0+45]].forEach(r=>box(wallG,frameM,JX0,JX1,r[0],r[1],-110,-60));
+const mid=(JX0+JX1)/2; box(wallG,frameM,mid-22,mid+22,JY0,JY1,-100,-70);
+const glassM=new THREE.MeshStandardMaterial({color:0x8fa9c2,roughness:.05,metalness:.3,transparent:true,opacity:.5});
+[[JX0+45,mid-22,-85],[mid+22,JX1-45,-95]].forEach(g=>{const m=add(wallG,new THREE.PlaneGeometry(g[1]-g[0],JY1-JY0-90),glassM,false);m.position.set((g[0]+g[1])/2,(JY0+JY1)/2,g[2])});
+box(wallG,new THREE.MeshStandardMaterial({color:0x5b636d,roughness:1}),JX0,JX1,JY0,JY1,-200,-185);
+
+/* ---------- peças fixas ---------- */
+const fixed=new THREE.Group(); root.add(fixed);
+const PZ=309.5;
+const mInf=M('inf',steelC.getHex(),galv), mSup=M('sup',steelC.getHex(),galv);
+const mBuch=M('buch',0xf1e7c6,{roughness:.6,metalness:0});
+// suporte superior: chapa 150x150x9,5 (4 furos 110x110), orelha 3/8" e reforço por cima
+box(fixed,mSup,-75,75,-28,122,0,9.5); ear(fixed,mSup,12,true);
+gusset(fixed,mSup,[[9.5,21.5],[209.5,21.5],[209.5,41.5],[29.5,101.5],[9.5,101.5]],0);
+[[-55,102],[55,102],[-55,-8],[55,-8]].forEach(p=>anchor(fixed,p[0],p[1],9.5));
+// suporte inferior: chapa 150x150, orelha com reforço por baixo, pino Ø1¼" soldado
+box(fixed,mInf,-75,75,-400,-250,0,9.5); ear(fixed,mInf,-299.5,false);
+gusset(fixed,mInf,[[9.5,-299.5],[9.5,-379.5],[29.5,-379.5],[209.5,-319.5],[209.5,-299.5]],0);
+[[-55,-270],[55,-270],[-55,-380],[55,-380]].forEach(p=>anchor(fixed,p[0],p[1],9.5));
+cyl(fixed,mInf,15.9,-304.5,21.5,0,PZ);
+cyl(fixed,mBuch,22.2,0,10,0,PZ); cyl(fixed,mBuch,22.2,-290,-280,0,PZ);
+// mãos francesas: chapa vertical 63,5 x 9,5 x 200 com 2 chumbadores a 150 mm, braço em L 2" x 1/4" de 500 mm e diagonal em barra chata
+const XMF=846;
+function maoFrancesa(key,xc){const m=M(key,steelC.getHex(),galv);const g=new THREE.Group();fixed.add(g);
+  const yt=-50.8;
+  box(g,m,xc-31.75,xc+31.75,yt-6.3-200,yt-6.3,0,9.5);
+  box(g,m,xc-25.4,xc+25.4,yt-6.3,yt,9.5,500);
+  box(g,m,xc+19.1,xc+25.4,yt-50.8,yt-6.3,9.5,500);
+  flat(g,m,xc,[yt-6.3-190,9.5],[yt-40,300],38,6.3);
+  box(g,m,xc-25.4,xc+25.4,yt-50.8,yt-6.3,494,500);
+  [yt-6.3-25,yt-6.3-175].forEach(y=>anchor(g,xc,y,9.5));
+  return g}
+const mfw=maoFrancesa('mfw',-XMF), mfm=maoFrancesa('mfm',XMF);
+
+/* ---------- plataforma (gira) ---------- */
+const pivot=new THREE.Group(); pivot.position.set(0,0,PZ); root.add(pivot);
+const mPl=M('plat',steelC.getHex(),galv);
+(function(){const sh=new THREE.Shape();sh.absarc(0,0,22.2,0,Math.PI*2,false);const h=new THREE.Path();h.absarc(0,0,19.2,0,Math.PI*2,true);sh.holes.push(h);
+ const g=new THREE.ExtrudeGeometry(sh,{depth:280,bevelEnabled:false,curveSegments:40});const m=add(pivot,g,mPl);m.rotation.x=Math.PI/2})();
+const X0=22,X1=872, YB=-50.8, YH=YB+6.3;
+[[-175,-168.7,-175,-124.2],[168.7,175,124.2,175]].forEach(s=>{box(pivot,mPl,X0,X1,YB,0,s[0],s[1]);box(pivot,mPl,X0,X1,YB,YH,s[2],s[3])});
+[[X0,X0+6.3,X0,X0+50.8],[X1-6.3,X1,X1-50.8,X1]].forEach(s=>{box(pivot,mPl,s[0],s[1],YB,0,-175,175);box(pivot,mPl,s[2],s[3],YB,YH,-175,175)});
+[222,420.8,620.6].forEach(x=>box(pivot,mPl,x,x+50.8,YB-6.3,YB,-175,175));
+box(pivot,mPl,X0+50,X1-60,YB-12.6,YB-6.3,-25,25);
+rod(pivot,mPl,22.2,[0,-242,0],[427,YB-12.6,0],28);
+(function(){const c=57.2,sh=new THREE.Shape();
+ sh.moveTo(22,-95);sh.lineTo(22,95);sh.lineTo(0,95);sh.absarc(0,55,40,Math.PI/2,Math.PI,false);sh.lineTo(-40,-55);sh.absarc(0,-55,40,Math.PI,Math.PI*1.5,false);sh.lineTo(22,-95);
+ const key=v=>{const k=new THREE.Path(),a=Math.asin(.5);k.moveTo(-20,v-5);k.lineTo(-8.66,v-5);k.absarc(0,v,10,Math.PI+a,Math.PI*2-a,false);k.lineTo(20,v-5);k.lineTo(20,v+5);k.lineTo(8.66,v+5);k.absarc(0,v,10,a,Math.PI-a,false);k.lineTo(-20,v+5);k.closePath();return k};
+ const slot=(u0,u1,v,r)=>{const k=new THREE.Path();k.moveTo(u0,v-r);k.lineTo(u1,v-r);k.absarc(u1,v,r,-Math.PI/2,Math.PI/2,false);k.lineTo(u0,v+r);k.absarc(u0,v,r,Math.PI/2,Math.PI*1.5,false);return k};
+ const ctr=new THREE.Path();ctr.absarc(0,0,16.3,0,Math.PI*2,true);
+ sh.holes.push(ctr,key(c),key(-c),slot(-6,6,84,5.5),slot(-6,6,-84,5.5),slot(-18,0,30,6),slot(-18,0,-30,6));
+ const g=new THREE.ExtrudeGeometry(sh,{depth:6.3,bevelEnabled:false,curveSegments:32});const m=add(pivot,g,mPl);m.rotation.x=Math.PI/2})();
+
+// condensadora 810 x 560 x 300 dentro do quadro, sobre 4 pés
+const cond=new THREE.Group(); pivot.add(cond); cond.position.set(447,YH,0);
+const body=new THREE.MeshStandardMaterial({color:0xf3f3f0,roughness:.5,metalness:.05});
+const dark=new THREE.MeshStandardMaterial({color:0x2c3036,roughness:.7,metalness:.2});
+const metal=new THREE.MeshStandardMaterial({color:0x9aa0a6,metalness:.6,roughness:.4});
+box(cond,body,-405,405,16,560,-150,150);
+const footM=new THREE.MeshStandardMaterial({color:0x3a3f46,roughness:.55,metalness:.5});
+[-300,300].forEach(x=>[-1,1].forEach(sz=>{box(cond,footM,x-30,x+30,0,4,sz*124,sz*162);box(cond,footM,x-30,x+30,0,16,sz*146,sz*150);cyl(cond,metal,8,4,10,x,sz*137,6)}));
+const grille=new THREE.Group(); cond.add(grille); grille.position.set(120,290,-150.5); grille.rotation.y=Math.PI;
+add(grille,new THREE.CircleGeometry(205,64),dark,false);
+for(let r=40;r<=200;r+=32){const t=add(grille,new THREE.TorusGeometry(r,2.2,8,72),metal,false);t.position.z=4}
+for(let i=0;i<4;i++){const b=add(grille,new THREE.BoxGeometry(410,4,4),metal,false);b.rotation.z=i*Math.PI/4;b.position.z=5}
+const slatM=new THREE.MeshStandardMaterial({color:0xd9dad8,roughness:.6});
+for(let i=0;i<9;i++)box(cond,slatM,-380,-170,90+i*48,96+i*48,-152,-150);
+box(cond,metal,-380,-250,60,120,-156,-150);
+for(let i=0;i<14;i++)box(cond,slatM,-385,385,40+i*36,43+i*36,150,152); // serpentina na face de trás
+box(cond,dark,395,407,60,200,-60,60); // tampa das válvulas de serviço
+
+// pino-trava fixo na orelha de cima, a 57 mm do eixo, lado da parede
+const trava=new THREE.Group(); fixed.add(trava); trava.position.set(0,21.5,PZ-57.2);
+const mTr=M('trava',0x3b414a,{roughness:.35,metalness:.7});
+cyl(trava,mTr,26,0,18,0,0,40); cyl(trava,mTr,9,-40,0,0,0,24); box(trava,mTr,-19,19,-66,-40,-4.5,4.5); box(trava,mTr,-45,45,24,34,-6,6);
+
+const edgeM=new THREE.LineBasicMaterial({color:0x22252b,transparent:true,opacity:.42});
+[fixed,pivot].forEach(g=>g.traverse(o=>{if(o.isMesh&&o.geometry&&o.material!==glassM){o.add(new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,28),edgeM))}}));
+wallG.traverse(o=>{if(o.isMesh&&o.material!==glassM){o.add(new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,28),new THREE.LineBasicMaterial({color:0x22252b,transparent:true,opacity:.12})))}});
+
+/* ---------- setas das cargas (camada 1: só aparecem no palco dos casos) ---------- */
+const loadsP=new THREE.Group(), loadsF=new THREE.Group(); pivot.add(loadsP); fixed.add(loadsF);
+const colLoad=new THREE.Color(), colPull=new THREE.Color(), colPush=new THREE.Color();
+function refreshColors(){colLoad.set(css('--load')||'#1F4FBF');colPull.set(css('--pull')||'#d2452e');colPush.set(css('--push')||'#4a6fa5')}
+refreshColors();
+function arrow(parent,from,dir,len,col){const g=new THREE.Group();const m=new THREE.MeshBasicMaterial({color:col,toneMapped:false});
+  const d=new THREE.Vector3(...dir).normalize(), A=new THREE.Vector3(...from), head=Math.min(70,len*.35);
+  const shaft=new THREE.Mesh(new THREE.CylinderGeometry(7,7,len-head,16),m); shaft.position.copy(A.clone().add(d.clone().multiplyScalar((len-head)/2))); shaft.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),d);
+  const cone=new THREE.Mesh(new THREE.ConeGeometry(22,head,20),m); cone.position.copy(A.clone().add(d.clone().multiplyScalar(len-head/2))); cone.quaternion.copy(shaft.quaternion);
+  g.add(shaft,cone); g.traverse(o=>o.layers.set(1)); parent.add(g); return g}
+const tagsEl=[]; function tag(cls,html){const t=document.createElement('div');t.className='tag dim '+cls;t.innerHTML=html;stage2.appendChild(t);return t}
+let activeTags=[];
+const L=F=>140+F*.33;
+const SUP={sup:[0,47],inf:[0,-325],mf:[-XMF,-157],mfm:[XMF,-157]};
+function buildCase(c){
+  [loadsP,loadsF].forEach(g=>{while(g.children.length)g.remove(g.children[0])});
+  activeTags.forEach(t=>t.el.remove()); activeTags=[];
+  const ctr=[447,YH+290,0];
+  c.arrows.forEach(a=>{let from,dir,len=L(a.F),anchorPt,label;
+    if(a.k==='g'){from=[447,YH+560+len+20,0];dir=[0,-1,0];anchorPt=new THREE.Vector3(447,YH+560+len+40,0);label=a.F+' N'}
+    if(a.k==='wIn'){from=[447,ctr[1],-150-len-30];dir=[0,0,1];anchorPt=new THREE.Vector3(447,ctr[1]+40,-150-len-30);label='vento '+a.F+' N'}
+    if(a.k==='wOut'){from=[447,ctr[1],-160];dir=[0,0,-1];anchorPt=new THREE.Vector3(447,ctr[1]+40,-160-len);label='vento '+a.F+' N'}
+    if(a.k==='wOutM'){from=[447,ctr[1],160];dir=[0,0,1];anchorPt=new THREE.Vector3(447,ctr[1]+40,160+len);label='vento '+a.F+' N'}
+    if(a.k==='wLat'){from=[852+len+30,ctr[1],0];dir=[-1,0,0];anchorPt=new THREE.Vector3(852+len+30,ctr[1]+40,0);label='vento '+a.F+' N'}
+    arrow(loadsP,from,dir,len,colLoad);activeTags.push({el:tag('load',label),obj:pivot,p:anchorPt})});
+  c.reac.forEach(([k,Fz])=>{const [x,y]=SUP[k],len=L(Math.abs(Fz)),pull=Fz<0;
+    if(pull)arrow(loadsF,[x,y,22],[0,0,1],len,colPull); else arrow(loadsF,[x,y,22+len],[0,0,-1],len,colPush);
+    activeTags.push({el:tag(pull?'pull':'push',(pull?'arranca ':'comprime ')+fmt(Math.abs(Fz))+' N'),obj:fixed,p:new THREE.Vector3(x,y,pull?22+len:22),dx:k==='mf'?-60:k==='mfm'?60:80,dy:k==='sup'?-52:k==='inf'?24:0})});
+}
+
+/* ---------- câmeras ---------- */
+const target=new THREE.Vector3(-120,180,420);
+let controls=null, controls2=null;
+function orbit(cam,el,tg){if(!THREE.OrbitControls)return null;const c=new THREE.OrbitControls(cam,el);c.enableZoom=false;c.enablePan=false;c.enableDamping=true;c.dampingFactor=.08;c.minPolarAngle=.5;c.maxPolarAngle=1.55;c.minAzimuthAngle=-1.2;c.maxAzimuthAngle=1.2;c.target.copy(tg);return c}
+controls=orbit(camera,renderer.domElement,target);
+const target2=new THREE.Vector3(-380,-40,330);let curCase=null, az2=-.72;
+controls2=orbit(camera2,renderer2.domElement,target2);
+function place(cam,tg,dist,az,pol,ctl){cam.position.set(tg.x+dist*Math.sin(pol)*Math.sin(az),tg.y+dist*Math.cos(pol),tg.z+dist*Math.sin(pol)*Math.cos(az));cam.updateProjectionMatrix();if(ctl)ctl.update();else cam.lookAt(tg)}
+function frame(){const w=stage.clientWidth,h=stage.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;place(camera,target,w/h<1.05?4700:3900,-.45,1.12,controls);
+  const w2=stage2.clientWidth,h2=stage2.clientHeight;renderer2.setSize(w2,h2,false);camera2.aspect=w2/h2;place(camera2,target2,w2/h2<1.05?4300:3600,az2,1.18,controls2)}
+new ResizeObserver(frame).observe(stage); new ResizeObserver(frame).observe(stage2); frame();
+let mx=0,my=0; stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5});
+stage.addEventListener('pointerleave',()=>{mx=0;my=0});
+
+/* ---------- giro e trava ---------- */
+let ang=-Math.PI, tgt=-Math.PI, pinUp=0, pinTgt=0, busy=false;
+const deg=document.getElementById('deg'), bW=document.getElementById('b-work'), bM=document.getElementById('b-maint');
+function setButtons(){bW.setAttribute('aria-pressed',tgt<=-Math.PI+.01);bM.setAttribute('aria-pressed',tgt>=-.01)}
+const wait=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+const until=fn=>new Promise(r=>{(function chk(){fn()?r():requestAnimationFrame(chk)})()});
+let pending=null;
+async function goTo(a,keepUp=false){if(busy){pending=[a,keepUp];return}busy=true;tgt=a;setButtons();
+  if(Math.abs(ang-tgt)>.01){pinTgt=1;await until(()=>pinUp>.97);await wait(120);await until(()=>Math.abs(ang-tgt)<.003);await wait(150)}
+  if(!keepUp){pinTgt=0;await until(()=>pinUp<.03)}busy=false;
+  if(pending){const q=pending;pending=null;goTo(q[0],q[1])}}
+bW.onclick=()=>goTo(-Math.PI); bM.onclick=()=>goTo(0);
+document.querySelectorAll('.step').forEach(b=>b.addEventListener('click',async()=>{
+  stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});const s=b.dataset.step;
+  if(s==='1'){pinTgt=1}
+  else if(s==='2'){if(busy)return;busy=true;pinTgt=1;await until(()=>pinUp>.97);tgt=tgt<-Math.PI/2?0:-Math.PI;setButtons();await until(()=>Math.abs(ang-tgt)<.003);busy=false}
+  else{pinTgt=0}}));
+selectCase=c=>{curCase=c;showInfo(c);buildCase(c);target2.set(c.mirror?380:-380,-40,330);az2=c.mirror?.72:-.72;if(controls2)controls2.target.copy(target2);frame();goTo(c.ang,c.ang>-Math.PI+.01&&c.ang<-.01)};
+buildCase(CASES[2]);
+
+/* destaque das peças */
+const hl=new THREE.Color(css('--accent')||'#3f5ff0');
+function highlight(key){Object.entries(parts).forEach(([k,ms])=>ms.forEach(m=>{m.emissive.copy(k===key?hl:new THREE.Color(0));m.emissiveIntensity=k===key?.55:0}))}
+document.querySelectorAll('#parts li[data-part]').forEach(li=>{
+  const on=()=>{document.querySelectorAll('#parts li').forEach(x=>x.classList.toggle('on',x===li));highlight(li.dataset.part)};
+  const off=()=>{li.classList.remove('on');highlight(null)};
+  li.addEventListener('mouseenter',on);li.addEventListener('focus',on);li.addEventListener('mouseleave',off);li.addEventListener('blur',off);
+  li.addEventListener('click',()=>{on();stage.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});setTimeout(off,2600)})});
+
+/* etiquetas presas ao modelo */
+const chips=[
+  {el:document.getElementById('c-giro'),obj:pivot,p:new THREE.Vector3(872,0,175),dx:0,dy:-30},
+  {el:document.getElementById('c-cond'),obj:cond,p:new THREE.Vector3(0,560,0),dx:0,dy:-30},
+  {el:document.getElementById('c-pivo'),obj:fixed,p:new THREE.Vector3(0,-160,PZ),dx:120,dy:10},
+  {el:document.getElementById('c-trava'),obj:fixed,p:new THREE.Vector3(0,45,PZ-57),dx:100,dy:-34},
+  {el:document.getElementById('c-mf'),obj:fixed,p:new THREE.Vector3(-XMF,-200,250),dx:-20,dy:40},
+];
+const v=new THREE.Vector3();
+function project(list,cam,el,t,clamp){const w=el.clientWidth,h=el.clientHeight;
+  list.forEach((c,i)=>{v.copy(c.p);c.obj.localToWorld(v);v.project(cam);
+    const fl=reduce||!clamp?0:Math.sin(t/900+i*1.7)*4;const cw=c.el.offsetWidth/2,ch=c.el.offsetHeight/2,pad=8;
+    let x=(v.x*.5+.5)*w+(c.dx||0), y=(-v.y*.5+.5)*h+(c.dy||0)+fl;
+    x=Math.min(w-cw-pad,Math.max(cw+pad,x)); y=Math.min(h-ch-pad,Math.max(ch+pad,y));
+    c.el.style.transform=`translate(${x-cw}px,${y-ch}px)`;if(!clamp)c.el.classList.remove('dim')})}
+
+/* no palco dos casos a condensadora fica translúcida para mostrar a estrutura */
+const ghostMats=[body,slatM,dark,metal,footM];
+function ghost(on){ghostMats.forEach(m=>{m.transparent=on;m.opacity=on?.28:1;m.depthWrite=!on});const mir=curCase&&curCase.mirror;mfm.visible=!(on&&!mir);mfw.visible=!(on&&mir)}
+/* render só do que está na tela */
+let vis1=true,vis2=false;
+new IntersectionObserver(es=>es.forEach(e=>{if(e.target===stage)vis1=e.isIntersecting;else vis2=e.isIntersecting}),{rootMargin:'120px'}).observe(stage);
+new IntersectionObserver(es=>es.forEach(e=>{vis2=e.isIntersecting}),{rootMargin:'120px'}).observe(stage2);
+let last=performance.now(), tiltX=0, tiltY=0;
+function tick(t){const dt=Math.min(.05,(t-last)/1000);last=t;const k=reduce?1:1-Math.pow(.0016,dt);
+  if(!busy||pinUp>.95||reduce){const d=tgt-ang;const sp=Math.min(1.9,.35+Math.min(Math.abs(d),.25+Math.abs(Math.abs(d)-Math.PI))*1.5)*dt;ang+=Math.sign(d)*Math.min(Math.abs(d),reduce?Math.abs(d):sp)}
+  pinUp+=(pinTgt-pinUp)*(reduce?1:Math.min(1,dt*7));
+  pivot.rotation.y=ang; trava.position.y=21.5+pinUp*80; trava.rotation.y=pinUp*Math.PI/2;
+  deg.textContent=Math.round(-ang*180/Math.PI)+'°';
+  if(vis1){tiltY+=(mx*.10-tiltY)*k*.6; tiltX+=(my*.05-tiltX)*k*.6; root.rotation.set(tiltX,tiltY,0);
+    if(controls)controls.update(); renderer.render(scene,camera); project(chips,camera,stage,t,true);
+    chips[4].el.classList.toggle('dim',false)}
+  if(vis2){root.rotation.set(0,0,0); if(controls2)controls2.update(); ghost(true); renderer2.render(scene,camera2); ghost(false); project(activeTags,camera2,stage2,t,false)}
+  requestAnimationFrame(tick)}
+setButtons(); requestAnimationFrame(tick);
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{wallM.color.set(css('--wall'));refreshColors();buildCase(CASES.find(c=>casesEl.querySelector(`[data-id="${c.id}"]`).getAttribute('aria-pressed')==='true')||CASES[2])});
+})();
+</script>
+
+</body>
+</html>

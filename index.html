@@ -159,6 +159,7 @@ footer a{color:var(--suave)}
    ============================================================ */
 const CATEGORIAS = {
   ferramentas: 'Ferramentas técnicas',
+  engenharia: 'Engenharia',
   software: 'Software de produção',
   estudos: 'Estudos',
   pessoal: 'Pessoal',
@@ -166,7 +167,17 @@ const CATEGORIAS = {
 
 const PROJETOS = [
   {
-    id: 'guia-tecnico', codigo: 'PG-01', local: true, categoria: 'ferramentas',
+    id: 'suporte-tc-2025-01', codigo: 'PG-01', local: true, categoria: 'engenharia',
+    titulo: 'Suporte articulado para condensadora',
+    status: 'Para aprovação',
+    descricao: 'Suporte de fachada que gira 180° num pivô central e traz a condensadora até a janela para manutenção. Projeto mecânico do conceito ao cálculo.',
+    destaques: ['Modelo 3D interativo e casos de carga por elementos finitos', 'Vento de 140 km/h pela NBR 6123, FS mínimo 2,72 (meta 2,0)', 'Desenhos de fabricação e memorial de cálculo em PDF'],
+    tecnologia: 'Inventor · NBR 6123 · ASTM A36 · three.js',
+    url: 'engenharia/suporte-tc-2025-01/', capa: 'assets/capas/suporte-tc-2025-01.jpg',
+    busca: 'tc-2025-01 suporte condensadora ar condicionado pivô mão francesa chumbador vento memorial de cálculo desenho elementos finitos',
+  },
+  {
+    id: 'guia-tecnico', codigo: 'PG-02', local: true, categoria: 'ferramentas',
     titulo: 'Guia Técnico',
     status: 'Ativo',
     descricao: 'Consulta rápida de caldeiraria e solda para o dia a dia: pesquise bitola, EPS, norma, aço, rosca ou rolamento numa busca só.',
@@ -176,7 +187,7 @@ const PROJETOS = [
     busca: 'calculadora de peso caldeiraria solda eps aço norma rosca rolamento ttat pwht chapa perfil tubo',
   },
   {
-    id: 'projtec-1d', codigo: 'PG-02', local: false, categoria: 'software',
+    id: 'projtec-1d', codigo: 'PG-03', local: false, categoria: 'software',
     titulo: 'PROJTEC 1D',
     status: 'Produto · v1.5.3',
     descricao: 'Otimização de corte linear de perfis e barras, com relatório em PDF, etiquetas na impressora Zebra e banco compartilhado em rede.',
@@ -186,7 +197,7 @@ const PROJETOS = [
     busca: 'corte linear barras perfis otimização zebra etiqueta first fit',
   },
   {
-    id: 'rostag-pcp', codigo: 'PG-03', local: false, categoria: 'software',
+    id: 'rostag-pcp', codigo: 'PG-04', local: false, categoria: 'software',
     titulo: 'ROSTAG PCP',
     status: 'Login obrigatório',
     descricao: 'Planejamento e controle da produção: projetos e commessas por equipe, com cronograma macro, checklist do PCP e acompanhamento das OPs até o CQ.',
@@ -196,7 +207,7 @@ const PROJETOS = [
     busca: 'pcp planejamento controle produção commessa ordens de produção op cronograma equipe',
   },
   {
-    id: 'faculdade-de-bolso', codigo: 'PG-04', local: false, categoria: 'estudos',
+    id: 'faculdade-de-bolso', codigo: 'PG-05', local: false, categoria: 'estudos',
     titulo: 'Faculdade de Bolso',
     status: 'Em andamento',
     descricao: 'Hub de estudos da Engenharia Mecânica no IFMG Betim: as 65 matérias dos 10 períodos, com oficinas interativas e cartas de revisão.',
@@ -206,7 +217,7 @@ const PROJETOS = [
     busca: 'faculdade engenharia mecânica ifmg cálculo gaal física revisão anki escola de usinagem torno fresamento cnc',
   },
   {
-    id: 'portfolio', codigo: 'PG-05', local: false, categoria: 'pessoal',
+    id: 'portfolio', codigo: 'PG-06', local: false, categoria: 'pessoal',
     titulo: 'Portfólio',
     status: 'Ativo',
     descricao: 'Minha trajetória na caldeiraria pesada, experiência, formação e os projetos de engenharia e software em destaque.',

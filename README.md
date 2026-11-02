@@ -1,6 +1,6 @@
 # Projetos-Gerais
 
-Plataforma de exposição dos meus projetos: ferramentas técnicas de caldeiraria e usinagem, software de produção e materiais de estudo, todos acessíveis a partir de uma página só.
+Plataforma de exposição dos meus projetos: ferramentas técnicas de caldeiraria e solda, software de produção e materiais de estudo, todos acessíveis a partir de uma página só.
 
 **Site:** https://guisbraz.github.io/Projetos-Gerais/
 
@@ -9,11 +9,10 @@ Plataforma de exposição dos meus projetos: ferramentas técnicas de caldeirari
 ```
 index.html            → a plataforma (catálogo de projetos)
 assets/capas/         → imagens de capa dos cards
-usinagem/             → Escola de Usinagem   (veio do repo GuisBraz/usinagem)
 guia-tecnico/         → Guia Técnico         (veio do repo GuisBraz/calculadora-peso)
 ```
 
-Os projetos que ficam em pastas deste repositório abrem na mesma aba. Os independentes (PROJTEC 1D, ROSTAG PCP, Faculdade de Bolso, Portfólio) continuam nos próprios repositórios e são só linkados daqui.
+Os projetos que ficam em pastas deste repositório abrem na mesma aba. Os independentes (PROJTEC 1D, ROSTAG PCP, Faculdade de Bolso — que inclui a Escola de Usinagem — e Portfólio) continuam nos próprios repositórios e são só linkados daqui.
 
 ## Adicionar um projeto
 
@@ -22,7 +21,7 @@ Os projetos que ficam em pastas deste repositório abrem na mesma aba. Os indepe
 
 ```js
 {
-  id: 'novo-site', codigo: 'PG-07', local: true, categoria: 'ferramentas',
+  id: 'novo-site', codigo: 'PG-06', local: true, categoria: 'ferramentas',
   titulo: 'Nome do projeto',
   status: 'Ativo',
   descricao: 'Uma frase dizendo o que ele faz.',

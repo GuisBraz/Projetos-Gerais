@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Projetos · Guilherme Braz</title>
-<meta name="description" content="Plataforma de projetos de Guilherme dos Santos Braz: ferramentas técnicas de caldeiraria e usinagem, software de produção e materiais de estudo.">
+<meta name="description" content="Plataforma de projetos de Guilherme dos Santos Braz: ferramentas técnicas de caldeiraria e solda, software de produção e materiais de estudo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
@@ -123,7 +123,7 @@ footer a{color:var(--suave)}
   <div class="wrap">
     <p class="eyebrow">Plataforma de projetos · ROSTAG Soluções</p>
     <h1>Tudo o que eu construo para o chão de fábrica e para os estudos, num lugar só.</h1>
-    <p class="lead">Ferramentas de consulta de caldeiraria e usinagem, sistemas de planejamento da produção e materiais de estudo da engenharia. Cada projeto abre direto daqui.</p>
+    <p class="lead">Ferramentas de consulta de caldeiraria e solda, sistemas de planejamento da produção e materiais de estudo da engenharia. Cada projeto abre direto daqui.</p>
     <dl class="numeros" id="numeros"></dl>
   </div>
 </section>
@@ -166,17 +166,7 @@ const CATEGORIAS = {
 
 const PROJETOS = [
   {
-    id: 'usinagem', codigo: 'PG-01', local: true, categoria: 'ferramentas',
-    titulo: 'Escola de Usinagem',
-    status: 'Ativo',
-    descricao: 'Guia interativo de usinagem, do básico ao avançado, para quem monta roteiros de processo e calcula tempos.',
-    destaques: ['18 módulos, de grandezas de corte a planejamento de processo', 'Furadeira, torno, mandrilhadora e centro de usinagem em 3D', 'Calculadoras passo a passo e simulador CNC'],
-    tecnologia: 'HTML · three.js · Sem build',
-    url: 'usinagem/', capa: 'assets/capas/usinagem.jpg',
-    busca: 'torno fresamento mandrilhadora furadeira cnc código g kienzle taylor tempo de usinagem',
-  },
-  {
-    id: 'guia-tecnico', codigo: 'PG-02', local: true, categoria: 'ferramentas',
+    id: 'guia-tecnico', codigo: 'PG-01', local: true, categoria: 'ferramentas',
     titulo: 'Guia Técnico',
     status: 'Ativo',
     descricao: 'Consulta rápida de caldeiraria e solda para o dia a dia: pesquise bitola, EPS, norma, aço, rosca ou rolamento numa busca só.',
@@ -186,7 +176,7 @@ const PROJETOS = [
     busca: 'calculadora de peso caldeiraria solda eps aço norma rosca rolamento ttat pwht chapa perfil tubo',
   },
   {
-    id: 'projtec-1d', codigo: 'PG-03', local: false, categoria: 'software',
+    id: 'projtec-1d', codigo: 'PG-02', local: false, categoria: 'software',
     titulo: 'PROJTEC 1D',
     status: 'Produto · v1.5.3',
     descricao: 'Otimização de corte linear de perfis e barras, com relatório em PDF, etiquetas na impressora Zebra e banco compartilhado em rede.',
@@ -196,7 +186,7 @@ const PROJETOS = [
     busca: 'corte linear barras perfis otimização zebra etiqueta first fit',
   },
   {
-    id: 'rostag-pcp', codigo: 'PG-04', local: false, categoria: 'software',
+    id: 'rostag-pcp', codigo: 'PG-03', local: false, categoria: 'software',
     titulo: 'ROSTAG PCP',
     status: 'Login obrigatório',
     descricao: 'Planejamento e controle da produção: projetos e commessas por equipe, com cronograma macro, checklist do PCP e acompanhamento das OPs até o CQ.',
@@ -206,17 +196,17 @@ const PROJETOS = [
     busca: 'pcp planejamento controle produção commessa ordens de produção op cronograma equipe',
   },
   {
-    id: 'faculdade-de-bolso', codigo: 'PG-05', local: false, categoria: 'estudos',
+    id: 'faculdade-de-bolso', codigo: 'PG-04', local: false, categoria: 'estudos',
     titulo: 'Faculdade de Bolso',
     status: 'Em andamento',
     descricao: 'Hub de estudos da Engenharia Mecânica no IFMG Betim: as 65 matérias dos 10 períodos, com oficinas interativas e cartas de revisão.',
-    destaques: ['Matérias organizadas por período', 'Oficinas de Cálculo II, GAAL, Usinagem e Inglês', 'Cartas de revisão espaçada'],
+    destaques: ['Matérias organizadas por período', 'Oficinas de Cálculo II, GAAL, Usinagem e Inglês, com a Escola de Usinagem', 'Cartas de revisão espaçada'],
     tecnologia: 'HTML · JavaScript · Supabase · PWA',
     url: 'https://guisbraz.github.io/Faculdade-de-bolso/', capa: 'assets/capas/faculdade-de-bolso.jpg',
-    busca: 'faculdade engenharia mecânica ifmg cálculo gaal física revisão anki',
+    busca: 'faculdade engenharia mecânica ifmg cálculo gaal física revisão anki escola de usinagem torno fresamento cnc',
   },
   {
-    id: 'portfolio', codigo: 'PG-06', local: false, categoria: 'pessoal',
+    id: 'portfolio', codigo: 'PG-05', local: false, categoria: 'pessoal',
     titulo: 'Portfólio',
     status: 'Ativo',
     descricao: 'Minha trajetória na caldeiraria pesada, experiência, formação e os projetos de engenharia e software em destaque.',
